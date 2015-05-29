@@ -1,0 +1,7 @@
+verilog work "VGA_DRV.v"
+verilog work "BLOCK_framebuffer.v"
+verilog work "BIG_framebuffer.v"
+verilog work "VGA.v"
+verilog work "TETRIS_GAME.v"
+verilog work "clk_gen.v"
+verilog work "top_level.v"

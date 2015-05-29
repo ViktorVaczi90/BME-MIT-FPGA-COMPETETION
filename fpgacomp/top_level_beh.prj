@@ -1,0 +1,8 @@
+verilog work "VGA_DRV.v"
+verilog work "BLOCK_framebuffer.v"
+verilog work "BIG_framebuffer.v"
+verilog work "VGA.v"
+verilog work "clk_gen.v"
+verilog work "BIG_initialize.v"
+verilog work "top_level.v"
+verilog work "E:/Prog/ISE/telepítve/14.7/ISE_DS/ISE//verilog/src/glbl.v"
