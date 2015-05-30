@@ -36,10 +36,12 @@ module TETRIS_GAME(
 	 initial BIG_WR_DATA = 0;
 	 
 	 parameter tetris_x_begin = 10;
-	 parameter tetris_x_end = 19;
+	 parameter tetris_x_end = 20;
 	 parameter tetris_y_begin = 5;
 	 parameter teris_y_end = 24;
-	 
+	 //DEBUG
+	 reg [3:0] debugreg [30:0];
+	 //END OF DEBUG
 	 parameter check_down_start = 4000;
 	 parameter check_down_end = 4999;
 	 reg [14:0] down_cntr; initial down_cntr = 0;
@@ -66,7 +68,7 @@ module TETRIS_GAME(
 	 parameter check_rot_start = 7000;
 	 parameter check_rot_end = 7999;
 	 reg [14:0] rot_cntr; initial rot_cntr = 0;
-	 reg [1:0] rotation; initial rotation = 0;
+	 reg [1:0] rotation; initial rotation = 1;
 	 wire [1:0] nextrot;
 	 wire [5:0] hor_wire_rot;
 	 wire [6:0] ver_wire_rot;
@@ -76,6 +78,22 @@ module TETRIS_GAME(
 	 reg [5:0] vertical_rot_data [127:0];//|block_id2|block_id1|block_id0|rotation1|rotation0|vertical1|vertical0| 
 	 reg [6:0] horizontal_rot_data [127:0];//|block_id2|block_id1|block_id0|rotation1|rotation0|vertical1|vertical0| 	 
 	 reg canmove_rot; initial canmove_rot = 1;
+	 
+	 //DEBUG
+	 	//ROTATION PARAMETERS
+	//THERE ARE 7 BLOCKS, THE COLOR DEFINES THE BLOCK_ID. THE 0 COLOR IS THE EMPTY CELL
+	 parameter check_rot_starttest = 8000;
+	 parameter check_rot_endtest = 9000;
+	 reg [14:0] rot_cntrtest; initial rot_cntrtest = 0;
+	 reg [1:0] rotationtest; initial rotationtest = 1;
+	 wire [1:0] nextrottest;
+	 wire [5:0] hor_wire_rottest;
+	 wire [6:0] ver_wire_rottest;
+	 wire [1:0] rot_cntr_0test;
+	 wire [1:0] rot_cntr_1test;
+	 wire [1:0] rot_cntr_2test;	 
+	 reg canmove_rottest; initial canmove_rottest = 1;
+	 //END DEBUG
 	  
 	 reg [2:0] color; 
 	 initial color = 1;
@@ -118,12 +136,24 @@ module TETRIS_GAME(
 	 parameter number_of_blocks = 3;
 	 reg [2:0] random ;initial random = 1;
 	 
+	 reg [5:0]input_delay;
+	 reg [5:0] input_delay_max; initial input_delay_max = 5;
+	 
+	 always@(posedge clk)
+	 begin
+	 if( en_posedge == 0 && en == 1 ) 
+		input_delay <= input_delay +1;
+	 if (input_delay == input_delay_max)
+		input_delay <=0;
+	 end
+	 
 	 always @ ( posedge clk)
 	 begin
 	 if ( random == number_of_blocks ) 
 	 random <= 1;
 	 else random <= random +1;
 	 end
+	 
 	 
 	always@(posedge clk)
 	begin
@@ -174,6 +204,15 @@ module TETRIS_GAME(
 		if (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end)
 		rot_cntr <= rot_cntr +1;
 	end	
+	//DEBUG
+	always@(posedge clk)//ROTATION
+	begin
+		if(cycle_cntr ==check_rot_starttest )
+		rot_cntrtest <= 0 ;
+		if (cycle_cntr > check_rot_starttest && cycle_cntr < check_rot_endtest)
+		rot_cntrtest <= rot_cntrtest +1;
+	end	
+	//END OF DEBUG
 	//***********************************END OF INIT COUNTERS
 
 	always@(posedge clk)
@@ -205,13 +244,13 @@ module TETRIS_GAME(
 	if(left_cntr >= 2 && left_cntr <= 5 &&  (cycle_cntr > check_left_start && cycle_cntr < check_left_end))//Current block is move_cntr -2;
 		if((BIG_RD_DATA && 
 	!(//nem saját
-	(horizontal[left_cntr -2]  == horizontal[left_cntr -1] +1 && vertical[left_cntr -2] == vertical[left_cntr -1]) ||
-	(horizontal[left_cntr -2]  == horizontal[left_cntr   ] +1 && vertical[left_cntr -2] == vertical[left_cntr   ]) ||
-	(horizontal[left_cntr -2]  == horizontal[left_cntr +1] +1 && vertical[left_cntr -2] == vertical[left_cntr +1])
-	))||
-			tetris_x_begin +pos_x + horizontal[left_cntr -2] <= tetris_x_begin) // Position
+	(horizontal[left_cntr +2]  == horizontal[left_cntr +3] +1 && vertical[left_cntr +2] == vertical[left_cntr +3]) ||
+	(horizontal[left_cntr +2]  == horizontal[left_cntr   ] +1 && vertical[left_cntr +2] == vertical[left_cntr   ]) ||
+	(horizontal[left_cntr +2]  == horizontal[left_cntr +1] +1 && vertical[left_cntr +2] == vertical[left_cntr +1])
+	))/*||
+			(pos_x + horizontal[left_cntr +2] <=)*/) // Position
 				canmove_left <= 0; 
-	//*******************************CHECKLEFT END*/
+	//*******************************CHECKLEFT END
 	//*******************************CHECKRIGHT BEGIN
 	if (right_cntr == 0 &&  (cycle_cntr > check_right_start && cycle_cntr < check_right_end)) canmove_right <=1;
 	
@@ -226,8 +265,8 @@ module TETRIS_GAME(
 	))||
 			tetris_x_begin +pos_x + horizontal[right_cntr -2] >= tetris_x_end) // Position
 				canmove_right <= 0; 
-	//*******************************CHECKLEFT END*/
-		//*******************************CHECKROT BEGIN
+	//*******************************CHECKRIGHT END
+	/*	//*******************************CHECKROT BEGIN MAN THIS IS SOME BULLSHIT
 	if (rot_cntr == 0 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end)) canmove_rot <=1;
 	
 	if(rot_cntr >= 0 && rot_cntr <= 3 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end))	
@@ -238,9 +277,33 @@ module TETRIS_GAME(
 	(horizontal[rot_cntr ]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]  && vertical[rot_cntr ] == vertical_rot_data[{color,nextrot,rot_cntr_2}] ) ||
 	(horizontal[rot_cntr +1]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]   && vertical[rot_cntr +1] == vertical_rot_data[{color,nextrot,rot_cntr_2}]) ||
 	(horizontal[rot_cntr +3]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]   && vertical[rot_cntr +3] == vertical_rot_data[{color,nextrot,rot_cntr_2}])
-	))/*||
-			tetris_x_begin +pos_x + horizontal[right_cntr -2] >= tetris_x_end*/) // Position
-				canmove_rot <= 0; 
+	))//||
+			//tetris_x_begin +pos_x + horizontal[right_cntr -2] >= tetris_x_end) // Position
+				)canmove_rot <= 0; */
+	//*******************************CHECKROT END*/
+	
+	//*******************************CHECKROT BEGIN
+	if (rot_cntr == 0 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end)) canmove_rot <=1;
+	if(rot_cntr >= 0 && rot_cntr <= 3 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end))	
+   BIG_RD_ADDR <= {ver_wire_rot[4:0],hor_wire_rot[5:0]};
+	if(rot_cntr >= 2 && rot_cntr <= 5 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end))
+	begin
+	debugreg[rot_cntr] <= BIG_RD_DATA;
+	debugreg[rot_cntr+4]<= horizontal_rot_data[{color,nextrot,rot_cntr_2}];
+	debugreg[rot_cntr +8] <= horizontal[rot_cntr ];
+	debugreg[rot_cntr +12]<= vertical_rot_data[{color,nextrot,rot_cntr_2}];
+	debugreg[rot_cntr +16] <= vertical[rot_cntr ];
+		if(BIG_RD_DATA&& 
+	!(//nem saját
+	(horizontal[rot_cntr ]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]  && vertical[rot_cntr ] == vertical_rot_data[{color,nextrot,rot_cntr_2}] ) ||
+	(horizontal[rot_cntr +1]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]   && vertical[rot_cntr +1] == vertical_rot_data[{color,nextrot,rot_cntr_2}]) ||
+	(horizontal[rot_cntr +2]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]   && vertical[rot_cntr +2] == vertical_rot_data[{color,nextrot,rot_cntr_2}]) ||
+	(horizontal[rot_cntr +3]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]   && vertical[rot_cntr +3] == vertical_rot_data[{color,nextrot,rot_cntr_2}])))
+	begin
+		canmove_rot <= 0;
+
+	end
+	end
 	//*******************************CHECKROT END*/
 	end
 	//END OF CHECKS
@@ -272,15 +335,15 @@ module TETRIS_GAME(
 		BIG_WR_EN <= 1;
 		end
 		if ( move_cntr == 21) BIG_WR_EN <= 0;
-		if ( move_cntr == 10&& gravity == 1 && canmove_down) // MOVE DOWN ON 16TH MOVE_CNTR CYCLE
+		if ( move_cntr == 10&& gravity == 1 && canmove_down ) // MOVE DOWN ON 16TH MOVE_CNTR CYCLE
 			pos_y <= pos_y +1;
-		if(move_cntr == 11 && canmove_right && btn[0] && !(gravity == 1 && !canmove_down)) //SORRENDET ÁT KELL GONDOLNI, LEHET HOGY NEM TUD LEFELE MENNI, LERAKJA, DE MÉG ELMEGY EGYET BALRA JOBBRA.
+		if(move_cntr == 11 && canmove_right && btn[0] && !(gravity == 1 && !canmove_down)&& ! input_delay) //SORRENDET ÁT KELL GONDOLNI, LEHET HOGY NEM TUD LEFELE MENNI, LERAKJA, DE MÉG ELMEGY EGYET BALRA JOBBRA.
 			pos_x <= pos_x +1;
-		if(move_cntr == 12 && canmove_left && btn[1]&& !(gravity == 1 && !canmove_down))
+		if(move_cntr == 12 && canmove_left && btn[1]&& !(gravity == 1 && !canmove_down) && ! input_delay)
 			pos_x <= pos_x -1;
-		if(move_cntr == 13 && btn[2] && !(gravity == 1 && !canmove_down)&& canmove_rot) 
+		if(move_cntr == 13 && btn[2] && !(gravity == 1 && !canmove_down)&& canmove_rot && ! input_delay) 
 			rotation <= rotation +1;
-		if(move_cntr == 14 && btn[2] && !(gravity == 1 && !canmove_down)&& canmove_rot) 
+		if(move_cntr == 14&& !(gravity == 1 && !canmove_down) && ! input_delay) 
 			begin
 			vertical[0] <= vertical_rot_data[{color,rotation,2'b00}];
 			 vertical[1] <= vertical_rot_data[{color,rotation,2'b01}];
@@ -293,7 +356,7 @@ module TETRIS_GAME(
 			end
 		if (gravity == 1 && move_cntr ==21 && !canmove_down) //EZT A FELTÉTELT MÉG A LEFT RIGHTBA BE KELL ÍRNI.
 		begin
-		color <= 1;
+		color <= 1+random[0];
 		 vertical[0] <= vertical_rot_data[{color,rotation,2'b00}];
 		 vertical[1] <= vertical_rot_data[{color,rotation,2'b01}];
 		 vertical[2] <= vertical_rot_data[{color,rotation,2'b10}];
@@ -310,16 +373,22 @@ module TETRIS_GAME(
 		
 		//DEBUG
 		
-		if ( rot_cntr <= 10 &&  rot_cntr)
+		/*if ( rot_cntr <= 10 &&  rot_cntr)
 		begin
 		BIG_WR_ADDR <= {5'd2+rot_cntr[1:0],6'd30};
 		BIG_WR_DATA <= 54+horizontal_rot_data[{color,nextrot,rot_cntr_2}];
 		BIG_WR_EN <= 1;
 		end
-		if ( rot_cntr <= 20 &&  rot_cntr > 10)
+		if(left_cntr >= 2 && left_cntr <= 5 &&  (cycle_cntr > check_left_start && cycle_cntr < check_left_end))
 		begin
-		BIG_WR_ADDR <= {5'd2+rot_cntr[1:0],6'd31};
-		BIG_WR_DATA <= 54+horizontal[rot_cntr ];
+		BIG_WR_ADDR <= {5'd2,6'd34};
+		BIG_WR_DATA <= 54+pos_x;
+		BIG_WR_EN <= 1;
+		end
+		if ( left_cntr <= 20 &&  left_cntr > 10)
+		begin
+		BIG_WR_ADDR <= {5'd2,6'd31};
+		BIG_WR_DATA <= 54+horizontal[left_cntr+2];
 		BIG_WR_EN <= 1;
 		end
 		if ( rot_cntr <= 30 &&  rot_cntr > 20)
@@ -334,18 +403,22 @@ module TETRIS_GAME(
 		BIG_WR_ADDR <= {5'd2+rot_cntr[1:0],6'd35};
 		BIG_WR_DATA <= 54+vertical[rot_cntr ];
 		BIG_WR_EN <= 1;
-		end
-		if(rot_cntr >= 2 && rot_cntr <= 5 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end))
+		end*/
+		/*if(rot_cntr >= 2 && rot_cntr <= 5 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end))//Current block is move_cntr -2;
 		begin
-		BIG_WR_ADDR <= {5'd2+rot_cntr_2[1:0],6'd2};
+		BIG_WR_ADDR <= {5'd2+rot_cntr[1:0],6'd2};
 		BIG_WR_DATA <= 54+ BIG_RD_DATA;
 		BIG_WR_EN <= 1;
-		end
-	   if ( rot_cntr == 100)
+		end*/
+	   if ( rot_cntrtest == 100)
 		BIG_WR_EN <= 0;	
-		if ( move_cntr == 1007)
-		BIG_WR_EN <= 0;
-		
+		if ( move_cntr >=64 && move_cntr <= 95)
+		begin
+		BIG_WR_ADDR <= {5'd2+move_cntr[4:0],6'd2};
+		BIG_WR_DATA <= 54 + debugreg[move_cntr[4:0]];
+		BIG_WR_EN <= 1;
+		end
+		if(move_cntr == 96) BIG_WR_EN <= 0;
 		//END DEBUBG
 	end
 	//END OF MOVES
@@ -356,14 +429,18 @@ module TETRIS_GAME(
 	assign hor_wire_down = tetris_x_begin +pos_x + horizontal[down_cntr];
 	
 	assign ver_wire_left = tetris_y_begin + pos_y + vertical[left_cntr];
-	assign hor_wire_left = tetris_x_begin +pos_x + horizontal[left_cntr]-5'b1; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
+	assign hor_wire_left = (tetris_x_begin +pos_x + horizontal[left_cntr])-1; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
 	
 	assign ver_wire_right = tetris_y_begin + pos_y + vertical[right_cntr];
 	assign hor_wire_right = tetris_x_begin +pos_x + horizontal[right_cntr]+5'b1; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
 	
-	assign ver_wire_rot = tetris_y_begin + pos_y + vertical_rot_data[{color,nextrot,rot_cntr}];
-	assign hor_wire_rot = tetris_x_begin +pos_x + horizontal_rot_data[{color,nextrot,rot_cntr}]; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
-	
+	assign ver_wire_rot = tetris_y_begin + pos_y + vertical_rot_data[{color[2:0],nextrot[1:0],rot_cntr[1:0]}];
+	assign hor_wire_rot = tetris_x_begin +pos_x + horizontal_rot_data[{color[2:0],nextrot[1:0],rot_cntr[1:0]}]; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
+	//DEBUG
+	assign ver_wire_rottest = tetris_y_begin + pos_y + vertical_rot_data[{color[2:0],nextrottest[1:0],rot_cntrtest[1:0]}];
+	assign hor_wire_rottest = tetris_x_begin +pos_x + horizontal_rot_data[{color[2:0],nextrottest[1:0],rot_cntrtest[1:0]}]; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
+	assign nextrottest = rotation +1;
+	//END OF DEBUG
 	 assign rot_cntr_0 = rot_cntr +3;
 	 assign rot_cntr_1 = rot_cntr +1;
 	 assign rot_cntr_2 = rot_cntr +2;

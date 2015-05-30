@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/toptest_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="toptest" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="18" />
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/BIG_RD_ADDR" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">BIG_RD_ADDR[10:0]</obj_property>
+      <obj_property name="ObjectShortName">BIG_RD_ADDR[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/BIG_WR_ADDR" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">BIG_WR_ADDR[10:0]</obj_property>
+      <obj_property name="ObjectShortName">BIG_WR_ADDR[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/BIG_WR_EN" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">BIG_WR_EN</obj_property>
+      <obj_property name="ObjectShortName">BIG_WR_EN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/BIG_WR_DATA" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">BIG_WR_DATA[5:0]</obj_property>
+      <obj_property name="ObjectShortName">BIG_WR_DATA[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/BIG_RD_DATA" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">BIG_RD_DATA[5:0]</obj_property>
+      <obj_property name="ObjectShortName">BIG_RD_DATA[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/nextrot" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">nextrot[1:0]</obj_property>
+      <obj_property name="ObjectShortName">nextrot[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/hor_wire_rot" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">hor_wire_rot[5:0]</obj_property>
+      <obj_property name="ObjectShortName">hor_wire_rot[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/ver_wire_rot" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ver_wire_rot[6:0]</obj_property>
+      <obj_property name="ObjectShortName">ver_wire_rot[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/canmove_rot" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">canmove_rot</obj_property>
+      <obj_property name="ObjectShortName">canmove_rot</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/vertical" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">vertical[3:0,5:0]</obj_property>
+      <obj_property name="ObjectShortName">vertical[3:0,5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/horizontal" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">horizontal[3:0,6:0]</obj_property>
+      <obj_property name="ObjectShortName">horizontal[3:0,6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/pos_x" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pos_x[5:0]</obj_property>
+      <obj_property name="ObjectShortName">pos_x[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/pos_y" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pos_y[4:0]</obj_property>
+      <obj_property name="ObjectShortName">pos_y[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/tetris_x_begin" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tetris_x_begin[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tetris_x_begin[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">en</obj_property>
+      <obj_property name="ObjectShortName">en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/cycle_cntr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">cycle_cntr[14:0]</obj_property>
+      <obj_property name="ObjectShortName">cycle_cntr[14:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/toptest/uut/TETRIS_GAME/rot_cntr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rot_cntr[14:0]</obj_property>
+      <obj_property name="ObjectShortName">rot_cntr[14:0]</obj_property>
+   </wvobject>
+</wave_config>
