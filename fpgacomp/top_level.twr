@@ -45,10 +45,10 @@ Setup/Hold to clock clk16M
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-bt<0>       |    9.475(R)|   -5.812(R)|clk               |   0.000|
-bt<1>       |   10.208(R)|   -5.463(R)|clk               |   0.000|
-bt<2>       |    5.639(R)|   -3.174(R)|clk               |   0.000|
-rst         |    6.741(R)|   -3.028(R)|clk               |   0.000|
+bt<0>       |    7.244(R)|   -4.044(R)|clk               |   0.000|
+bt<1>       |    7.838(R)|   -3.853(R)|clk               |   0.000|
+bt<2>       |    6.559(R)|   -3.662(R)|clk               |   0.000|
+rst         |    6.551(R)|   -2.638(R)|clk               |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock clk16M to Pad
@@ -56,18 +56,19 @@ Clock clk16M to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-hs          |    6.182(R)|clk               |   0.000|
-ld<0>       |    6.049(R)|clk               |   0.000|
-ld<1>       |    6.019(R)|clk               |   0.000|
-ld<2>       |    6.383(R)|clk               |   0.000|
-ld<3>       |    6.410(R)|clk               |   0.000|
-rgb<0>      |    5.875(R)|clk               |   0.000|
-rgb<1>      |    6.634(R)|clk               |   0.000|
-rgb<2>      |    5.600(R)|clk               |   0.000|
-rgb<3>      |    6.536(R)|clk               |   0.000|
+hs          |    5.744(R)|clk               |   0.000|
+ld<0>       |    7.435(R)|clk               |   0.000|
+ld<1>       |    7.771(R)|clk               |   0.000|
+ld<2>       |    7.567(R)|clk               |   0.000|
+ld<3>       |    6.887(R)|clk               |   0.000|
+ld<4>       |    6.782(R)|clk               |   0.000|
+rgb<0>      |    5.190(R)|clk               |   0.000|
+rgb<1>      |    6.380(R)|clk               |   0.000|
+rgb<2>      |    5.717(R)|clk               |   0.000|
+rgb<3>      |    6.699(R)|clk               |   0.000|
 rgb<4>      |    5.258(R)|clk               |   0.000|
 rgb<5>      |    5.490(R)|clk               |   0.000|
-vs          |    6.461(R)|clk               |   0.000|
+vs          |    5.918(R)|clk               |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk16M
@@ -75,18 +76,18 @@ Clock to Setup on destination clock clk16M
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk16M         |    9.865|         |         |         |
+clk16M         |   10.372|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Sat May 30 22:22:19 2015 
+Analysis completed Sun May 31 01:44:48 2015 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 170 MB
+Peak Memory Usage: 171 MB
 
 
 

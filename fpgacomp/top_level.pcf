@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Sat May 30 22:21:44 2015
+// Written by: Map P.20131013 on Sun May 31 01:44:12 2015
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -14,7 +14,6 @@ COMP "ld<0>" LOCATE = SITE "P59" LEVEL 1;
 COMP "ld<1>" LOCATE = SITE "P58" LEVEL 1;
 COMP "ld<2>" LOCATE = SITE "P54" LEVEL 1;
 COMP "ld<3>" LOCATE = SITE "P53" LEVEL 1;
-COMP "ld<4>" LOCATE = SITE "P52" LEVEL 1;
 COMP "ld<5>" LOCATE = SITE "P51" LEVEL 1;
 COMP "ld<6>" LOCATE = SITE "P50" LEVEL 1;
 COMP "ld<7>" LOCATE = SITE "P43" LEVEL 1;
@@ -33,5 +32,6 @@ COMP "rgb<2>" LOCATE = SITE "P5" LEVEL 1;
 COMP "rgb<3>" LOCATE = SITE "P135" LEVEL 1;
 COMP "rgb<4>" LOCATE = SITE "P4" LEVEL 1;
 COMP "rgb<5>" LOCATE = SITE "P139" LEVEL 1;
+COMP "ld<4>" LOCATE = SITE "P52" LEVEL 1;
 SCHEMATIC END;
 

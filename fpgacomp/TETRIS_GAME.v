@@ -133,7 +133,7 @@ module TETRIS_GAME(
 	 
 	 reg en_posedge;
 	 
-	 parameter number_of_blocks = 3;
+	 parameter number_of_blocks = 7;
 	 reg [2:0] random ;initial random = 1;
 	 
 	 reg [5:0]input_delay;
@@ -356,7 +356,7 @@ module TETRIS_GAME(
 			end
 		if (gravity == 1 && move_cntr ==21 && !canmove_down) //EZT A FELTÉTELT MÉG A LEFT RIGHTBA BE KELL ÍRNI.
 		begin
-		color <= 1+random[0];
+		color <= random;
 		 vertical[0] <= vertical_rot_data[{color,rotation,2'b00}];
 		 vertical[1] <= vertical_rot_data[{color,rotation,2'b01}];
 		 vertical[2] <= vertical_rot_data[{color,rotation,2'b10}];
