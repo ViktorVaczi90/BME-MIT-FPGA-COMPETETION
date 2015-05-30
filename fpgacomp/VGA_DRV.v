@@ -52,8 +52,8 @@ reg [4:0] BIG_X;	initial BIG_X = 0;
 reg [4:0] BIG_Y;	initial BIG_Y = 0;
 wire Vact;
 wire Hact;
-wire [5:0] hsync_wire1;
-wire [3:0] hsync_wire2;
+wire [10:0] hsync_wire1;
+wire [10:0] hsync_wire2;
 // HSYNC COUNTER
 always@(posedge clk)
 begin
@@ -68,16 +68,16 @@ always@(posedge clk)
 begin
 if(rst || vsync_reg == vertical_total)
 	vsync_reg <= 0;
-if(hsync_reg ==0&& !rst)
+if(hsync_reg ==796&& !rst)
 	vsync_reg <= vsync_reg +1;
 end
 
 // HSYNC FF
 always@(posedge clk)
 begin
-	if(rst || hsync_reg == hsync_end+4)
+	if(rst || hsync_reg == hsync_end)//+4)
 		HSYNC <=1;
-	if(hsync_reg == hsync_begin+4)
+	if(hsync_reg == hsync_begin)//+4)
 		HSYNC <=0;
 end
 // VSYNC FF
@@ -99,24 +99,27 @@ end
 
 always@(posedge clk)
 begin
-	if(Hact && Vact)
+	if(1)
 	begin
 		//BIGadress <= {vsync_reg[8:4],hsync_reg[9:4]};
-		BIGadress <= {vsync_reg[8:4],hsync_wire1};
+		BIGadress <= {vsync_reg[8:4],hsync_wire1[9:4]};
 	end
 end
 
 always@(posedge clk)
 begin
-	if(Hact && Vact)
+	if(1)
 	begin
-		BLOCKadress <= {BIGdata,vsync_reg[3:0],hsync_wire2};
+		BLOCKadress <= {BIGdata,vsync_reg[3:0],hsync_wire2[3:0]};
+		//BLOCKadress <= {BIGdata,vsync_reg[3:0],hsync_reg[3:0]};
 	end
 end
 
 assign enable = Vact;
-assign Hact = (hsync_reg>=4 && hsync_reg<= horizontal_resolution+4)?1:0;
+assign Hact = (hsync_reg>=0 && hsync_reg<= horizontal_resolution)?1:0;// +4-tol kéne.
 assign Vact = (vsync_reg>=0 && vsync_reg<= vertical_resolution )?1:0;
-assign hsync_wire1 = hsync_reg[9:4] -4 ;
-assign hsync_wire2 = hsync_reg[3:0] -2 ;
+//assign hsync_wire1 = hsync_reg +4 ;
+//assign hsync_wire2 = hsync_reg +2;
+assign hsync_wire1 = (hsync_reg>=0 && hsync_reg <=790)?hsync_reg+4:0 ;
+assign hsync_wire2 = (hsync_reg>=0 && hsync_reg <=797)?hsync_reg +2 :(hsync_reg ==798)?0:1 ;
 endmodule

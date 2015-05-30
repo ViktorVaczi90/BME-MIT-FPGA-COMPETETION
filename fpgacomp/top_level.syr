@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.14 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.14 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Reading design: top_level.prj
 
@@ -210,6 +210,7 @@ INFO:Xst:2546 - "BLOCK_framebuffer.v" line 14: reading initialization file "data
 Module <BLOCK_framebuffer> is correct for synthesis.
  
 Analyzing module <BIG_framebuffer> in library <work>.
+INFO:Xst:2546 - "BIG_framebuffer.v" line 15: reading initialization file "BIG2.bin".
 Module <BIG_framebuffer> is correct for synthesis.
  
 Analyzing module <TETRIS_GAME> in library <work>.
@@ -501,6 +502,9 @@ Unit <TETRIS_GAME> synthesized.
 
 Synthesizing Unit <VGA_DRV>.
     Related source file is "VGA_DRV.v".
+WARNING:Xst:646 - Signal <hsync_wire2<10:4>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <hsync_wire1<10>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <hsync_wire1<3:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <BIG_Y> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <BIG_X> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Found 1-bit register for signal <VSYNC>.
@@ -508,18 +512,19 @@ WARNING:Xst:1780 - Signal <BIG_X> is never used or assigned. This unconnected si
     Found 14-bit register for signal <BLOCKadress>.
     Found 1-bit register for signal <HSYNC>.
     Found 11-bit register for signal <BIGadress>.
-    Found 10-bit comparator greatequal for signal <Hact$cmp_ge0000> created at line 118.
-    Found 10-bit comparator lessequal for signal <Hact$cmp_le0000> created at line 118.
+    Found 11-bit comparator lessequal for signal <Hact$cmp_le0000> created at line 119.
     Found 10-bit up counter for signal <hsync_reg>.
-    Found 6-bit subtractor for signal <hsync_wire1>.
-    Found 4-bit subtractor for signal <hsync_wire2>.
-    Found 10-bit comparator lessequal for signal <Vact$cmp_le0000> created at line 119.
+    Found 10-bit adder carry out for signal <hsync_wire1$addsub0001> created at line 123.
+    Found 10-bit comparator lessequal for signal <hsync_wire1$cmp_le0000> created at line 123.
+    Found 10-bit adder carry out for signal <hsync_wire2$addsub0001> created at line 124.
+    Found 10-bit comparator lessequal for signal <hsync_wire2$cmp_le0000> created at line 124.
+    Found 10-bit comparator lessequal for signal <Vact$cmp_le0000> created at line 120.
     Found 10-bit up counter for signal <vsync_reg>.
     Summary:
 	inferred   2 Counter(s).
 	inferred  33 D-type flip-flop(s).
 	inferred   2 Adder/Subtractor(s).
-	inferred   3 Comparator(s).
+	inferred   4 Comparator(s).
 Unit <VGA_DRV> synthesized.
 
 
@@ -575,13 +580,13 @@ Macro Statistics
 # ROMs                                                 : 4
  128x13-bit ROM                                        : 4
 # Adders/Subtractors                                   : 40
+ 10-bit adder carry out                                : 2
  15-bit adder carry out                                : 3
  16-bit subtractor                                     : 6
- 4-bit subtractor                                      : 1
  5-bit adder carry out                                 : 2
  6-bit adder                                           : 5
  6-bit adder carry out                                 : 10
- 6-bit subtractor                                      : 2
+ 6-bit subtractor                                      : 1
  7-bit adder carry out                                 : 11
 # Counters                                             : 11
  10-bit up counter                                     : 2
@@ -596,9 +601,9 @@ Macro Statistics
  14-bit register                                       : 1
  6-bit register                                        : 8
  7-bit register                                        : 4
-# Comparators                                          : 78
- 10-bit comparator greatequal                          : 1
- 10-bit comparator lessequal                           : 2
+# Comparators                                          : 79
+ 10-bit comparator lessequal                           : 3
+ 11-bit comparator lessequal                           : 1
  15-bit comparator greatequal                          : 7
  15-bit comparator greater                             : 8
  15-bit comparator less                                : 7
@@ -686,13 +691,13 @@ Macro Statistics
 # ROMs                                                 : 4
  128x13-bit ROM                                        : 4
 # Adders/Subtractors                                   : 40
+ 10-bit adder carry out                                : 2
  15-bit adder carry out                                : 3
  2-bit subtractor                                      : 6
- 4-bit subtractor                                      : 1
  5-bit adder carry out                                 : 2
  6-bit adder                                           : 5
  6-bit adder carry out                                 : 10
- 6-bit subtractor                                      : 2
+ 6-bit subtractor                                      : 1
  7-bit adder carry out                                 : 11
 # Counters                                             : 10
  10-bit up counter                                     : 2
@@ -702,9 +707,9 @@ Macro Statistics
  7-bit up counter                                      : 1
 # Registers                                            : 118
  Flip-Flops                                            : 118
-# Comparators                                          : 78
- 10-bit comparator greatequal                          : 1
- 10-bit comparator lessequal                           : 2
+# Comparators                                          : 79
+ 10-bit comparator lessequal                           : 3
+ 11-bit comparator lessequal                           : 1
  15-bit comparator greatequal                          : 7
  15-bit comparator greater                             : 8
  15-bit comparator less                                : 7
@@ -738,43 +743,36 @@ WARNING:Xst:1426 - The value init of the FF/Latch TETRIS_GAME/vertical_1_0 hinde
    You should achieve better results by setting this init to 1.
 WARNING:Xst:1426 - The value init of the FF/Latch TETRIS_GAME/vertical_0_0 hinder the constant cleaning in the block top_level.
    You should achieve better results by setting this init to 1.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_6> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_1> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_6> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_3_0> has a constant value of 1 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_3_1> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_3_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_3_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_3_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_3_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_1> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_2_0> has a constant value of 1 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_2_1> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_2_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_2_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_2_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_2_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_1> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_1> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_3_0> has a constant value of 1 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_3_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_3_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_3_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_3_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_3_6> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_0> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_1> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_6> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_2_0> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_2_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_2_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
@@ -786,19 +784,27 @@ WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_1> has a constant value of
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <TETRIS_GAME/horizontal_3_1> in Unit <top_level> is equivalent to the following 3 FFs/Latches, which will be removed : <TETRIS_GAME/horizontal_2_1> <TETRIS_GAME/vertical_1_0> <TETRIS_GAME/vertical_0_0> 
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_6> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_0> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_1> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <TETRIS_GAME/horizontal_3_1> in Unit <top_level> is equivalent to the following 3 FFs/Latches, which will be removed : <TETRIS_GAME/horizontal_2_1> <TETRIS_GAME/vertical_0_0> <TETRIS_GAME/vertical_1_0> 
 
 Optimizing unit <top_level> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block top_level, actual ratio is 15.
+FlipFlop TETRIS_GAME/pos_x_1 has been replicated 1 time(s)
 FlipFlop TETRIS_GAME/pos_x_2 has been replicated 1 time(s)
 FlipFlop TETRIS_GAME/pos_x_3 has been replicated 1 time(s)
 PACKER Warning: Lut TETRIS_GAME/Madd_ver_wire_right_addsub0000_lut<0> driving carry TETRIS_GAME/Madd_ver_wire_right_addsub0000_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
 PACKER Warning: Lut TETRIS_GAME/Madd_ver_wire_left_addsub0000_lut<0> driving carry TETRIS_GAME/Madd_ver_wire_left_addsub0000_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
-PACKER Warning: Lut TETRIS_GAME/Madd_ver_wire_addsub0000_lut<0> driving carry TETRIS_GAME/Madd_ver_wire_addsub0000_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
 PACKER Warning: Lut TETRIS_GAME/Madd_ver_wire_down_addsub0000_lut<0> driving carry TETRIS_GAME/Madd_ver_wire_down_addsub0000_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
+PACKER Warning: Lut TETRIS_GAME/Madd_ver_wire_addsub0000_lut<0> driving carry TETRIS_GAME/Madd_ver_wire_addsub0000_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
 PACKER Warning: Lut TETRIS_GAME/Madd_canmove_down_addsub0002_lut<0> driving carry TETRIS_GAME/Madd_canmove_down_addsub0002_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
 PACKER Warning: Lut TETRIS_GAME/Madd_canmove_down_addsub0001_lut<0> driving carry TETRIS_GAME/Madd_canmove_down_addsub0001_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
 
@@ -808,8 +814,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 182
- Flip-Flops                                            : 182
+# Registers                                            : 183
+ Flip-Flops                                            : 183
 
 =========================================================================
 
@@ -838,30 +844,30 @@ Design Statistics
 # IOs                              : 30
 
 Cell Usage :
-# BELS                             : 1059
+# BELS                             : 1082
 #      GND                         : 1
 #      INV                         : 38
-#      LUT1                        : 113
+#      LUT1                        : 116
 #      LUT2                        : 83
-#      LUT2_D                      : 3
-#      LUT2_L                      : 1
-#      LUT3                        : 101
-#      LUT3_D                      : 8
-#      LUT3_L                      : 12
-#      LUT4                        : 188
-#      LUT4_D                      : 13
-#      LUT4_L                      : 20
-#      MUXCY                       : 283
-#      MUXF5                       : 17
+#      LUT2_D                      : 2
+#      LUT2_L                      : 3
+#      LUT3                        : 116
+#      LUT3_D                      : 3
+#      LUT3_L                      : 4
+#      LUT4                        : 190
+#      LUT4_D                      : 11
+#      LUT4_L                      : 31
+#      MUXCY                       : 286
+#      MUXF5                       : 15
 #      VCC                         : 1
-#      XORCY                       : 177
-# FlipFlops/Latches                : 182
-#      FD                          : 13
-#      FDE                         : 40
-#      FDR                         : 16
-#      FDRE                        : 103
+#      XORCY                       : 182
+# FlipFlops/Latches                : 183
+#      FD                          : 34
+#      FDE                         : 15
+#      FDR                         : 19
+#      FDRE                        : 104
 #      FDRS                        : 2
-#      FDS                         : 4
+#      FDS                         : 5
 #      FDSE                        : 4
 # RAMS                             : 7
 #      RAMB16_S1_S1                : 6
@@ -877,8 +883,8 @@ Cell Usage :
 =========================================================================
 PACKER Warning: Lut TETRIS_GAME/Madd_ver_wire_right_addsub0000_lut<0> driving carry TETRIS_GAME/Madd_ver_wire_right_addsub0000_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
 PACKER Warning: Lut TETRIS_GAME/Madd_ver_wire_left_addsub0000_lut<0> driving carry TETRIS_GAME/Madd_ver_wire_left_addsub0000_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
-PACKER Warning: Lut TETRIS_GAME/Madd_ver_wire_addsub0000_lut<0> driving carry TETRIS_GAME/Madd_ver_wire_addsub0000_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
 PACKER Warning: Lut TETRIS_GAME/Madd_ver_wire_down_addsub0000_lut<0> driving carry TETRIS_GAME/Madd_ver_wire_down_addsub0000_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
+PACKER Warning: Lut TETRIS_GAME/Madd_ver_wire_addsub0000_lut<0> driving carry TETRIS_GAME/Madd_ver_wire_addsub0000_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
 PACKER Warning: Lut TETRIS_GAME/Madd_canmove_down_addsub0002_lut<0> driving carry TETRIS_GAME/Madd_canmove_down_addsub0002_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
 PACKER Warning: Lut TETRIS_GAME/Madd_canmove_down_addsub0001_lut<0> driving carry TETRIS_GAME/Madd_canmove_down_addsub0001_cy<0> can not be packed with the carry due to conflict with the common signal requirement between the LUT inputs and the Carry DI/MAND pins. This would result in an extra LUT for a feedthrough.
 
@@ -887,9 +893,9 @@ Device utilization summary:
 
 Selected Device : 3s250etq144-4 
 
- Number of Slices:                      329  out of   2448    13%  
- Number of Slice Flip Flops:            182  out of   4896     3%  
- Number of 4 input LUTs:                580  out of   4896    11%  
+ Number of Slices:                      328  out of   2448    13%  
+ Number of Slice Flip Flops:            183  out of   4896     3%  
+ Number of 4 input LUTs:                597  out of   4896    12%  
  Number of IOs:                          30
  Number of bonded IOBs:                  20  out of    108    18%  
  Number of BRAMs:                         7  out of     12    58%  
@@ -917,7 +923,7 @@ Clock Information:
 -----------------------------------+--------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)    | Load  |
 -----------------------------------+--------------------------+-------+
-clk16M                             | clk_gen/DCM_SP_inst:CLKFX| 189   |
+clk16M                             | clk_gen/DCM_SP_inst:CLKFX| 190   |
 -----------------------------------+--------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -928,7 +934,7 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 16.073ns (Maximum Frequency: 62.216MHz)
+   Minimum period: 15.611ns (Maximum Frequency: 64.058MHz)
    Minimum input arrival time before clock: 6.845ns
    Maximum output required time after clock: 4.283ns
    Maximum combinational path delay: No path found
@@ -939,36 +945,36 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk16M'
-  Clock period: 16.073ns (frequency: 62.216MHz)
-  Total number of paths / destination ports: 14902 / 570
+  Clock period: 15.611ns (frequency: 64.058MHz)
+  Total number of paths / destination ports: 14587 / 552
 -------------------------------------------------------------------------
-Delay:               10.287ns (Levels of Logic = 8)
-  Source:            TETRIS_GAME/pos_x_1 (FF)
+Delay:               9.991ns (Levels of Logic = 8)
+  Source:            TETRIS_GAME/pos_x_4 (FF)
   Destination:       TETRIS_GAME/canmove_left (FF)
   Source Clock:      clk16M rising 1.6X
   Destination Clock: clk16M rising 1.6X
 
-  Data Path: TETRIS_GAME/pos_x_1 to TETRIS_GAME/canmove_left
+  Data Path: TETRIS_GAME/pos_x_4 to TETRIS_GAME/canmove_left
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            40   0.591   1.300  TETRIS_GAME/pos_x_1 (TETRIS_GAME/pos_x_1)
-     LUT4:I2->O           12   0.704   1.040  TETRIS_GAME/Madd_hor_wire_left_index000111 (TETRIS_GAME/Madd_hor_wire_left_index0001_bdd0)
+     FDRE:C->Q            14   0.591   1.004  TETRIS_GAME/pos_x_4 (TETRIS_GAME/pos_x_4)
+     LUT4:I3->O           12   0.704   1.040  TETRIS_GAME/Madd_hor_wire_left_index000111 (TETRIS_GAME/Madd_hor_wire_left_index0001_bdd0)
      LUT2:I1->O            1   0.704   0.000  TETRIS_GAME/hor_wire_add0000<5>114 (TETRIS_GAME/hor_wire_add0000<5>113)
      MUXCY:S->O            1   0.464   0.000  TETRIS_GAME/Madd_canmove_left_addsub0001_cy<5> (TETRIS_GAME/Madd_canmove_left_addsub0001_cy<5>)
      XORCY:CI->O           1   0.804   0.424  TETRIS_GAME/Madd_canmove_left_addsub0001_xor<6> (TETRIS_GAME/canmove_left_addsub0001<6>)
      LUT4:I3->O            1   0.704   0.424  TETRIS_GAME/canmove_left_not0001178 (TETRIS_GAME/canmove_left_not0001178)
-     LUT4:I3->O            1   0.704   0.000  TETRIS_GAME/canmove_left_not0001192_SW1_G (N153)
-     MUXF5:I1->O           1   0.321   0.424  TETRIS_GAME/canmove_left_not0001192_SW1 (N113)
+     LUT4:I3->O            1   0.704   0.000  TETRIS_GAME/canmove_left_not0001194_SW0_F (N168)
+     MUXF5:I0->O           1   0.321   0.424  TETRIS_GAME/canmove_left_not0001194_SW0 (N103)
      LUT4:I3->O            1   0.704   0.420  TETRIS_GAME/canmove_left_not0001246 (TETRIS_GAME/canmove_left_not0001)
      FDE:CE                    0.555          TETRIS_GAME/canmove_left
     ----------------------------------------
-    Total                     10.287ns (6.255ns logic, 4.032ns route)
-                                       (60.8% logic, 39.2% route)
+    Total                      9.991ns (6.255ns logic, 3.736ns route)
+                                       (62.6% logic, 37.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk16M'
-  Total number of paths / destination ports: 61 / 47
+  Total number of paths / destination ports: 74 / 49
 -------------------------------------------------------------------------
 Offset:              6.845ns (Levels of Logic = 6)
   Source:            bt<1> (PAD)
@@ -980,8 +986,8 @@ Offset:              6.845ns (Levels of Logic = 6)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             2   1.218   0.526  bt_1_IBUF (bt_1_IBUF)
-     LUT2:I1->O            1   0.704   0.499  TETRIS_GAME/pos_x_and0002_SW0_SW0 (N78)
-     LUT4_D:I1->LO         1   0.704   0.135  TETRIS_GAME/pos_x_and0002 (N208)
+     LUT2:I1->O            1   0.704   0.499  TETRIS_GAME/pos_x_and0002_SW0_SW0 (N80)
+     LUT4_D:I1->LO         1   0.704   0.135  TETRIS_GAME/pos_x_and0002 (N224)
      LUT3:I2->O            3   0.704   0.535  TETRIS_GAME/Mcount_pos_x_cy<1>1 (TETRIS_GAME/Mcount_pos_x_cy<1>)
      LUT4_L:I3->LO         1   0.704   0.104  TETRIS_GAME/Mcount_pos_x_cy<3>1 (TETRIS_GAME/Mcount_pos_x_cy<3>)
      LUT4:I3->O            1   0.704   0.000  TETRIS_GAME/Mcount_pos_x_xor<5>11 (Result<5>)
@@ -1012,14 +1018,14 @@ Offset:              4.283ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 30.00 secs
-Total CPU time to Xst completion: 30.12 secs
+Total REAL time to Xst completion: 18.00 secs
+Total CPU time to Xst completion: 18.65 secs
  
 --> 
 
-Total memory usage is 308844 kilobytes
+Total memory usage is 308780 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   71 (   0 filtered)
-Number of infos    :   75 (   0 filtered)
+Number of warnings :   74 (   0 filtered)
+Number of infos    :   76 (   0 filtered)
 
