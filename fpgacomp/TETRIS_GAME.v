@@ -235,9 +235,9 @@ module TETRIS_GAME(
 	if(rot_cntr >= 2 && rot_cntr <= 5 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end))//Current block is move_cntr -2;
 		if((BIG_RD_DATA && 
 	!(//nem saját
-	(horizontal[rot_cntr -2]  == horizontal_rot_data[{color,nextrot,rot_cntr_0}]  && vertical[rot_cntr -2] == vertical_rot_data[{color,nextrot,rot_cntr_0}] ) ||
-	(horizontal[rot_cntr -2]  == horizontal_rot_data[{color,nextrot,rot_cntr_1}]   && vertical[rot_cntr -2] == vertical_rot_data[{color,nextrot,rot_cntr_1}]) ||
-	(horizontal[rot_cntr -2]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]   && vertical[rot_cntr -2] == vertical_rot_data[{color,nextrot,rot_cntr_2}])
+	(horizontal[rot_cntr ]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]  && vertical[rot_cntr ] == vertical_rot_data[{color,nextrot,rot_cntr_2}] ) ||
+	(horizontal[rot_cntr +1]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]   && vertical[rot_cntr +1] == vertical_rot_data[{color,nextrot,rot_cntr_2}]) ||
+	(horizontal[rot_cntr +3]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]   && vertical[rot_cntr +3] == vertical_rot_data[{color,nextrot,rot_cntr_2}])
 	))/*||
 			tetris_x_begin +pos_x + horizontal[right_cntr -2] >= tetris_x_end*/) // Position
 				canmove_rot <= 0; 
@@ -310,48 +310,39 @@ module TETRIS_GAME(
 		
 		//DEBUG
 		
-		if ( move_cntr == 1000)
+		if ( rot_cntr <= 10 &&  rot_cntr)
 		begin
-		BIG_WR_ADDR <= {5'd24,6'd9};
-		BIG_WR_DATA <= 3;
+		BIG_WR_ADDR <= {5'd2+rot_cntr[1:0],6'd30};
+		BIG_WR_DATA <= 54+horizontal_rot_data[{color,nextrot,rot_cntr_2}];
 		BIG_WR_EN <= 1;
 		end
-				if ( move_cntr == 1001)
+		if ( rot_cntr <= 20 &&  rot_cntr > 10)
 		begin
-		BIG_WR_ADDR <= {5'd24,6'd20};
-		BIG_WR_DATA <= 3;
+		BIG_WR_ADDR <= {5'd2+rot_cntr[1:0],6'd31};
+		BIG_WR_DATA <= 54+horizontal[rot_cntr ];
 		BIG_WR_EN <= 1;
 		end
-		if ( move_cntr == 1002)
+		if ( rot_cntr <= 30 &&  rot_cntr > 20)
 		begin
-		BIG_WR_ADDR <= {5'd4,6'd30};
-		BIG_WR_DATA <= 54+pos_y;
+		BIG_WR_ADDR <= {5'd2+rot_cntr[1:0],6'd34};
+		BIG_WR_DATA <= 54+vertical_rot_data[{color,nextrot,rot_cntr_2}];
+
 		BIG_WR_EN <= 1;
 		end
-		if ( move_cntr == 1003)
+		if ( rot_cntr <=40 &&  rot_cntr > 30)
 		begin
-		BIG_WR_ADDR <= {5'd3,6'd30};
-		BIG_WR_DATA <= 54+pos_x;
+		BIG_WR_ADDR <= {5'd2+rot_cntr[1:0],6'd35};
+		BIG_WR_DATA <= 54+vertical[rot_cntr ];
 		BIG_WR_EN <= 1;
 		end
-		if ( move_cntr == 1004)
+		if(rot_cntr >= 2 && rot_cntr <= 5 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end))
 		begin
-		BIG_WR_ADDR <= {5'd2,6'd30};
-		BIG_WR_DATA <= 54+vertical_rot_data[{color,rotation,2'b10}];
+		BIG_WR_ADDR <= {5'd2+rot_cntr_2[1:0],6'd2};
+		BIG_WR_DATA <= 54+ BIG_RD_DATA;
 		BIG_WR_EN <= 1;
 		end
-		if ( move_cntr == 1005)
-		begin
-		BIG_WR_ADDR <= {5'd1,6'd30};
-		BIG_WR_DATA <= 54+vertical_rot_data[{color,rotation,2'b11}];
-		BIG_WR_EN <= 1;
-		end
-		if ( move_cntr == 1006)
-		begin
-		BIG_WR_ADDR <= {5'd10,6'd30};
-		BIG_WR_DATA <= 54+canmove_rot;
-		BIG_WR_EN <= 1;
-		end
+	   if ( rot_cntr == 100)
+		BIG_WR_EN <= 0;	
 		if ( move_cntr == 1007)
 		BIG_WR_EN <= 0;
 		
@@ -374,8 +365,8 @@ module TETRIS_GAME(
 	assign hor_wire_rot = tetris_x_begin +pos_x + horizontal_rot_data[{color,nextrot,rot_cntr}]; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
 	
 	 assign rot_cntr_0 = rot_cntr +3;
-	 assign rot_cntr_1 = rot_cntr +0;
-	 assign rot_cntr_2 = rot_cntr +1;
+	 assign rot_cntr_1 = rot_cntr +1;
+	 assign rot_cntr_2 = rot_cntr +2;
 	
 	assign nextrot = rotation +1;
 	assign leds ={color,rotation};

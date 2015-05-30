@@ -3,13 +3,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
+Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.10 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
+Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.10 secs
  
 --> Reading design: top_level.prj
@@ -297,17 +297,11 @@ INFO:Xst:1433 - Contents of array <vertical> may be accessed with an index that 
 INFO:Xst:1433 - Contents of array <vertical> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 INFO:Xst:1432 - Contents of array <horizontal> may be accessed with a negative index, causing simulation mismatch.
 INFO:Xst:1433 - Contents of array <horizontal> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
-INFO:Xst:1432 - Contents of array <horizontal> may be accessed with a negative index, causing simulation mismatch.
 INFO:Xst:1433 - Contents of array <horizontal> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
-INFO:Xst:1432 - Contents of array <vertical> may be accessed with a negative index, causing simulation mismatch.
 INFO:Xst:1433 - Contents of array <vertical> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
-INFO:Xst:1432 - Contents of array <horizontal> may be accessed with a negative index, causing simulation mismatch.
 INFO:Xst:1433 - Contents of array <horizontal> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
-INFO:Xst:1432 - Contents of array <vertical> may be accessed with a negative index, causing simulation mismatch.
 INFO:Xst:1433 - Contents of array <vertical> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
-INFO:Xst:1432 - Contents of array <horizontal> may be accessed with a negative index, causing simulation mismatch.
 INFO:Xst:1433 - Contents of array <horizontal> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
-INFO:Xst:1432 - Contents of array <vertical> may be accessed with a negative index, causing simulation mismatch.
 INFO:Xst:1433 - Contents of array <vertical> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 INFO:Xst:1433 - Contents of array <vertical_rot_data> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 INFO:Xst:1433 - Contents of array <horizontal_rot_data> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
@@ -331,16 +325,16 @@ WARNING:Xst:646 - Signal <ver_wire_right<6:5>> is assigned but never used. This 
 WARNING:Xst:646 - Signal <ver_wire_left<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ver_wire_down<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ver_wire<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <rot_cntr_1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <rot_cntr_0> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1781 - Signal <horizontal_rot_data> is used but never assigned. Tied to default value.
 WARNING:Xst:653 - Signal <gravity_speed> is used but never assigned. This sourceless signal will be automatically connected to value 0010100.
-    Found 128x13-bit ROM for signal <COND_52_6_0$rom0000>.
-    Found 128x13-bit ROM for signal <COND_32$rom0000>.
+    Found 128x13-bit ROM for signal <COND_31$rom0000>.
+    Found 128x13-bit ROM for signal <COND_48_6_0$rom0000>.
+    Found 128x13-bit ROM for signal <COND_34$rom0000>.
     Found 128x13-bit ROM for signal <COND_35$rom0000>.
-    Found 128x13-bit ROM for signal <COND_38$rom0000>.
-    Found 128x13-bit ROM for signal <COND_43$rom0000>.
-    Found 128x13-bit ROM for signal <COND_42$rom0000>.
-    Found 128x13-bit ROM for signal <COND_40$rom0000>.
-    Found 128x13-bit ROM for signal <COND_41$rom0000>.
+    Found 128x13-bit ROM for signal <COND_36$rom0000>.
+    Found 128x13-bit ROM for signal <COND_37$rom0000>.
     Found 11-bit register for signal <BIG_RD_ADDR>.
     Found 1-bit register for signal <BIG_WR_EN>.
     Found 6-bit register for signal <BIG_WR_DATA>.
@@ -385,11 +379,11 @@ WARNING:Xst:653 - Signal <gravity_speed> is used but never assigned. This source
     Found 6-bit 4-to-1 multiplexer for signal <$varindex0037> created at line 221.
     Found 7-bit 4-to-1 multiplexer for signal <$varindex0038> created at line 221.
     Found 7-bit 4-to-1 multiplexer for signal <$varindex0039> created at line 236.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0041> created at line 236.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0043> created at line 236.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0040> created at line 236.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0042> created at line 236.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0043> created at line 236.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0044> created at line 236.
     Found 6-bit 4-to-1 multiplexer for signal <$varindex0045> created at line 236.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0047> created at line 236.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0049> created at line 236.
     Found 6-bit adder carry out for signal <add0000$addsub0000> created at line 188.
     Found 6-bit adder carry out for signal <add0001$addsub0000> created at line 188.
     Found 6-bit adder carry out for signal <add0002$addsub0000> created at line 188.
@@ -404,11 +398,20 @@ WARNING:Xst:653 - Signal <gravity_speed> is used but never assigned. This source
     Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0001> created at line 203.
     Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0002> created at line 218.
     Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0003> created at line 233.
+    Found 2-bit adder carry out for signal <BIG_WR_ADDR$addsub0000> created at line 315.
+    Found 2-bit adder carry out for signal <BIG_WR_ADDR$addsub0001> created at line 340.
     Found 15-bit comparator greatequal for signal <BIG_WR_ADDR$cmp_ge0000> created at line 268.
     Found 15-bit comparator greater for signal <BIG_WR_ADDR$cmp_gt0000> created at line 260.
-    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0000> created at line 268.
-    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0001> created at line 260.
-    Found 6-bit adder for signal <BIG_WR_DATA$addsub0000>.
+    Found 15-bit comparator greater for signal <BIG_WR_ADDR$cmp_gt0001> created at line 319.
+    Found 15-bit comparator greater for signal <BIG_WR_ADDR$cmp_gt0002> created at line 325.
+    Found 15-bit comparator greater for signal <BIG_WR_ADDR$cmp_gt0003> created at line 332.
+    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0000> created at line 260.
+    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0001> created at line 268.
+    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0002> created at line 313.
+    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0003> created at line 319.
+    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0004> created at line 325.
+    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0005> created at line 332.
+    Found 6-bit adder for signal <BIG_WR_DATA$share0000>.
     Found 1-bit register for signal <canmove_down>.
     Found 6-bit adder carry out for signal <canmove_down$addsub0001> created at line 188.
     Found 6-bit adder carry out for signal <canmove_down$addsub0002> created at line 188.
@@ -493,6 +496,8 @@ WARNING:Xst:653 - Signal <gravity_speed> is used but never assigned. This source
     Found 15-bit comparator less for signal <canmove_rot$cmp_lt0000> created at line 235.
     Found 15-bit adder carry out for signal <COND_18$addsub0000>.
     Found 15-bit adder carry out for signal <COND_28$addsub0000>.
+    Found 15-bit adder carry out for signal <COND_32$addsub0000>.
+    Found 15-bit adder carry out for signal <COND_33$addsub0000>.
     Found 15-bit adder carry out for signal <COND_8$addsub0000>.
     Found 15-bit up counter for signal <cycle_cntr>.
     Found 15-bit up counter for signal <down_cntr>.
@@ -501,11 +506,11 @@ WARNING:Xst:653 - Signal <gravity_speed> is used but never assigned. This source
     Found 1-bit register for signal <en_posedge>.
     Found 7-bit up counter for signal <gravity>.
     Found 6-bit adder for signal <hor_wire>.
-    Found 6-bit adder for signal <hor_wire$add0000> created at line 362.
+    Found 6-bit adder for signal <hor_wire$add0000> created at line 353.
     Found 6-bit adder for signal <hor_wire_down>.
     Found 6-bit subtractor for signal <hor_wire_left>.
-    Found 7-bit adder carry out for signal <hor_wire_left$addsub0000> created at line 368.
-    Found 6-bit adder carry out for signal <hor_wire_left$addsub0001> created at line 368.
+    Found 7-bit adder carry out for signal <hor_wire_left$addsub0000> created at line 359.
+    Found 6-bit adder carry out for signal <hor_wire_left$addsub0001> created at line 359.
     Found 6-bit adder for signal <hor_wire_right>.
     Found 6-bit adder for signal <hor_wire_rot>.
     Found 28-bit register for signal <horizontal>.
@@ -525,11 +530,10 @@ WARNING:Xst:653 - Signal <gravity_speed> is used but never assigned. This source
     Found 15-bit up counter for signal <rot_cntr>.
     Found 15-bit comparator greater for signal <rot_cntr$cmp_gt0000> created at line 174.
     Found 15-bit comparator less for signal <rot_cntr$cmp_lt0000> created at line 174.
-    Found 2-bit adder for signal <rot_cntr_0>.
     Found 2-bit adder for signal <rot_cntr_2>.
     Found 2-bit up counter for signal <rotation>.
     Found 6-bit adder carry out for signal <ver_wire$addsub0000>.
-    Found 5-bit adder carry out for signal <ver_wire$addsub0001> created at line 361.
+    Found 5-bit adder carry out for signal <ver_wire$addsub0001> created at line 352.
     Found 6-bit adder carry out for signal <ver_wire_down$addsub0000>.
     Found 6-bit adder carry out for signal <ver_wire_left$addsub0000>.
     Found 6-bit adder carry out for signal <ver_wire_right$addsub0000>.
@@ -537,12 +541,12 @@ WARNING:Xst:653 - Signal <gravity_speed> is used but never assigned. This source
     Found 24-bit register for signal <vertical>.
     Found 21-bit up counter for signal <vsync_cntr>.
     Summary:
-	inferred   8 ROM(s).
+	inferred   6 ROM(s).
 	inferred  12 Counter(s).
 	inferred  86 D-type flip-flop(s).
-	inferred  44 Adder/Subtractor(s).
-	inferred  90 Comparator(s).
-	inferred 345 Multiplexer(s).
+	inferred  46 Adder/Subtractor(s).
+	inferred  97 Comparator(s).
+	inferred 358 Multiplexer(s).
 Unit <TETRIS_GAME> synthesized.
 
 
@@ -623,13 +627,14 @@ Macro Statistics
 # RAMs                                                 : 2
  16384x6-bit dual-port RAM                             : 1
  2048x6-bit dual-port RAM                              : 1
-# ROMs                                                 : 8
- 128x13-bit ROM                                        : 8
-# Adders/Subtractors                                   : 46
+# ROMs                                                 : 6
+ 128x13-bit ROM                                        : 6
+# Adders/Subtractors                                   : 48
  10-bit adder carry out                                : 2
- 15-bit adder carry out                                : 3
- 16-bit subtractor                                     : 7
- 2-bit adder                                           : 3
+ 15-bit adder carry out                                : 5
+ 16-bit subtractor                                     : 6
+ 2-bit adder                                           : 2
+ 2-bit adder carry out                                 : 2
  5-bit adder carry out                                 : 2
  6-bit adder                                           : 6
  6-bit adder carry out                                 : 11
@@ -649,13 +654,13 @@ Macro Statistics
  14-bit register                                       : 1
  6-bit register                                        : 8
  7-bit register                                        : 4
-# Comparators                                          : 94
+# Comparators                                          : 101
  10-bit comparator lessequal                           : 3
  11-bit comparator lessequal                           : 1
  15-bit comparator greatequal                          : 9
- 15-bit comparator greater                             : 10
+ 15-bit comparator greater                             : 13
  15-bit comparator less                                : 9
- 15-bit comparator lessequal                           : 14
+ 15-bit comparator lessequal                           : 18
  6-bit comparator equal                                : 9
  6-bit comparator not equal                            : 6
  7-bit comparator equal                                : 9
@@ -668,9 +673,9 @@ Macro Statistics
  8-bit comparator less                                 : 1
  8-bit comparator lessequal                            : 1
  8-bit comparator not equal                            : 6
-# Multiplexers                                         : 53
- 6-bit 4-to-1 multiplexer                              : 26
- 7-bit 4-to-1 multiplexer                              : 27
+# Multiplexers                                         : 55
+ 6-bit 4-to-1 multiplexer                              : 27
+ 7-bit 4-to-1 multiplexer                              : 28
 
 =========================================================================
 
@@ -736,13 +741,14 @@ Macro Statistics
 # RAMs                                                 : 2
  16384x6-bit dual-port block RAM                       : 1
  2048x6-bit dual-port block RAM                        : 1
-# ROMs                                                 : 8
- 128x13-bit ROM                                        : 8
-# Adders/Subtractors                                   : 46
+# ROMs                                                 : 6
+ 128x13-bit ROM                                        : 6
+# Adders/Subtractors                                   : 48
  10-bit adder carry out                                : 2
- 15-bit adder carry out                                : 3
- 2-bit adder                                           : 3
- 2-bit subtractor                                      : 7
+ 15-bit adder carry out                                : 5
+ 2-bit adder                                           : 2
+ 2-bit adder carry out                                 : 2
+ 2-bit subtractor                                      : 6
  5-bit adder carry out                                 : 2
  6-bit adder                                           : 6
  6-bit adder carry out                                 : 11
@@ -757,13 +763,13 @@ Macro Statistics
  7-bit up counter                                      : 1
 # Registers                                            : 119
  Flip-Flops                                            : 119
-# Comparators                                          : 94
+# Comparators                                          : 101
  10-bit comparator lessequal                           : 3
  11-bit comparator lessequal                           : 1
  15-bit comparator greatequal                          : 9
- 15-bit comparator greater                             : 10
+ 15-bit comparator greater                             : 13
  15-bit comparator less                                : 9
- 15-bit comparator lessequal                           : 14
+ 15-bit comparator lessequal                           : 18
  6-bit comparator equal                                : 9
  6-bit comparator not equal                            : 6
  7-bit comparator equal                                : 9
@@ -776,9 +782,9 @@ Macro Statistics
  8-bit comparator less                                 : 1
  8-bit comparator lessequal                            : 1
  8-bit comparator not equal                            : 6
-# Multiplexers                                         : 53
- 6-bit 4-to-1 multiplexer                              : 26
- 7-bit 4-to-1 multiplexer                              : 27
+# Multiplexers                                         : 55
+ 6-bit 4-to-1 multiplexer                              : 27
+ 7-bit 4-to-1 multiplexer                              : 28
 
 =========================================================================
 
@@ -837,9 +843,8 @@ Optimizing unit <top_level> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block top_level, actual ratio is 19.
+Found area constraint ratio of 100 (+ 5) on block top_level, actual ratio is 20.
 FlipFlop TETRIS_GAME/horizontal_3_1 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/pos_x_1 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -847,8 +852,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 203
- Flip-Flops                                            : 203
+# Registers                                            : 202
+ Flip-Flops                                            : 202
 
 =========================================================================
 
@@ -877,29 +882,30 @@ Design Statistics
 # IOs                              : 30
 
 Cell Usage :
-# BELS                             : 1348
+# BELS                             : 1407
 #      GND                         : 1
-#      INV                         : 45
-#      LUT1                        : 132
-#      LUT2                        : 91
-#      LUT2_D                      : 5
-#      LUT2_L                      : 7
-#      LUT3                        : 126
+#      INV                         : 54
+#      LUT1                        : 139
+#      LUT2                        : 100
+#      LUT2_D                      : 7
+#      LUT2_L                      : 3
+#      LUT3                        : 128
 #      LUT3_D                      : 8
-#      LUT3_L                      : 10
-#      LUT4                        : 307
-#      LUT4_D                      : 23
+#      LUT3_L                      : 17
+#      LUT4                        : 300
+#      LUT4_D                      : 25
 #      LUT4_L                      : 33
-#      MUXCY                       : 328
+#      MUXCY                       : 356
 #      MUXF5                       : 34
 #      VCC                         : 1
-#      XORCY                       : 197
-# FlipFlops/Latches                : 203
-#      FD                          : 23
-#      FDE                         : 22
+#      XORCY                       : 201
+# FlipFlops/Latches                : 202
+#      FD                          : 22
+#      FDE                         : 39
 #      FDR                         : 19
-#      FDRE                        : 118
-#      FDS                         : 18
+#      FDRE                        : 117
+#      FDRSE                       : 1
+#      FDS                         : 1
 #      FDSE                        : 3
 # RAMS                             : 7
 #      RAMB16_S1_S1                : 6
@@ -919,9 +925,9 @@ Device utilization summary:
 
 Selected Device : 3s250etq144-4 
 
- Number of Slices:                      427  out of   2448    17%  
- Number of Slice Flip Flops:            203  out of   4896     4%  
- Number of 4 input LUTs:                787  out of   4896    16%  
+ Number of Slices:                      441  out of   2448    18%  
+ Number of Slice Flip Flops:            202  out of   4896     4%  
+ Number of 4 input LUTs:                814  out of   4896    16%  
  Number of IOs:                          30
  Number of bonded IOBs:                  21  out of    108    19%  
  Number of BRAMs:                         7  out of     12    58%  
@@ -949,7 +955,7 @@ Clock Information:
 -----------------------------------+--------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)    | Load  |
 -----------------------------------+--------------------------+-------+
-clk16M                             | clk_gen/DCM_SP_inst:CLKFX| 210   |
+clk16M                             | clk_gen/DCM_SP_inst:CLKFX| 209   |
 -----------------------------------+--------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -960,9 +966,9 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 15.613ns (Maximum Frequency: 64.047MHz)
-   Minimum input arrival time before clock: 6.239ns
-   Maximum output required time after clock: 4.931ns
+   Minimum period: 15.230ns (Maximum Frequency: 65.661MHz)
+   Minimum input arrival time before clock: 7.541ns
+   Maximum output required time after clock: 4.948ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -971,58 +977,69 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk16M'
-  Clock period: 15.613ns (frequency: 64.047MHz)
-  Total number of paths / destination ports: 19210 / 614
+  Clock period: 15.230ns (frequency: 65.661MHz)
+  Total number of paths / destination ports: 25932 / 614
 -------------------------------------------------------------------------
-Delay:               9.993ns (Levels of Logic = 7)
-  Source:            TETRIS_GAME/pos_x_3 (FF)
-  Destination:       TETRIS_GAME/canmove_left (FF)
+Delay:               9.747ns (Levels of Logic = 15)
+  Source:            TETRIS_GAME/cycle_cntr_0 (FF)
+  Destination:       TETRIS_GAME/canmove_right (FF)
   Source Clock:      clk16M rising 1.6X
   Destination Clock: clk16M rising 1.6X
 
-  Data Path: TETRIS_GAME/pos_x_3 to TETRIS_GAME/canmove_left
+  Data Path: TETRIS_GAME/cycle_cntr_0 to TETRIS_GAME/canmove_right
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            27   0.591   1.296  TETRIS_GAME/pos_x_3 (TETRIS_GAME/pos_x_3)
-     LUT4_D:I2->O         12   0.704   1.040  TETRIS_GAME/Madd_hor_wire_add0000_cy<4>1 (TETRIS_GAME/Madd_hor_wire_add0000_cy<4>)
-     LUT2:I1->O            1   0.704   0.000  TETRIS_GAME/Madd_hor_wire_rot_lut<5>14 (TETRIS_GAME/Madd_hor_wire_rot_lut<5>13)
-     MUXCY:S->O            1   0.464   0.000  TETRIS_GAME/Madd_canmove_left_addsub0001_cy<5> (TETRIS_GAME/Madd_canmove_left_addsub0001_cy<5>)
-     XORCY:CI->O           1   0.804   0.424  TETRIS_GAME/Madd_canmove_left_addsub0001_xor<6> (TETRIS_GAME/canmove_left_addsub0001<6>)
-     LUT4:I3->O            1   0.704   0.420  TETRIS_GAME/canmove_left_not0001147 (TETRIS_GAME/canmove_left_not0001147)
-     MUXF5:S->O            1   0.739   0.424  TETRIS_GAME/canmove_left_not0001183_SW0 (N116)
-     LUT4:I3->O            1   0.704   0.420  TETRIS_GAME/canmove_left_not0001214 (TETRIS_GAME/canmove_left_not0001)
-     FDE:CE                    0.555          TETRIS_GAME/canmove_left
+     FDRE:C->Q            11   0.591   1.108  TETRIS_GAME/cycle_cntr_0 (TETRIS_GAME/cycle_cntr_0)
+     LUT3:I0->O            1   0.704   0.000  TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_lut<0>1 (TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_lut<0>1)
+     MUXCY:S->O            1   0.464   0.000  TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<0>_0 (TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<0>1)
+     MUXCY:CI->O           1   0.059   0.000  TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<1>_0 (TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<1>1)
+     MUXCY:CI->O           1   0.059   0.000  TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<2>_0 (TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<2>1)
+     MUXCY:CI->O           1   0.059   0.000  TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<3>_0 (TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<3>1)
+     MUXCY:CI->O           1   0.059   0.000  TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<4>_0 (TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<4>1)
+     MUXCY:CI->O           1   0.059   0.000  TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<5>_0 (TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<5>)
+     MUXCY:CI->O           1   0.059   0.000  TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<6> (TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<6>)
+     MUXCY:CI->O           1   0.059   0.000  TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<7> (TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<7>)
+     MUXCY:CI->O           1   0.059   0.000  TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<8> (TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<8>)
+     MUXCY:CI->O          13   0.459   1.062  TETRIS_GAME/Mcompar_move_cntr_cmp_lt0000_cy<9> (TETRIS_GAME/canmove_right_cmp_ge0001)
+     LUT2:I1->O           17   0.704   1.055  TETRIS_GAME/canmove_right_and000511 (TETRIS_GAME/right_cntr_and0001)
+     LUT4:I3->O            1   0.704   0.000  TETRIS_GAME/canmove_right_not0001143_SW0_G (N245)
+     MUXF5:I1->O           1   0.321   0.424  TETRIS_GAME/canmove_right_not0001143_SW0 (N156)
+     LUT4:I3->O            1   0.704   0.420  TETRIS_GAME/canmove_right_not0001183 (TETRIS_GAME/canmove_right_not0001)
+     FDE:CE                    0.555          TETRIS_GAME/canmove_right
     ----------------------------------------
-    Total                      9.993ns (5.969ns logic, 4.024ns route)
-                                       (59.7% logic, 40.3% route)
+    Total                      9.747ns (5.678ns logic, 4.069ns route)
+                                       (58.3% logic, 41.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk16M'
-  Total number of paths / destination ports: 69 / 52
+  Total number of paths / destination ports: 72 / 50
 -------------------------------------------------------------------------
-Offset:              6.239ns (Levels of Logic = 3)
-  Source:            rst (PAD)
-  Destination:       BAMBIVGA/bambiVGA/vsync_reg_0 (FF)
+Offset:              7.541ns (Levels of Logic = 6)
+  Source:            bt<1> (PAD)
+  Destination:       TETRIS_GAME/pos_x_5 (FF)
   Destination Clock: clk16M rising 1.6X
 
-  Data Path: rst to BAMBIVGA/bambiVGA/vsync_reg_0
+  Data Path: bt<1> to TETRIS_GAME/pos_x_5
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             5   1.218   0.808  rst_IBUF (rst_IBUF)
-     LUT4:I0->O           11   0.704   1.012  BAMBIVGA/bambiVGA/vsync_reg_and00011 (BAMBIVGA/bambiVGA/vsync_reg_and0001)
-     LUT2:I1->O           10   0.704   0.882  BAMBIVGA/bambiVGA/vsync_reg_and000067 (BAMBIVGA/bambiVGA/vsync_reg_and0000)
-     FDRE:R                    0.911          BAMBIVGA/bambiVGA/vsync_reg_0
+     IBUF:I->O             1   1.218   0.455  bt_1_IBUF (bt_1_IBUF)
+     LUT4:I2->O            1   0.704   0.424  TETRIS_GAME/pos_x_not000221_SW0_SW0 (N208)
+     LUT4_L:I3->LO         1   0.704   0.104  TETRIS_GAME/pos_x_not000221_SW0 (N861)
+     LUT4:I3->O           10   0.704   1.057  TETRIS_GAME/pos_x_and0002 (TETRIS_GAME/pos_x_and0002)
+     LUT2:I0->O            1   0.704   0.455  TETRIS_GAME/Mcount_pos_x_cy<4>11_SW0 (N72)
+     LUT4:I2->O            1   0.704   0.000  TETRIS_GAME/Mcount_pos_x_xor<5>11 (Result<5>1)
+     FDRE:D                    0.308          TETRIS_GAME/pos_x_5
     ----------------------------------------
-    Total                      6.239ns (3.537ns logic, 2.702ns route)
-                                       (56.7% logic, 43.3% route)
+    Total                      7.541ns (5.046ns logic, 2.495ns route)
+                                       (66.9% logic, 33.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk16M'
   Total number of paths / destination ports: 10 / 10
 -------------------------------------------------------------------------
-Offset:              4.931ns (Levels of Logic = 1)
+Offset:              4.948ns (Levels of Logic = 1)
   Source:            TETRIS_GAME/rotation_0 (FF)
   Destination:       ld<0> (PAD)
   Source Clock:      clk16M rising 1.6X
@@ -1031,23 +1048,23 @@ Offset:              4.931ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             18   0.591   1.068  TETRIS_GAME/rotation_0 (TETRIS_GAME/rotation_0)
+     FDE:C->Q             19   0.591   1.085  TETRIS_GAME/rotation_0 (TETRIS_GAME/rotation_0)
      OBUF:I->O                 3.272          ld_0_OBUF (ld<0>)
     ----------------------------------------
-    Total                      4.931ns (3.863ns logic, 1.068ns route)
-                                       (78.3% logic, 21.7% route)
+    Total                      4.948ns (3.863ns logic, 1.085ns route)
+                                       (78.1% logic, 21.9% route)
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 24.00 secs
-Total CPU time to Xst completion: 23.53 secs
+Total CPU time to Xst completion: 23.64 secs
  
 --> 
 
-Total memory usage is 314732 kilobytes
+Total memory usage is 313772 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   65 (   0 filtered)
-Number of infos    :   91 (   0 filtered)
+Number of warnings :   67 (   0 filtered)
+Number of infos    :   85 (   0 filtered)
 
