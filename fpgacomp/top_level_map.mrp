@@ -9,23 +9,23 @@ Target Device  : xc3s250e
 Target Package : tq144
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Sat May 30 17:03:02 2015
+Mapped Date    : Sat May 30 18:21:15 2015
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:   10
+Number of warnings:   12
 Logic Utilization:
-  Number of Slice Flip Flops:           183 out of   4,896    3%
-  Number of 4 input LUTs:               476 out of   4,896    9%
+  Number of Slice Flip Flops:           203 out of   4,896    4%
+  Number of 4 input LUTs:               645 out of   4,896   13%
 Logic Distribution:
-  Number of occupied Slices:            334 out of   2,448   13%
-    Number of Slices containing only related logic:     334 out of     334 100%
-    Number of Slices containing unrelated logic:          0 out of     334   0%
+  Number of occupied Slices:            436 out of   2,448   17%
+    Number of Slices containing only related logic:     436 out of     436 100%
+    Number of Slices containing unrelated logic:          0 out of     436   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         594 out of   4,896   12%
-    Number used as logic:               476
-    Number used as a route-thru:        118
+  Total Number of 4 input LUTs:         786 out of   4,896   16%
+    Number used as logic:               645
+    Number used as a route-thru:        141
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
@@ -35,9 +35,9 @@ Logic Distribution:
   Number of BUFGMUXs:                     2 out of      24    8%
   Number of DCMs:                         1 out of       4   25%
 
-Average Fanout of Non-Clock Nets:                3.26
+Average Fanout of Non-Clock Nets:                3.42
 
-Peak Memory Usage:  275 MB
+Peak Memory Usage:  276 MB
 Total REAL time to MAP completion:  2 secs 
 Total CPU time to MAP completion:   2 secs 
 
@@ -80,8 +80,17 @@ Section 1 - Errors
 
 Section 2 - Warnings
 --------------------
-WARNING:PhysDesignRules:367 - The signal <bt<2>_IBUF> is incomplete. The signal
-   does not drive any load pins in the design.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0035_3
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0032_2_f5. 
+   There is a conflict for the FXMUX.  The design will exhibit suboptimal
+   timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_46_3 failed to
+   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0009_2_f5.  There is a
+   conflict for the FXMUX.  The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0028_3
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0025_2_f5. 
+   There is a conflict for the FXMUX.  The design will exhibit suboptimal
+   timing.
 WARNING:PhysDesignRules:367 - The signal <bt<3>_IBUF> is incomplete. The signal
    does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <sw<0>_IBUF> is incomplete. The signal
@@ -104,13 +113,13 @@ WARNING:PhysDesignRules:367 - The signal <sw<7>_IBUF> is incomplete. The signal
 Section 3 - Informational
 -------------------------
 INFO:LIT:243 - Logical network bt<3>_IBUF has no load.
-INFO:LIT:395 - The above info message is repeated 9 more times for the following
+INFO:LIT:395 - The above info message is repeated 8 more times for the following
    (max. 5 shown):
-   bt<2>_IBUF,
    sw<7>_IBUF,
    sw<6>_IBUF,
    sw<5>_IBUF,
-   sw<4>_IBUF
+   sw<4>_IBUF,
+   sw<3>_IBUF
    To see the details of these info messages, please use the -detail switch.
 INFO:MapLib:562 - No environment variables are currently set.
 INFO:LIT:244 - All of the single ended outputs in this design are using slew

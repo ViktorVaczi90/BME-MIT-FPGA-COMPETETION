@@ -12,7 +12,7 @@ module BIG_framebuffer(
 // Creating 128x64 8-bit-word array
 reg [5:0] dp_ram[2047:0];
 initial begin
-  $readmemb("BIG2.bin",  dp_ram) ;
+  $readmemb("BIG.bin",  dp_ram) ;
 end
 // Implementing dual-port BlockRAM
 // Both read and write ports are synchronous
