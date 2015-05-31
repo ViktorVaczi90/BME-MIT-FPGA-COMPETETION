@@ -4,7 +4,7 @@ Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
 Project Information
 --------------------
 ProjectID=CB6A38F777FB44B4851DB9A09E1B7DED
-ProjectIteration=317
+ProjectIteration=318
 
 WebTalk Summary
 ----------------
@@ -13,4 +13,4 @@ INFO:WebTalk:1 - WebTalk is enabled because you are using a WebPACK license.
 INFO:WebTalk:8 - WebTalk Install setting is ON.
 INFO:WebTalk:6 - WebTalk User setting is ON.
 
-INFO:WebTalk:4 - F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/usage_statistics_webtalk.html WebTalk report has been successfully sent to Xilinx on 2015-05-31T01:45:06.  For additional details about this file, please refer to the WebTalk help file at E:/XILINXISE/14.7/ISE_DS/ISE/data/reports/webtalk_introduction.html
+INFO:WebTalk:4 - F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/usage_statistics_webtalk.html WebTalk report has been successfully sent to Xilinx on 2015-05-31T02:38:20.  For additional details about this file, please refer to the WebTalk help file at E:/XILINXISE/14.7/ISE_DS/ISE/data/reports/webtalk_introduction.html

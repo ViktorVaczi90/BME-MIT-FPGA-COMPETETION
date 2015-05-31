@@ -233,8 +233,8 @@ Analyzing module <TETRIS_GAME> in library <work>.
 	tetris_x_begin = 32'sb00000000000000000000000000001010
 	tetris_x_end = 32'sb00000000000000000000000000010100
 	tetris_y_begin = 32'sb00000000000000000000000000000101
-INFO:Xst:2546 - "TETRIS_GAME.v" line 101: reading initialization file "vertical.bin".
-INFO:Xst:2546 - "TETRIS_GAME.v" line 102: reading initialization file "horizontal.bin".
+INFO:Xst:2546 - "TETRIS_GAME.v" line 112: reading initialization file "vertical.bin".
+INFO:Xst:2546 - "TETRIS_GAME.v" line 113: reading initialization file "horizontal.bin".
 INFO:Xst:1432 - Contents of array <vertical> may be accessed with a negative index, causing simulation mismatch.
 INFO:Xst:1433 - Contents of array <vertical> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 INFO:Xst:1432 - Contents of array <vertical> may be accessed with a negative index, causing simulation mismatch.
@@ -320,6 +320,8 @@ WARNING:Xst:646 - Signal <ver_wire_rot<6:5>> is assigned but never used. This un
 WARNING:Xst:646 - Signal <ver_wire_right<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ver_wire_left<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ver_wire_down<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ver_wire_clear_wr> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ver_wire_clear_rd> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ver_wire<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <rotationtest> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <rot_cntr_2test> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
@@ -330,6 +332,8 @@ WARNING:Xst:646 - Signal <rot_cntr_0> is assigned but never used. This unconnect
 WARNING:Xst:653 - Signal <input_delay_max> is used but never assigned. This sourceless signal will be automatically connected to value 000101.
 WARNING:Xst:1781 - Signal <horizontal_rot_data> is used but never assigned. Tied to default value.
 WARNING:Xst:646 - Signal <hor_wire_rottest> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <hor_wire_clear_wr> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <hor_wire_clear_rd> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <gravity_speed> is used but never assigned. This sourceless signal will be automatically connected to value 0010100.
 WARNING:Xst:1780 - Signal <canmove_rottest> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Found 128x13-bit ROM for signal <COND_25$rom0000>.
@@ -342,143 +346,143 @@ WARNING:Xst:1780 - Signal <canmove_rottest> is never used or assigned. This unco
     Found 1-bit register for signal <BIG_WR_EN>.
     Found 6-bit register for signal <BIG_WR_DATA>.
     Found 11-bit register for signal <BIG_WR_ADDR>.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0000> created at line 227.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0001> created at line 227.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0002> created at line 227.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0003> created at line 245.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0004> created at line 260.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0005> created at line 260.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0006> created at line 260.
-    Found 4-bit 31-to-1 multiplexer for signal <$varindex0007> created at line 418.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0008> created at line 227.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0009> created at line 227.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0010> created at line 227.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0011> created at line 245.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0012> created at line 245.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0013> created at line 245.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0014> created at line 260.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0015> created at line 260.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0016> created at line 260.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0017> created at line 227.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0018> created at line 227.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0019> created at line 227.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0020> created at line 227.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0021> created at line 227.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0022> created at line 227.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0023> created at line 227.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0024> created at line 245.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0025> created at line 245.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0026> created at line 245.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0027> created at line 245.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0028> created at line 260.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0029> created at line 260.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0030> created at line 260.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0031> created at line 260.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0032> created at line 260.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0033> created at line 260.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0034> created at line 260.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0035> created at line 296.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0036> created at line 296.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0037> created at line 296.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0038> created at line 296.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0039> created at line 296.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0040> created at line 296.
-    Found 6-bit adder carry out for signal <add0000$addsub0000> created at line 227.
-    Found 6-bit adder carry out for signal <add0001$addsub0000> created at line 227.
-    Found 6-bit adder carry out for signal <add0002$addsub0000> created at line 227.
-    Found 7-bit adder carry out for signal <add0003$addsub0000> created at line 245.
-    Found 7-bit adder carry out for signal <add0004$addsub0000> created at line 245.
-    Found 7-bit adder carry out for signal <add0005$addsub0000> created at line 245.
-    Found 7-bit adder carry out for signal <add0006$addsub0000> created at line 260.
-    Found 7-bit adder carry out for signal <add0007$addsub0000> created at line 260.
-    Found 7-bit adder carry out for signal <add0008$addsub0000> created at line 260.
-    Found 5-bit adder carry out for signal <BIG_RD_ADDR$addsub0000> created at line 224.
-    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0000> created at line 223.
-    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0001> created at line 242.
-    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0002> created at line 257.
-    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0003> created at line 287.
-    Found 5-bit adder for signal <BIG_WR_ADDR$add0000> created at line 417.
-    Found 15-bit comparator greatequal for signal <BIG_WR_ADDR$cmp_ge0000> created at line 331.
-    Found 15-bit comparator greatequal for signal <BIG_WR_ADDR$cmp_ge0001> created at line 415.
-    Found 15-bit comparator greater for signal <BIG_WR_ADDR$cmp_gt0000> created at line 323.
-    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0000> created at line 323.
-    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0001> created at line 331.
-    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0002> created at line 415.
-    Found 6-bit adder for signal <BIG_WR_DATA$addsub0000> created at line 418.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0000> created at line 238.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0001> created at line 238.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0002> created at line 238.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0003> created at line 256.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0004> created at line 271.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0005> created at line 271.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0006> created at line 271.
+    Found 4-bit 31-to-1 multiplexer for signal <$varindex0007> created at line 436.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0008> created at line 238.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0009> created at line 238.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0010> created at line 238.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0011> created at line 256.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0012> created at line 256.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0013> created at line 256.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0014> created at line 271.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0015> created at line 271.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0016> created at line 271.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0017> created at line 238.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0018> created at line 238.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0019> created at line 238.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0020> created at line 238.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0021> created at line 238.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0022> created at line 238.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0023> created at line 238.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0024> created at line 256.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0025> created at line 256.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0026> created at line 256.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0027> created at line 256.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0028> created at line 271.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0029> created at line 271.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0030> created at line 271.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0031> created at line 271.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0032> created at line 271.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0033> created at line 271.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0034> created at line 271.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0035> created at line 307.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0036> created at line 307.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0037> created at line 307.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0038> created at line 307.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0039> created at line 307.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0040> created at line 307.
+    Found 6-bit adder carry out for signal <add0000$addsub0000> created at line 238.
+    Found 6-bit adder carry out for signal <add0001$addsub0000> created at line 238.
+    Found 6-bit adder carry out for signal <add0002$addsub0000> created at line 238.
+    Found 7-bit adder carry out for signal <add0003$addsub0000> created at line 256.
+    Found 7-bit adder carry out for signal <add0004$addsub0000> created at line 256.
+    Found 7-bit adder carry out for signal <add0005$addsub0000> created at line 256.
+    Found 7-bit adder carry out for signal <add0006$addsub0000> created at line 271.
+    Found 7-bit adder carry out for signal <add0007$addsub0000> created at line 271.
+    Found 7-bit adder carry out for signal <add0008$addsub0000> created at line 271.
+    Found 5-bit adder carry out for signal <BIG_RD_ADDR$addsub0000> created at line 235.
+    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0000> created at line 234.
+    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0001> created at line 253.
+    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0002> created at line 268.
+    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0003> created at line 298.
+    Found 5-bit adder for signal <BIG_WR_ADDR$add0000> created at line 435.
+    Found 15-bit comparator greatequal for signal <BIG_WR_ADDR$cmp_ge0000> created at line 342.
+    Found 15-bit comparator greatequal for signal <BIG_WR_ADDR$cmp_ge0001> created at line 433.
+    Found 15-bit comparator greater for signal <BIG_WR_ADDR$cmp_gt0000> created at line 334.
+    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0000> created at line 334.
+    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0001> created at line 342.
+    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0002> created at line 433.
+    Found 6-bit adder for signal <BIG_WR_DATA$addsub0000> created at line 436.
     Found 1-bit register for signal <canmove_down>.
-    Found 6-bit adder carry out for signal <canmove_down$addsub0001> created at line 227.
-    Found 6-bit adder carry out for signal <canmove_down$addsub0002> created at line 227.
-    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0001> created at line 227.
-    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0002> created at line 227.
-    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0003> created at line 227.
-    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0004> created at line 227.
-    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0005> created at line 227.
-    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0006> created at line 227.
-    Found 15-bit comparator greatequal for signal <canmove_down$cmp_ge0000> created at line 225.
-    Found 15-bit comparator greatequal for signal <canmove_down$cmp_ge0001> created at line 221.
-    Found 7-bit comparator greatequal for signal <canmove_down$cmp_ge0002> created at line 227.
-    Found 15-bit comparator greater for signal <canmove_down$cmp_gt0000> created at line 225.
-    Found 15-bit comparator lessequal for signal <canmove_down$cmp_le0000> created at line 225.
-    Found 15-bit comparator lessequal for signal <canmove_down$cmp_le0001> created at line 221.
-    Found 7-bit comparator less for signal <canmove_down$cmp_lt0000> created at line 227.
-    Found 15-bit comparator less for signal <canmove_down$cmp_lt0001> created at line 225.
-    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0002> created at line 227.
-    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0003> created at line 227.
-    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0004> created at line 227.
-    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0005> created at line 227.
-    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0006> created at line 227.
-    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0007> created at line 227.
+    Found 6-bit adder carry out for signal <canmove_down$addsub0001> created at line 238.
+    Found 6-bit adder carry out for signal <canmove_down$addsub0002> created at line 238.
+    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0001> created at line 238.
+    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0002> created at line 238.
+    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0003> created at line 238.
+    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0004> created at line 238.
+    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0005> created at line 238.
+    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0006> created at line 238.
+    Found 15-bit comparator greatequal for signal <canmove_down$cmp_ge0000> created at line 236.
+    Found 15-bit comparator greatequal for signal <canmove_down$cmp_ge0001> created at line 232.
+    Found 7-bit comparator greatequal for signal <canmove_down$cmp_ge0002> created at line 238.
+    Found 15-bit comparator greater for signal <canmove_down$cmp_gt0000> created at line 236.
+    Found 15-bit comparator lessequal for signal <canmove_down$cmp_le0000> created at line 236.
+    Found 15-bit comparator lessequal for signal <canmove_down$cmp_le0001> created at line 232.
+    Found 7-bit comparator less for signal <canmove_down$cmp_lt0000> created at line 238.
+    Found 15-bit comparator less for signal <canmove_down$cmp_lt0001> created at line 236.
+    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0002> created at line 238.
+    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0003> created at line 238.
+    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0004> created at line 238.
+    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0005> created at line 238.
+    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0006> created at line 238.
+    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0007> created at line 238.
     Found 1-bit register for signal <canmove_left>.
-    Found 8-bit comparator equal for signal <canmove_left$cmp_eq0000> created at line 245.
-    Found 6-bit comparator equal for signal <canmove_left$cmp_eq0001> created at line 245.
-    Found 8-bit comparator equal for signal <canmove_left$cmp_eq0002> created at line 245.
-    Found 6-bit comparator equal for signal <canmove_left$cmp_eq0003> created at line 245.
-    Found 8-bit comparator equal for signal <canmove_left$cmp_eq0004> created at line 245.
-    Found 6-bit comparator equal for signal <canmove_left$cmp_eq0005> created at line 245.
-    Found 15-bit comparator greatequal for signal <canmove_left$cmp_ge0000> created at line 244.
-    Found 15-bit comparator greatequal for signal <canmove_left$cmp_ge0001> created at line 240.
-    Found 15-bit comparator greater for signal <canmove_left$cmp_gt0000> created at line 244.
-    Found 15-bit comparator lessequal for signal <canmove_left$cmp_le0000> created at line 244.
-    Found 15-bit comparator lessequal for signal <canmove_left$cmp_le0001> created at line 240.
-    Found 15-bit comparator less for signal <canmove_left$cmp_lt0000> created at line 244.
+    Found 8-bit comparator equal for signal <canmove_left$cmp_eq0000> created at line 256.
+    Found 6-bit comparator equal for signal <canmove_left$cmp_eq0001> created at line 256.
+    Found 8-bit comparator equal for signal <canmove_left$cmp_eq0002> created at line 256.
+    Found 6-bit comparator equal for signal <canmove_left$cmp_eq0003> created at line 256.
+    Found 8-bit comparator equal for signal <canmove_left$cmp_eq0004> created at line 256.
+    Found 6-bit comparator equal for signal <canmove_left$cmp_eq0005> created at line 256.
+    Found 15-bit comparator greatequal for signal <canmove_left$cmp_ge0000> created at line 255.
+    Found 15-bit comparator greatequal for signal <canmove_left$cmp_ge0001> created at line 251.
+    Found 15-bit comparator greater for signal <canmove_left$cmp_gt0000> created at line 255.
+    Found 15-bit comparator lessequal for signal <canmove_left$cmp_le0000> created at line 255.
+    Found 15-bit comparator lessequal for signal <canmove_left$cmp_le0001> created at line 251.
+    Found 15-bit comparator less for signal <canmove_left$cmp_lt0000> created at line 255.
     Found 1-bit register for signal <canmove_right>.
-    Found 7-bit adder carry out for signal <canmove_right$addsub0001> created at line 260.
-    Found 7-bit adder carry out for signal <canmove_right$addsub0002> created at line 260.
-    Found 8-bit comparator equal for signal <canmove_right$cmp_eq0000> created at line 260.
-    Found 6-bit comparator equal for signal <canmove_right$cmp_eq0001> created at line 260.
-    Found 8-bit comparator equal for signal <canmove_right$cmp_eq0002> created at line 260.
-    Found 6-bit comparator equal for signal <canmove_right$cmp_eq0003> created at line 260.
-    Found 8-bit comparator equal for signal <canmove_right$cmp_eq0004> created at line 260.
-    Found 6-bit comparator equal for signal <canmove_right$cmp_eq0005> created at line 260.
-    Found 15-bit comparator greatequal for signal <canmove_right$cmp_ge0000> created at line 259.
-    Found 15-bit comparator greatequal for signal <canmove_right$cmp_ge0001> created at line 255.
-    Found 8-bit comparator greatequal for signal <canmove_right$cmp_ge0002> created at line 260.
-    Found 15-bit comparator greater for signal <canmove_right$cmp_gt0000> created at line 259.
-    Found 15-bit comparator lessequal for signal <canmove_right$cmp_le0000> created at line 259.
-    Found 15-bit comparator lessequal for signal <canmove_right$cmp_le0001> created at line 255.
-    Found 8-bit comparator less for signal <canmove_right$cmp_lt0000> created at line 260.
-    Found 15-bit comparator less for signal <canmove_right$cmp_lt0001> created at line 259.
-    Found 8-bit comparator not equal for signal <canmove_right$cmp_ne0001> created at line 260.
-    Found 6-bit comparator not equal for signal <canmove_right$cmp_ne0002> created at line 260.
-    Found 8-bit comparator not equal for signal <canmove_right$cmp_ne0003> created at line 260.
-    Found 6-bit comparator not equal for signal <canmove_right$cmp_ne0004> created at line 260.
-    Found 8-bit comparator not equal for signal <canmove_right$cmp_ne0005> created at line 260.
-    Found 6-bit comparator not equal for signal <canmove_right$cmp_ne0006> created at line 260.
+    Found 7-bit adder carry out for signal <canmove_right$addsub0001> created at line 271.
+    Found 7-bit adder carry out for signal <canmove_right$addsub0002> created at line 271.
+    Found 8-bit comparator equal for signal <canmove_right$cmp_eq0000> created at line 271.
+    Found 6-bit comparator equal for signal <canmove_right$cmp_eq0001> created at line 271.
+    Found 8-bit comparator equal for signal <canmove_right$cmp_eq0002> created at line 271.
+    Found 6-bit comparator equal for signal <canmove_right$cmp_eq0003> created at line 271.
+    Found 8-bit comparator equal for signal <canmove_right$cmp_eq0004> created at line 271.
+    Found 6-bit comparator equal for signal <canmove_right$cmp_eq0005> created at line 271.
+    Found 15-bit comparator greatequal for signal <canmove_right$cmp_ge0000> created at line 270.
+    Found 15-bit comparator greatequal for signal <canmove_right$cmp_ge0001> created at line 266.
+    Found 8-bit comparator greatequal for signal <canmove_right$cmp_ge0002> created at line 271.
+    Found 15-bit comparator greater for signal <canmove_right$cmp_gt0000> created at line 270.
+    Found 15-bit comparator lessequal for signal <canmove_right$cmp_le0000> created at line 270.
+    Found 15-bit comparator lessequal for signal <canmove_right$cmp_le0001> created at line 266.
+    Found 8-bit comparator less for signal <canmove_right$cmp_lt0000> created at line 271.
+    Found 15-bit comparator less for signal <canmove_right$cmp_lt0001> created at line 270.
+    Found 8-bit comparator not equal for signal <canmove_right$cmp_ne0001> created at line 271.
+    Found 6-bit comparator not equal for signal <canmove_right$cmp_ne0002> created at line 271.
+    Found 8-bit comparator not equal for signal <canmove_right$cmp_ne0003> created at line 271.
+    Found 6-bit comparator not equal for signal <canmove_right$cmp_ne0004> created at line 271.
+    Found 8-bit comparator not equal for signal <canmove_right$cmp_ne0005> created at line 271.
+    Found 6-bit comparator not equal for signal <canmove_right$cmp_ne0006> created at line 271.
     Found 1-bit register for signal <canmove_rot>.
-    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0000> created at line 296.
-    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0001> created at line 296.
-    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0002> created at line 296.
-    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0003> created at line 296.
-    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0004> created at line 296.
-    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0005> created at line 296.
-    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0006> created at line 296.
-    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0007> created at line 296.
-    Found 15-bit comparator greatequal for signal <canmove_rot$cmp_ge0000> created at line 289.
-    Found 15-bit comparator greatequal for signal <canmove_rot$cmp_ge0001> created at line 286.
-    Found 15-bit comparator greater for signal <canmove_rot$cmp_gt0000> created at line 289.
-    Found 15-bit comparator lessequal for signal <canmove_rot$cmp_le0000> created at line 289.
-    Found 15-bit comparator lessequal for signal <canmove_rot$cmp_le0001> created at line 286.
-    Found 15-bit comparator less for signal <canmove_rot$cmp_lt0000> created at line 289.
+    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0000> created at line 307.
+    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0001> created at line 307.
+    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0002> created at line 307.
+    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0003> created at line 307.
+    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0004> created at line 307.
+    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0005> created at line 307.
+    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0006> created at line 307.
+    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0007> created at line 307.
+    Found 15-bit comparator greatequal for signal <canmove_rot$cmp_ge0000> created at line 300.
+    Found 15-bit comparator greatequal for signal <canmove_rot$cmp_ge0001> created at line 297.
+    Found 15-bit comparator greater for signal <canmove_rot$cmp_gt0000> created at line 300.
+    Found 15-bit comparator lessequal for signal <canmove_rot$cmp_le0000> created at line 300.
+    Found 15-bit comparator lessequal for signal <canmove_rot$cmp_le0001> created at line 297.
+    Found 15-bit comparator less for signal <canmove_rot$cmp_lt0000> created at line 300.
     Found 3-bit register for signal <color>.
     Found 15-bit adder carry out for signal <COND_11$addsub0000>.
     Found 15-bit adder carry out for signal <COND_12$addsub0000>.
@@ -488,46 +492,53 @@ WARNING:Xst:1780 - Signal <canmove_rottest> is never used or assigned. This unco
     Found 15-bit adder carry out for signal <COND_34$addsub0000>.
     Found 15-bit adder carry out for signal <COND_35$addsub0000>.
     Found 15-bit adder carry out for signal <COND_8$addsub0000>.
+    Found 5-bit register for signal <currentrow>.
+    Found 5-bit adder for signal <currentrow$addsub0000> created at line 405.
     Found 15-bit up counter for signal <cycle_cntr>.
     Found 124-bit register for signal <debugreg>.
     Found 15-bit up counter for signal <down_cntr>.
-    Found 15-bit comparator greater for signal <down_cntr$cmp_gt0000> created at line 197.
-    Found 15-bit comparator less for signal <down_cntr$cmp_lt0000> created at line 197.
+    Found 15-bit comparator greater for signal <down_cntr$cmp_gt0000> created at line 208.
+    Found 15-bit comparator less for signal <down_cntr$cmp_lt0000> created at line 208.
     Found 1-bit register for signal <en_posedge>.
+    Found 1-bit register for signal <fullrow>.
     Found 7-bit up counter for signal <gravity>.
     Found 6-bit adder for signal <hor_wire>.
-    Found 6-bit adder for signal <hor_wire$add0000> created at line 426.
+    Found 6-bit adder for signal <hor_wire$add0000> created at line 444.
     Found 6-bit adder for signal <hor_wire_down>.
     Found 6-bit subtractor for signal <hor_wire_left>.
-    Found 7-bit adder carry out for signal <hor_wire_left$addsub0000> created at line 432.
-    Found 6-bit adder carry out for signal <hor_wire_left$addsub0001> created at line 432.
+    Found 7-bit adder carry out for signal <hor_wire_left$addsub0000> created at line 450.
+    Found 6-bit adder carry out for signal <hor_wire_left$addsub0001> created at line 450.
     Found 6-bit adder for signal <hor_wire_right>.
     Found 6-bit adder for signal <hor_wire_rot>.
     Found 28-bit register for signal <horizontal>.
     Found 6-bit up counter for signal <input_delay>.
     Found 15-bit up counter for signal <left_cntr>.
-    Found 15-bit comparator greater for signal <left_cntr$cmp_gt0000> created at line 183.
-    Found 15-bit comparator less for signal <left_cntr$cmp_lt0000> created at line 183.
+    Found 15-bit comparator greater for signal <left_cntr$cmp_gt0000> created at line 194.
+    Found 15-bit comparator less for signal <left_cntr$cmp_lt0000> created at line 194.
     Found 15-bit up counter for signal <move_cntr>.
-    Found 15-bit comparator greater for signal <move_cntr$cmp_gt0000> created at line 316.
-    Found 15-bit comparator less for signal <move_cntr$cmp_lt0000> created at line 316.
+    Found 15-bit comparator greater for signal <move_cntr$cmp_gt0000> created at line 327.
+    Found 15-bit comparator less for signal <move_cntr$cmp_lt0000> created at line 327.
     Found 2-bit adder for signal <nextrot>.
     Found 6-bit updown counter for signal <pos_x>.
     Found 5-bit up counter for signal <pos_y>.
     Found 3-bit up counter for signal <random>.
     Found 15-bit up counter for signal <right_cntr>.
-    Found 15-bit comparator greater for signal <right_cntr$cmp_gt0000> created at line 190.
-    Found 15-bit comparator less for signal <right_cntr$cmp_lt0000> created at line 190.
+    Found 15-bit comparator greater for signal <right_cntr$cmp_gt0000> created at line 201.
+    Found 15-bit comparator less for signal <right_cntr$cmp_lt0000> created at line 201.
     Found 15-bit up counter for signal <rot_cntr>.
-    Found 15-bit comparator greater for signal <rot_cntr$cmp_gt0000> created at line 204.
-    Found 15-bit comparator less for signal <rot_cntr$cmp_lt0000> created at line 204.
+    Found 15-bit comparator greater for signal <rot_cntr$cmp_gt0000> created at line 215.
+    Found 15-bit comparator less for signal <rot_cntr$cmp_lt0000> created at line 215.
     Found 2-bit adder for signal <rot_cntr_2>.
     Found 15-bit up counter for signal <rot_cntrtest>.
-    Found 15-bit comparator greater for signal <rot_cntrtest$cmp_gt0000> created at line 212.
-    Found 15-bit comparator less for signal <rot_cntrtest$cmp_lt0000> created at line 212.
+    Found 15-bit comparator greater for signal <rot_cntrtest$cmp_gt0000> created at line 223.
+    Found 15-bit comparator less for signal <rot_cntrtest$cmp_lt0000> created at line 223.
     Found 2-bit up counter for signal <rotation>.
+    Found 3-bit register for signal <rowcombo>.
+    Found 3-bit adder for signal <rowcombo$addsub0000> created at line 400.
+    Found 15-bit comparator greater for signal <rowcombo$cmp_gt0000> created at line 371.
+    Found 15-bit comparator less for signal <rowcombo$cmp_lt0000> created at line 371.
     Found 6-bit adder carry out for signal <ver_wire$addsub0000>.
-    Found 5-bit adder carry out for signal <ver_wire$addsub0001> created at line 425.
+    Found 5-bit adder carry out for signal <ver_wire$addsub0001> created at line 443.
     Found 6-bit adder carry out for signal <ver_wire_down$addsub0000>.
     Found 6-bit adder carry out for signal <ver_wire_left$addsub0000>.
     Found 6-bit adder carry out for signal <ver_wire_right$addsub0000>.
@@ -537,9 +548,9 @@ WARNING:Xst:1780 - Signal <canmove_rottest> is never used or assigned. This unco
     Summary:
 	inferred   6 ROM(s).
 	inferred  14 Counter(s).
-	inferred 213 D-type flip-flop(s).
-	inferred  44 Adder/Subtractor(s).
-	inferred  88 Comparator(s).
+	inferred 222 D-type flip-flop(s).
+	inferred  46 Adder/Subtractor(s).
+	inferred  90 Comparator(s).
 	inferred 329 Multiplexer(s).
 Unit <TETRIS_GAME> synthesized.
 
@@ -622,31 +633,32 @@ Macro Statistics
  2048x6-bit dual-port RAM                              : 1
 # ROMs                                                 : 6
  128x13-bit ROM                                        : 6
-# Adders/Subtractors                                   : 46
+# Adders/Subtractors                                   : 47
  10-bit adder carry out                                : 2
  15-bit adder carry out                                : 8
  16-bit subtractor                                     : 4
  2-bit adder                                           : 2
+ 3-bit adder                                           : 1
  5-bit adder                                           : 1
  5-bit adder carry out                                 : 2
  6-bit adder                                           : 6
  6-bit adder carry out                                 : 11
  6-bit subtractor                                      : 1
  7-bit adder carry out                                 : 9
-# Counters                                             : 15
+# Counters                                             : 14
  10-bit up counter                                     : 2
- 15-bit up counter                                     : 7
+ 15-bit up counter                                     : 6
  2-bit up counter                                      : 1
  3-bit up counter                                      : 1
  5-bit up counter                                      : 1
  6-bit up counter                                      : 1
  6-bit updown counter                                  : 1
  7-bit up counter                                      : 1
-# Registers                                            : 56
- 1-bit register                                        : 8
+# Registers                                            : 58
+ 1-bit register                                        : 9
  11-bit register                                       : 3
  14-bit register                                       : 1
- 3-bit register                                        : 1
+ 3-bit register                                        : 2
  4-bit register                                        : 31
  6-bit register                                        : 8
  7-bit register                                        : 4
@@ -749,9 +761,9 @@ Macro Statistics
  6-bit adder carry out                                 : 11
  6-bit subtractor                                      : 1
  7-bit adder carry out                                 : 9
-# Counters                                             : 15
+# Counters                                             : 14
  10-bit up counter                                     : 2
- 15-bit up counter                                     : 7
+ 15-bit up counter                                     : 6
  2-bit up counter                                      : 1
  3-bit up counter                                      : 1
  5-bit up counter                                      : 1
@@ -760,12 +772,12 @@ Macro Statistics
  7-bit up counter                                      : 1
 # Registers                                            : 246
  Flip-Flops                                            : 246
-# Comparators                                          : 92
+# Comparators                                          : 90
  10-bit comparator lessequal                           : 3
  11-bit comparator lessequal                           : 1
  15-bit comparator greatequal                          : 10
- 15-bit comparator greater                             : 11
- 15-bit comparator less                                : 10
+ 15-bit comparator greater                             : 10
+ 15-bit comparator less                                : 9
  15-bit comparator lessequal                           : 15
  6-bit comparator equal                                : 10
  6-bit comparator not equal                            : 3
@@ -907,13 +919,8 @@ WARNING:Xst:1710 - FF/Latch <TETRIS_GAME/debugreg_30_2> (without init value) has
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block top_level, actual ratio is 28.
-FlipFlop TETRIS_GAME/color_0 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/color_2 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/down_cntr_0 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/rot_cntr_0 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/rot_cntr_1 has been replicated 3 time(s)
-FlipFlop TETRIS_GAME/rotation_1 has been replicated 2 time(s)
+Found area constraint ratio of 100 (+ 5) on block top_level, actual ratio is 27.
+FlipFlop TETRIS_GAME/rotation_0 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -921,8 +928,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 340
- Flip-Flops                                            : 340
+# Registers                                            : 317
+ Flip-Flops                                            : 317
 
 =========================================================================
 
@@ -951,31 +958,31 @@ Design Statistics
 # IOs                              : 30
 
 Cell Usage :
-# BELS                             : 1878
+# BELS                             : 1836
 #      GND                         : 1
-#      INV                         : 58
-#      LUT1                        : 154
-#      LUT2                        : 83
-#      LUT2_D                      : 10
-#      LUT2_L                      : 4
-#      LUT3                        : 269
-#      LUT3_D                      : 20
-#      LUT3_L                      : 11
-#      LUT4                        : 496
-#      LUT4_D                      : 30
-#      LUT4_L                      : 36
-#      MUXCY                       : 346
-#      MUXF5                       : 130
+#      INV                         : 54
+#      LUT1                        : 135
+#      LUT2                        : 77
+#      LUT2_D                      : 11
+#      LUT2_L                      : 2
+#      LUT3                        : 288
+#      LUT3_D                      : 15
+#      LUT3_L                      : 13
+#      LUT4                        : 513
+#      LUT4_D                      : 37
+#      LUT4_L                      : 29
+#      MUXCY                       : 317
+#      MUXF5                       : 129
 #      MUXF6                       : 17
 #      MUXF7                       : 6
 #      MUXF8                       : 4
 #      VCC                         : 1
-#      XORCY                       : 202
-# FlipFlops/Latches                : 340
+#      XORCY                       : 187
+# FlipFlops/Latches                : 317
 #      FD                          : 24
-#      FDE                         : 148
+#      FDE                         : 145
 #      FDR                         : 18
-#      FDRE                        : 143
+#      FDRE                        : 123
 #      FDRSE                       : 1
 #      FDS                         : 3
 #      FDSE                        : 3
@@ -997,9 +1004,9 @@ Device utilization summary:
 
 Selected Device : 3s250etq144-4 
 
- Number of Slices:                      635  out of   2448    25%  
- Number of Slice Flip Flops:            340  out of   4896     6%  
- Number of 4 input LUTs:               1171  out of   4896    23%  
+ Number of Slices:                      628  out of   2448    25%  
+ Number of Slice Flip Flops:            317  out of   4896     6%  
+ Number of 4 input LUTs:               1174  out of   4896    23%  
  Number of IOs:                          30
  Number of bonded IOBs:                  21  out of    108    19%  
  Number of BRAMs:                         7  out of     12    58%  
@@ -1027,7 +1034,7 @@ Clock Information:
 -----------------------------------+--------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)    | Load  |
 -----------------------------------+--------------------------+-------+
-clk16M                             | clk_gen/DCM_SP_inst:CLKFX| 347   |
+clk16M                             | clk_gen/DCM_SP_inst:CLKFX| 324   |
 -----------------------------------+--------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -1038,9 +1045,9 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 17.250ns (Maximum Frequency: 57.972MHz)
-   Minimum input arrival time before clock: 6.291ns
-   Maximum output required time after clock: 5.138ns
+   Minimum period: 17.554ns (Maximum Frequency: 56.968MHz)
+   Minimum input arrival time before clock: 6.774ns
+   Maximum output required time after clock: 5.137ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -1049,39 +1056,38 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk16M'
-  Clock period: 17.250ns (frequency: 57.972MHz)
-  Total number of paths / destination ports: 34507 / 915
+  Clock period: 17.554ns (frequency: 56.968MHz)
+  Total number of paths / destination ports: 34600 / 849
 -------------------------------------------------------------------------
-Delay:               11.040ns (Levels of Logic = 9)
+Delay:               11.234ns (Levels of Logic = 8)
   Source:            TETRIS_GAME/rot_cntr_0 (FF)
-  Destination:       TETRIS_GAME/BIG_RD_ADDR_10 (FF)
+  Destination:       TETRIS_GAME/canmove_rot (FF)
   Source Clock:      clk16M rising 1.6X
   Destination Clock: clk16M rising 1.6X
 
-  Data Path: TETRIS_GAME/rot_cntr_0 to TETRIS_GAME/BIG_RD_ADDR_10
+  Data Path: TETRIS_GAME/rot_cntr_0 to TETRIS_GAME/canmove_rot
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            53   0.591   1.348  TETRIS_GAME/rot_cntr_0 (TETRIS_GAME/rot_cntr_0)
-     LUT2_D:I1->O         13   0.704   0.987  TETRIS_GAME/debugreg_16_mux0000<1>112 (N146)
-     LUT4:I3->O            1   0.704   0.000  TETRIS_GAME/Mrom_COND_49_rom0000121_6_f5_G (N228)
-     MUXF5:I1->O           2   0.321   0.451  TETRIS_GAME/Mrom_COND_49_rom0000121_6_f5 (TETRIS_GAME/Mrom_COND_49_rom0000121_6_f5)
-     LUT4:I3->O            2   0.704   0.447  TETRIS_GAME/Madd_ver_wire_rot_addsub0000_lut<1>17 (TETRIS_GAME/Madd_ver_wire_rot_addsub0000_lut<1>)
-     MUXF5:S->O            1   0.739   0.424  TETRIS_GAME/BIG_RD_ADDR_mux0000<10>138 (TETRIS_GAME/BIG_RD_ADDR_mux0000<10>138)
-     LUT4:I3->O            1   0.704   0.424  TETRIS_GAME/BIG_RD_ADDR_mux0000<10>164 (TETRIS_GAME/BIG_RD_ADDR_mux0000<10>164)
-     LUT4:I3->O            1   0.704   0.000  TETRIS_GAME/BIG_RD_ADDR_mux0000<10>43_SW0_SW0_SW0_F (N355)
-     MUXF5:I0->O           1   0.321   0.455  TETRIS_GAME/BIG_RD_ADDR_mux0000<10>43_SW0_SW0_SW0 (N1631)
-     LUT3:I2->O            1   0.704   0.000  TETRIS_GAME/BIG_RD_ADDR_mux0000<10>203 (TETRIS_GAME/BIG_RD_ADDR_mux0000<10>)
-     FDE:D                     0.308          TETRIS_GAME/BIG_RD_ADDR_10
+     FDRE:C->Q            61   0.591   1.446  TETRIS_GAME/rot_cntr_0 (TETRIS_GAME/rot_cntr_0)
+     LUT2_D:I0->O         14   0.704   1.004  TETRIS_GAME/Mrom_COND_25_rom0000511 (N140)
+     LUT4:I3->O            1   0.704   0.000  TETRIS_GAME/Mrom_COND_25_rom0000291_6_f5_F (N267)
+     MUXF5:I0->O           9   0.321   0.820  TETRIS_GAME/Mrom_COND_25_rom0000291_6_f5 (TETRIS_GAME/Mrom_COND_25_rom0000291_6_f5)
+     MUXF5:S->O            1   0.739   0.455  ld<4>663_SW2 (N1642)
+     LUT4_L:I2->LO         1   0.704   0.104  TETRIS_GAME/canmove_rot_cmp_eq0004711 (N45)
+     LUT4:I3->O            2   0.704   0.451  TETRIS_GAME/canmove_rot_mux000015 (TETRIS_GAME/canmove_rot_mux000015)
+     LUT4_L:I3->LO         1   0.704   0.104  TETRIS_GAME/canmove_rot_not0001152 (TETRIS_GAME/canmove_rot_not0001152)
+     LUT4:I3->O            1   0.704   0.420  TETRIS_GAME/canmove_rot_not0001241 (TETRIS_GAME/canmove_rot_not0001)
+     FDE:CE                    0.555          TETRIS_GAME/canmove_rot
     ----------------------------------------
-    Total                     11.040ns (6.504ns logic, 4.536ns route)
-                                       (58.9% logic, 41.1% route)
+    Total                     11.234ns (6.430ns logic, 4.804ns route)
+                                       (57.2% logic, 42.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk16M'
-  Total number of paths / destination ports: 58 / 47
+  Total number of paths / destination ports: 57 / 46
 -------------------------------------------------------------------------
-Offset:              6.291ns (Levels of Logic = 5)
+Offset:              6.774ns (Levels of Logic = 6)
   Source:            bt<1> (PAD)
   Destination:       TETRIS_GAME/pos_x_5 (FF)
   Destination Clock: clk16M rising 1.6X
@@ -1091,20 +1097,21 @@ Offset:              6.291ns (Levels of Logic = 5)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             1   1.218   0.455  bt_1_IBUF (bt_1_IBUF)
-     LUT4:I2->O            9   0.704   0.855  TETRIS_GAME/pos_x_and00021 (TETRIS_GAME/pos_x_and0002)
+     LUT3:I2->O            1   0.704   0.499  TETRIS_GAME/pos_x_and000221_SW0 (N88)
+     LUT4_D:I1->LO         1   0.704   0.135  TETRIS_GAME/pos_x_and00021 (N441)
      LUT3:I2->O            3   0.704   0.535  TETRIS_GAME/Mcount_pos_x_xor<4>11 (N91)
      LUT4_L:I3->LO         1   0.704   0.104  TETRIS_GAME/Mcount_pos_x_xor<4>13 (N110)
-     LUT4:I3->O            1   0.704   0.000  TETRIS_GAME/Mcount_pos_x_xor<5>11 (Result<5>)
+     LUT4:I3->O            1   0.704   0.000  TETRIS_GAME/Mcount_pos_x_xor<5>11 (Result<5>1)
      FDRE:D                    0.308          TETRIS_GAME/pos_x_5
     ----------------------------------------
-    Total                      6.291ns (4.342ns logic, 1.949ns route)
-                                       (69.0% logic, 31.0% route)
+    Total                      6.774ns (5.046ns logic, 1.728ns route)
+                                       (74.5% logic, 25.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk16M'
   Total number of paths / destination ports: 13 / 13
 -------------------------------------------------------------------------
-Offset:              5.138ns (Levels of Logic = 1)
+Offset:              5.137ns (Levels of Logic = 1)
   Source:            TETRIS_GAME/rotation_0 (FF)
   Destination:       ld<0> (PAD)
   Source Clock:      clk16M rising 1.6X
@@ -1113,23 +1120,23 @@ Offset:              5.138ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             71   0.591   1.275  TETRIS_GAME/rotation_0 (TETRIS_GAME/rotation_0)
+     FDE:C->Q             69   0.591   1.274  TETRIS_GAME/rotation_0 (TETRIS_GAME/rotation_0)
      OBUF:I->O                 3.272          ld_0_OBUF (ld<0>)
     ----------------------------------------
-    Total                      5.138ns (3.863ns logic, 1.275ns route)
+    Total                      5.137ns (3.863ns logic, 1.274ns route)
                                        (75.2% logic, 24.8% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 28.00 secs
-Total CPU time to Xst completion: 28.04 secs
+Total REAL time to Xst completion: 32.00 secs
+Total CPU time to Xst completion: 32.77 secs
  
 --> 
 
-Total memory usage is 318316 kilobytes
+Total memory usage is 349228 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  145 (   0 filtered)
+Number of warnings :  149 (   0 filtered)
 Number of infos    :   74 (   0 filtered)
 
