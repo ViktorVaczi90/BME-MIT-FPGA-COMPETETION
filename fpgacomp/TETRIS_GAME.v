@@ -366,7 +366,8 @@ module TETRIS_GAME(
 			 horizontal[3]  <= horizontal_rot_data[{color,rotation,2'b11}];
 			end
 	//**********************CLEARING UP FULL ROWS
-	if(gravity == 1 && !canmove_down)
+	//EZ A LOGIKA NEM JÓ!!!! LEGALÁBBIS ÍGY NEM, MARADHAT KI SOR. TALÁN MEGOLDANÁ HA FOLYAMATOSAN MINDEN ÜTEM VÉGÉN VIZSGÁLNÁNK( SZERINTEM ÚGY JÓ )
+	if(gravity == 1 && !canmove_down)// Csak ha leraktunk egyet.
 	begin
 			if(move_cntr >= 127 && move_cntr <= 1000)
 			begin
