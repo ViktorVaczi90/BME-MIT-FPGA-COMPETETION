@@ -1,7 +1,7 @@
 #Release 14.7 - par P.20131013 (nt64)
 #Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-#Sun May 31 02:37:54 2015
+#Thu Jun 11 14:44:32 2015
 
 #
 ## NOTE: This file is designed to be imported into a spreadsheet program
@@ -20,7 +20,7 @@
 # -----,-----,-----,-----,-----,-----,-----,-----,-----,-----,-----,-----,-----,-----,-----,
 Pin Number,Signal Name,Pin Usage,Pin Name,Direction,IO Standard,IO Bank Number,Drive (mA),Slew Rate,Termination,IOB Delay,Voltage,Constraint,IO Register,Signal Integrity,
 P1,,,PROG_B,,,,,,,,,,,,
-P2,,DIFFM,IO_L01P_3,UNUSED,,3,,,,,,,,,
+P2,xps2_c,IBUF,IO_L01P_3,INPUT,LVCMOS25*,3,,,PULLUP,NONE,,LOCATED,NO,NONE,
 P3,vs,IOB,IO_L01N_3,OUTPUT,LVCMOS25*,3,12,SLOW,NONE**,,,LOCATED,NO,NONE,
 P4,rgb<4>,IOB,IO_L02P_3,OUTPUT,LVCMOS25*,3,12,SLOW,NONE**,,,LOCATED,NO,NONE,
 P5,rgb<2>,IOB,IO_L02N_3/VREF_3,OUTPUT,LVCMOS25*,3,12,SLOW,NONE**,,,LOCATED,NO,NONE,
@@ -160,7 +160,7 @@ P138,,,VCCO_0,,,0,,,,,2.50,,,,
 P139,rgb<5>,IOB,IO_L09P_0,OUTPUT,LVCMOS25*,0,12,SLOW,NONE**,,,LOCATED,NO,NONE,
 P140,hs,IOB,IO_L09N_0,OUTPUT,LVCMOS25*,0,12,SLOW,NONE**,,,LOCATED,NO,NONE,
 P141,,IBUF,IP,UNUSED,,0,,,,,,,,,
-P142,,DIFFM,IO_L10P_0,UNUSED,,0,,,,,,,,,
+P142,xps2_d,IBUF,IO_L10P_0,INPUT,LVCMOS25*,0,,,PULLUP,NONE,,LOCATED,NO,NONE,
 P143,,DIFFS,IO_L10N_0/HSWAP,UNUSED,,0,,,,,,,,,
 P144,,,TDI,,,,,,,,,,,,
 

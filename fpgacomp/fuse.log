@@ -1,41 +1,16 @@
-Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/toptest_isim_beh.exe" -prj "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/toptest_beh.prj" "work.toptest" "work.glbl" 
+Running: E:\Prog\ISE\telepítve\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o C:/Users/Greg/Desktop/fpga_-master/fpgacomp/top_level_isim_beh.exe -prj C:/Users/Greg/Desktop/fpga_-master/fpgacomp/top_level_beh.prj work.top_level work.glbl 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
-Analyzing Verilog file "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/VGA_DRV.v" into library work
-Analyzing Verilog file "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/BLOCK_framebuffer.v" into library work
-Analyzing Verilog file "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/BIG_framebuffer.v" into library work
-Analyzing Verilog file "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/VGA.v" into library work
-Analyzing Verilog file "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/TETRIS_GAME.v" into library work
-WARNING:HDLCompiler:114 - "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/TETRIS_GAME.v" Line 351: /* in comment
-Analyzing Verilog file "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/clk_gen.v" into library work
-Analyzing Verilog file "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/top_level.v" into library work
-WARNING:HDLCompiler:114 - "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/top_level.v" Line 100: /* in comment
-Analyzing Verilog file "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/toptest.v" into library work
-Analyzing Verilog file "E:/XILINXISE/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
-Starting static elaboration
-WARNING:HDLCompiler:1016 - "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/clk_gen.v" Line 17: Port DSSEN is not connected to this instance
-Completed static elaboration
-Compiling module IBUFG
-Compiling module dcm_sp_clock_divide_by_2
-Compiling module dcm_sp_maximum_period_check(cloc...
-Compiling module dcm_sp_maximum_period_check(cloc...
-Compiling module dcm_sp_clock_lost
-Compiling module DCM_SP(CLKFX_DIVIDE=16,CLKFX_MUL...
-Compiling module BUFG
-Compiling module clk_gen
-Compiling module VGA_DRV
-Compiling module BLOCK_framebuffer
-Compiling module BIG_framebuffer
-Compiling module VGA
-Compiling module TETRIS_GAME
-Compiling module top_level
-Compiling module toptest
-Compiling module glbl
-Time Resolution for simulation is 1ps.
-Waiting for 4 sub-compilation(s) to finish...
-Compiled 16 Verilog Units
-Built simulation executable F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/toptest_isim_beh.exe
-Fuse Memory Usage: 32480 KB
-Fuse CPU Usage: 748 ms
+Analyzing Verilog file "C:/Users/Greg/Desktop/fpga_-master/fpgacomp/VGA_DRV.v" into library work
+Analyzing Verilog file "C:/Users/Greg/Desktop/fpga_-master/fpgacomp/srl_fifo.v" into library work
+Analyzing Verilog file "C:/Users/Greg/Desktop/fpga_-master/fpgacomp/BLOCK_framebuffer.v" into library work
+Analyzing Verilog file "C:/Users/Greg/Desktop/fpga_-master/fpgacomp/BIG_framebuffer.v" into library work
+Analyzing Verilog file "C:/Users/Greg/Desktop/fpga_-master/fpgacomp/VGA.v" into library work
+Analyzing Verilog file "C:/Users/Greg/Desktop/fpga_-master/fpgacomp/TETRIS_GAME.v" into library work
+Analyzing Verilog file "C:/Users/Greg/Desktop/fpga_-master/fpgacomp/ps2_if.v" into library work
+Analyzing Verilog file "C:/Users/Greg/Desktop/fpga_-master/fpgacomp/clk_gen.v" into library work
+Analyzing Verilog file "C:/Users/Greg/Desktop/fpga_-master/fpgacomp/top_level.v" into library work
+WARNING:HDLCompiler:114 - "C:/Users/Greg/Desktop/fpga_-master/fpgacomp/top_level.v" Line 212: /* in comment
+ERROR:HDLCompiler:0 - "Unknown" Line 0: cannot open verilog file E:/Prog/ISE/telepÃ­tve/14.7/ISE_DS/ISE//verilog/src/glbl.v

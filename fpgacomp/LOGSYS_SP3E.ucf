@@ -159,3 +159,6 @@ NET "rgb[1]" LOC="p134";
 NET "rgb[0]" LOC="p7";
 NET "vs" LOC="p3";
 NET "hs" LOC="p140"; 
+
+NET "xps2_c"  LOC = "p2" |PULLUP ;
+NET "xps2_d"  LOC = "p142" |PULLUP ;

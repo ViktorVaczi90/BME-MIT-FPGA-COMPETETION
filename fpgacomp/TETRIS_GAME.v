@@ -23,13 +23,18 @@ module TETRIS_GAME(
     input clk,
     input rst,
     input en,
-	 output [7:0] leds,
+	 output reg [7:0] leds,
     output reg [10:0] BIG_RD_ADDR,
     output reg [10:0] BIG_WR_ADDR,
     output reg BIG_WR_EN,
     output reg [5:0] BIG_WR_DATA,
-    input[5:0] BIG_RD_DATA
+    input[5:0] BIG_RD_DATA,
+	 input [7:0] ps2,
+	 input ps2_en
     );
+	 reg [4:0] right;
+	 reg detect;
+	 
 	 initial BIG_RD_ADDR = 0;
 	 initial BIG_WR_ADDR = 0;
 	 initial BIG_WR_EN = 0;
@@ -107,6 +112,7 @@ module TETRIS_GAME(
 	 wire [6:0] ver_wire_clear_wr;
 	 wire [5:0] hor_wire_clear_rd;
 	 wire [6:0] ver_wire_clear_rd;
+	 reg foundrow;	initial foundrow = 0;
 	 //END OF CLEAR REGS
 	 initial begin
   $readmemb("vertical.bin",  vertical_rot_data) ;
@@ -296,7 +302,7 @@ module TETRIS_GAME(
 	//*******************************CHECKROT BEGIN
 	if (rot_cntr == 0 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end)) canmove_rot <=1;
 	if(rot_cntr >= 0 && rot_cntr <= 3 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end))	
-   BIG_RD_ADDR <= {ver_wire_rot[4:0],hor_wire_rot[5:0]};
+		BIG_RD_ADDR <= {ver_wire_rot[4:0],hor_wire_rot[5:0]};
 	if(rot_cntr >= 2 && rot_cntr <= 5 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end))
 	begin
 	debugreg[rot_cntr] <= BIG_RD_DATA;
@@ -316,8 +322,16 @@ module TETRIS_GAME(
 	end
 	end
 	//*******************************CHECKROT END*/
+
+	//*******************************CHECKROW BEGIN
+	if( gravity == 1 && !canmove_down && move_cntr >= 128 && move_cntr <= 128+16*20 )
+		BIG_RD_ADDR <= {ver_wire_clear_rd[4:0],hor_wire_clear_rd[5:0]};//Adjuk ki a soroknak megfelelo címeket BAJ VAN!! MÁSIK BLOKK TUDJA CSAK OLVASNI B+...
+	if ( gravity == 1 && !canmove_down && move_cntr >= 512 && move_cntr <= 512+16*20 )
+		BIG_RD_ADDR <= {ver_wire_clear_rd[4:0],hor_wire_clear_rd[5:0]};
+	//*******************************CHECKROW END*/
+
 	end
-	//END OF CHECKS
+	//*************************************************************************END OF CHECKS
 	
 //MOVES BLOCKS
 	always@(posedge clk) // SETUP MOVE_CNTR
@@ -330,7 +344,8 @@ module TETRIS_GAME(
 	
 	always@(posedge clk)
 	begin
-
+		if ( ps2_en == 1 && ps2 == 8'b01000001 )
+			right <= 1;
 		if (/* gravity == 1 &&*/ move_cntr >1 && move_cntr <= 6)// ERASE PREVIOUS POSITION
 			begin
 				BIG_WR_ADDR <= {ver_wire[4:0],hor_wire[5:0]};
@@ -350,11 +365,14 @@ module TETRIS_GAME(
 			pos_y <= pos_y +1;
 		if(move_cntr == 11 && canmove_right && btn[0] && !(gravity == 1 && !canmove_down)&& ! input_delay) //SORRENDET ÁT KELL GONDOLNI, LEHET HOGY NEM TUD LEFELE MENNI, LERAKJA, DE MÉG ELMEGY EGYET BALRA JOBBRA.
 			pos_x <= pos_x +1;
-		if(move_cntr == 12 && canmove_left && btn[1]&& !(gravity == 1 && !canmove_down) && ! input_delay)
-			pos_x <= pos_x -1;
+		if(move_cntr == 12 && canmove_left && right && !(gravity == 1 && !canmove_down))
+		begin
+			pos_x <= pos_x - 1;
+			right <= 0;
+		end
 		if(move_cntr == 13 && btn[2] && !(gravity == 1 && !canmove_down)&& canmove_rot && ! input_delay) 
 			rotation <= rotation +1;
-		if(move_cntr == 14&& !(gravity == 1 && !canmove_down) && ! input_delay) 
+		if(move_cntr == 14 && !(gravity == 1 && !canmove_down) && ! input_delay) 
 			begin
 			vertical[0] <= vertical_rot_data[{color,rotation,2'b00}];
 			 vertical[1] <= vertical_rot_data[{color,rotation,2'b01}];
@@ -369,7 +387,7 @@ module TETRIS_GAME(
 	//EZ A LOGIKA NEM JÓ!!!! LEGALÁBBIS ÍGY NEM, MARADHAT KI SOR. TALÁN MEGOLDANÁ HA FOLYAMATOSAN MINDEN ÜTEM VÉGÉN VIZSGÁLNÁNK( SZERINTEM ÚGY JÓ )
 	if(gravity == 1 && !canmove_down)// Csak ha leraktunk egyet.
 	begin
-			if(move_cntr >= 127 && move_cntr <= 1000)
+			if(move_cntr >= 127 && move_cntr <= 500)
 			begin
 				if(move_cntr == 127)
 				begin
@@ -380,40 +398,66 @@ module TETRIS_GAME(
 				end
 				if(move_cntr >= 128 && move_cntr <= 128+16*20)// Végigmegyünk az összes soron, elvileg 448-ig megyünk
 				begin
-					//BIG_RD_ADDR = {ver_wire_clear_rd[4:0],hor_wire_clear_rd[5:0] };//Adjuk ki a soroknak megfelelo címeket BAJ VAN!! MÁSIK BLOKK TUDJA CSAK OLVASNI B+...
-				end
-				if(move_cntr[3:0] >= 2 && move_cntr[3:0] <= 12 )// Ekkora már bejött az adat
-				begin
-					//if(!BIG_RD_DATA) fullrow<= 0;// HA NEM TELJES A SOR AKKOR NULLÁZUNK ||||BAJ VAN!! MÁSIK BLOKK TUDJA CSAK OLVASNI B+...
-				end
-				if(move_cntr[3:0] == 13 && ! rowcombo)// Ha megtaláltuk az elso teli sort
-				begin
-						if(fullrow)
-						begin
-							rowcombo <= 1; // növeljük a megszámolt teli sorok számát
-							firstrow <= currentrow; // Lementjük a sor helyét
-						end
-				end
-				if(move_cntr[3:0] == 13 && rowcombo) //Ha már találtunk jó sort
-				begin
-					if(fullrow)
+					if(move_cntr[3:0] >= 2 && move_cntr[3:0] <= 12 )// Ekkora már bejött az adat
 					begin
-						rowcombo <= rowcombo +1;// Csak növeljük a  megtalált sorok számát
+						if(!BIG_RD_DATA) fullrow<= 0;// HA NEM TELJES A SOR AKKOR NULLÁZUNK ||||BAJ VAN!! MÁSIK BLOKK TUDJA CSAK OLVASNI B+...
 					end
-				end
-				if(move_cntr[3:0] == 15)
-				begin
-						currentrow <= currentrow +1;
-						fullrow <= 1;// Új lehetoség egy teli  sorra
+					if(move_cntr[3:0] == 13 && ! rowcombo)// Ha megtaláltuk az elso teli sort
+					begin
+							if(fullrow)
+							begin
+								rowcombo <= 1; // növeljük a megszámolt teli sorok számát
+								firstrow <= currentrow; // Lementjük a sor helyét
+							end
+					end
+					if(move_cntr[3:0] == 13 && rowcombo) //Ha már találtunk jó sort
+					begin
+						if( fullrow && !foundrow )
+						begin
+							rowcombo <= rowcombo +1;// Csak növeljük a  megtalált sorok számát
+						end
+					end
+					if ( move_cntr[3:0] == 13 && !fullrow && rowcombo )
+					begin
+						foundrow <= 1;
+					end
+					if(move_cntr[3:0] == 15)
+					begin
+							currentrow <= currentrow +1;
+							fullrow <= 1;// Új lehetoség egy teli  sorra
+							leds <= rowcombo;
+					end
 				end
 			end
 			if(move_cntr == 511)
 			begin
 				currentrow<=0; 
 			end
-			if(move_cntr >= 512 && move_cntr <= 512+16*(firstrow+rowcombo))//Ezt még érdemes átgondolni. Ez az a hely ahol letoljuk a cuccokat. A score-t a rowcombo alapján lehet majd rendezni
-			begin//Valszeg kell majd pár wire, de nem lesz ez vészes.
-			
+			//if(move_cntr >= 512 && move_cntr <= 512+16*(firstrow+rowcombo))//Ezt még érdemes átgondolni. Ez az a hely ahol letoljuk a cuccokat. A score-t a rowcombo alapján lehet majd rendezni
+			//begin//Valszeg kell majd pár wire, de nem lesz ez vészes.
+			//end
+			if( move_cntr >= 511 && move_cntr <= 1024)
+			begin
+				if ( move_cntr == 511 )
+				begin
+					currentrow <= firstrow-1;
+					BIG_WR_EN <= 0;
+				end
+				if ( move_cntr >= 512 && move_cntr <= 512+16*20 )
+				begin
+					if ( move_cntr[3:0] >= 2 && move_cntr[3:0] <= 12 )//TODO READ
+						begin
+							BIG_WR_ADDR <= {ver_wire_clear_wr[4:0],hor_wire_clear_wr[5:0]};
+							BIG_WR_DATA <= BIG_RD_DATA;
+							BIG_WR_EN <= 1;
+						end
+					if( move_cntr[3:0] == 13)
+					begin
+					BIG_WR_EN <=0;
+					if(currentrow)
+						currentrow <= currentrow -1;
+					end
+				end
 			end
 	end
 	//*********************END OF CLEARING UP FULL ROWS
@@ -433,8 +477,8 @@ module TETRIS_GAME(
 		end
 		if ( move_cntr >=64 && move_cntr <= 95)
 		begin
-		BIG_WR_ADDR <= {5'd2+move_cntr[4:0],6'd2};
-		BIG_WR_DATA <= 54 + debugreg[move_cntr[4:0]];
+		BIG_WR_ADDR <= {5'd2,6'd2};
+		BIG_WR_DATA <= ps2;
 		BIG_WR_EN <= 1;
 		end
 		if(move_cntr == 96) BIG_WR_EN <= 0;
@@ -456,13 +500,13 @@ module TETRIS_GAME(
 	assign ver_wire_rot = tetris_y_begin + pos_y + vertical_rot_data[{color[2:0],nextrot[1:0],rot_cntr[1:0]}];
 	assign hor_wire_rot = tetris_x_begin +pos_x + horizontal_rot_data[{color[2:0],nextrot[1:0],rot_cntr[1:0]}]; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
 	
-	assign hor_wire_clear_rd =tetris_x_begin +1 + move_cntr[3:0];
+	assign hor_wire_clear_rd =tetris_x_begin + 1 + move_cntr[3:0];
 	assign ver_wire_clear_rd =tetris_y_begin + currentrow;
-	assign hor_wire_clear_wr =tetris_x_begin +1 + move_cntr[3:0]-2;
-	assign ver_wire_clear_wr =tetris_y_begin + currentrow;
+	assign hor_wire_clear_wr =tetris_x_begin + 1 + move_cntr[3:0]-2;
+	assign ver_wire_clear_wr =tetris_y_begin + currentrow+rowcombo;// Thiis the difference betwwe
 	//DEBUG
 	assign ver_wire_rottest = tetris_y_begin + pos_y + vertical_rot_data[{color[2:0],nextrottest[1:0],rot_cntrtest[1:0]}];
-	assign hor_wire_rottest = tetris_x_begin +pos_x + horizontal_rot_data[{color[2:0],nextrottest[1:0],rot_cntrtest[1:0]}]; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
+	assign hor_wire_rottest = tetris_x_begin + pos_x + horizontal_rot_data[{color[2:0],nextrottest[1:0],rot_cntrtest[1:0]}]; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
 	assign nextrottest = rotation +1;
 	//END OF DEBUG
 	 assign rot_cntr_0 = rot_cntr +3;
@@ -470,6 +514,6 @@ module TETRIS_GAME(
 	 assign rot_cntr_2 = rot_cntr +2;
 	
 	assign nextrot = rotation +1;
-	assign leds ={color,rotation};
+	//assign leds ={color,rotation};
 	
 endmodule

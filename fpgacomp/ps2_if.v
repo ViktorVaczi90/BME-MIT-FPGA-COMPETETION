@@ -32,7 +32,7 @@ else if (smpl_en)
       
 reg data_valid;
 always @ (posedge clk)
-if (smpl_en==1 & bit_cntr==10)
+if (smpl_en==1 && bit_cntr==10)    //Itt csak egy & jel volt, de az valszeg rossz 
    data_valid <= 1;
 else
    data_valid <= 0;
@@ -86,17 +86,6 @@ case (data_shr[8:1])
    8'h3E: ascii_val = 8'h38;		//8
    8'h46: ascii_val = 8'h39;		//9
    
-   8'h70: ascii_val = 8'h30;		//0
-   8'h69: ascii_val = 8'h31;		//1
-   8'h72: ascii_val = 8'h32;		//2
-   8'h7a: ascii_val = 8'h33;		//3
-   8'h6b: ascii_val = 8'h34;		//4
-   8'h73: ascii_val = 8'h35;		//5
-   8'h74: ascii_val = 8'h36;		//6
-   8'h6c: ascii_val = 8'h37;		//7
-   8'h75: ascii_val = 8'h38;		//8
-   8'h7d: ascii_val = 8'h39;		//9
-   
    8'h79: ascii_val = 8'h2b;		//+
    8'h7b: ascii_val = 8'h2d;		//-
    8'h7c: ascii_val = 8'h2a;		//*
@@ -116,25 +105,27 @@ case (data_shr[8:1])
    Numeric *	7C
    Numeric -	7B*/
    
-   8'h0E: ascii_val = 8'h60;		// `
+   /*8'h0E: ascii_val = 8'h60;		// `
    8'h4E: ascii_val = 8'h2D;		// -
    8'h55: ascii_val = 8'h3D;		// =
-   8'h5C: ascii_val = 8'h5C;		// \
+   8'h5C: ascii_val = 8'h5C;		// \*/
    8'h29: ascii_val = 8'h20;		// (space)
-   8'h54: ascii_val = 8'h5B;		// [
+   /*8'h54: ascii_val = 8'h5B;		// [
    8'h5B: ascii_val = 8'h5D;		// ] 
    8'h4C: ascii_val = 8'h3B;		// ;
    8'h52: ascii_val = 8'h27;		// '
    8'h41: ascii_val = 8'h2C;		// ,
    8'h49: ascii_val = 8'h2E;		// .
-   8'h4A: ascii_val = 8'h2F;		// /
+   8'h4A: ascii_val = 8'h2F;		// /*/
    
    8'h5A: ascii_val = 8'h0D;		// enter (CR)
    8'h66: ascii_val = 8'h08;		// backspace
    
    // arrows
-   //8'h74: ascii_val = 8'h4A;		// left arrow
-   //8'h6b: ascii_val = 8'h42;		// right arrow
+  /* 8'h74: ascii_val = 8'h11;		// left arrow
+   8'h6B: ascii_val = 8'h12;		// right arrow
+	8'b48: ascii_val = 8'h13;		// down arrow
+	8'b4B: ascii_val = 8'h14;		// up arrow*/
    
    8'hF0: ascii_val = 8'hF0;		   // BREAK CODE
    default: ascii_val = 8'h23;		// #

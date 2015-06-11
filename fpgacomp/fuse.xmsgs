@@ -5,13 +5,10 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="114" delta="unknown" >"F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/TETRIS_GAME.v" Line 351: /* in comment
+<msg type="warning" file="HDLCompiler" num="114" delta="unknown" >"C:/Users/Greg/Desktop/fpga_-master/fpgacomp/top_level.v" Line 212: /* in comment
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="114" delta="unknown" >"F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/top_level.v" Line 100: /* in comment
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/clk_gen.v" Line 17: Port <arg fmt="%s" index="1">DSSEN</arg> is not connected to this instance
+<msg type="error" file="HDLCompiler" num="0" delta="unknown" >cannot open verilog file <arg fmt="%s" index="1">E:/Prog/ISE/telepￃﾭtve/14.7/ISE_DS/ISE//verilog/src/glbl.v</arg>
 </msg>
 
 </messages>

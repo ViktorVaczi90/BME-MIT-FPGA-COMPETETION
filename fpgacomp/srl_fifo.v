@@ -15,8 +15,10 @@ module srl_fifo(
 integer i;
 reg [7:0] srl_shr[15:0];
 always @ (posedge clk)
-if (wr) begin
-   for (i=15; i>0; i=i-1) begin
+if (wr) 
+begin
+   for (i=15; i>0; i=i-1) 
+	begin
       srl_shr[i] <= srl_shr[i-1];
    end
    srl_shr[0] <= din;
@@ -28,14 +30,15 @@ always @ (posedge clk)
 if (rst)
    srl_dcnt <= 0;
 else
-   if (wr & ~rd)
+   if ( wr && ~rd && srl_dcnt < 16 )
       srl_dcnt <= srl_dcnt + 1;
-   else if (~wr & rd)
+   else if ( ~wr && rd && srl_dcnt > 0 )
       srl_dcnt <= srl_dcnt - 1;
 
 // FIFO status signals
 assign empty = (srl_dcnt==0);
-assign full  = srl_dcnt[4];
+//assign full = srl_dcnt[4] || srl_dcnt[3] || srl_dcnt[2] || srl_dcnt[1] || srl_dcnt[0];
+assign full  = srl_dcnt[4]; /*&& srl_dcnt[3] && srl_dcnt[2] && srl_dcnt[1] && srl_dcnt[0])*/ //Minek 5 bites a 16 cucc címzésére ????????
 
 // Read address for the SRL, 4 bit wide
 reg [3:0] srl_addr;
@@ -43,9 +46,9 @@ always @ (posedge clk)
 if (rst)
    srl_addr <= 4'hF;
 else
-   if (wr & ~rd)
+   if ( wr && ~rd && srl_addr < 16 )
       srl_addr <= srl_addr + 1;
-   else if (~wr & rd)
+   else if ( ~wr && rd && srl_addr > 0 )
       srl_addr <= srl_addr - 1;
 
 // Asyncronous data output

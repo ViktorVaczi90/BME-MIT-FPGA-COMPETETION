@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/toptest_isim_beh.exe" -prj "F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/toptest_beh.prj" "work.toptest" "work.glbl" 
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "C:/Users/Greg/Desktop/fpga_-master/fpgacomp/top_level_isim_beh.exe" -prj "C:/Users/Greg/Desktop/fpga_-master/fpgacomp/top_level_beh.prj" "work.top_level" "work.glbl" 

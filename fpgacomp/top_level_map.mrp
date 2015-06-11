@@ -9,37 +9,38 @@ Target Device  : xc3s250e
 Target Package : tq144
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Sun May 31 02:37:09 2015
+Mapped Date    : Thu Jun 11 14:43:34 2015
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:   21
+Number of warnings:   24
 Logic Utilization:
-  Number of Slice Flip Flops:           317 out of   4,896    6%
-  Number of 4 input LUTs:             1,041 out of   4,896   21%
+  Number of Slice Flip Flops:           308 out of   4,896    6%
+  Number of 4 input LUTs:             1,078 out of   4,896   22%
 Logic Distribution:
-  Number of occupied Slices:            649 out of   2,448   26%
-    Number of Slices containing only related logic:     649 out of     649 100%
-    Number of Slices containing unrelated logic:          0 out of     649   0%
+  Number of occupied Slices:            702 out of   2,448   28%
+    Number of Slices containing only related logic:     702 out of     702 100%
+    Number of Slices containing unrelated logic:          0 out of     702   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       1,195 out of   4,896   24%
-    Number used as logic:             1,041
-    Number used as a route-thru:        154
+  Total Number of 4 input LUTs:       1,245 out of   4,896   25%
+    Number used as logic:             1,069
+    Number used as a route-thru:        167
+    Number used as Shift registers:       9
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
 
-  Number of bonded IOBs:                 30 out of     108   27%
+  Number of bonded IOBs:                 32 out of     108   29%
   Number of RAMB16s:                      7 out of      12   58%
   Number of BUFGMUXs:                     2 out of      24    8%
   Number of DCMs:                         1 out of       4   25%
 
-Average Fanout of Non-Clock Nets:                3.81
+Average Fanout of Non-Clock Nets:                3.68
 
-Peak Memory Usage:  278 MB
-Total REAL time to MAP completion:  3 secs 
-Total CPU time to MAP completion:   2 secs 
+Peak Memory Usage:  280 MB
+Total REAL time to MAP completion:  4 secs 
+Total CPU time to MAP completion:   3 secs 
 
 NOTES:
 
@@ -80,50 +81,58 @@ Section 1 - Errors
 
 Section 2 - Warnings
 --------------------
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0012_3
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0003_2_f5. 
-   There is a conflict for the FXMUX.  The design will exhibit suboptimal
-   timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_48_3 failed to
-   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0014_2_f5.  There is a
-   conflict for the FXMUX.  The design will exhibit suboptimal timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_43_3 failed to
-   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0008_2_f5.  There is a
-   conflict for the FXMUX.  The design will exhibit suboptimal timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0026_3
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0024_2_f5. 
-   There is a conflict for the FXMUX.  The design will exhibit suboptimal
-   timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0020_3
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0017_2_f5. 
-   There is a conflict for the FXMUX.  The design will exhibit suboptimal
-   timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0031_3
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0028_2_f5. 
-   There is a conflict for the FXMUX.  The design will exhibit suboptimal
-   timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0012_31
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0003_2_f5_0. 
-   There is a conflict for the FXMUX.  The design will exhibit suboptimal
-   timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_48_31 failed to
-   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0014_2_f5_0.  There is a
-   conflict for the FXMUX.  The design will exhibit suboptimal timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_43_31 failed to
-   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0008_2_f5_0.  There is a
-   conflict for the FXMUX.  The design will exhibit suboptimal timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0026_31
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0024_2_f5_0. 
-   There is a conflict for the FXMUX.  The design will exhibit suboptimal
-   timing.
 WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0020_31
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0017_2_f5_0. 
-   There is a conflict for the FXMUX.  The design will exhibit suboptimal
-   timing.
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__COND_43_2_f5_0.  There
+   is a conflict for the FXMUX.  The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0023_31
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__COND_44_2_f5_0.  There
+   is a conflict for the FXMUX.  The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0003_31
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__COND_45_2_f5_0.  There
+   is a conflict for the FXMUX.  The design will exhibit suboptimal timing.
 WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0031_31
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0028_2_f5_0. 
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__COND_46_2_f5_0.  There
+   is a conflict for the FXMUX.  The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0022_3
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0001_2_f5. 
    There is a conflict for the FXMUX.  The design will exhibit suboptimal
    timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0033_3
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0005_2_f5. 
+   There is a conflict for the FXMUX.  The design will exhibit suboptimal
+   timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0040_3
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0034_2_f5. 
+   There is a conflict for the FXMUX.  The design will exhibit suboptimal
+   timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0041_3
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0036_2_f5. 
+   There is a conflict for the FXMUX.  The design will exhibit suboptimal
+   timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0023_3
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__COND_44_2_f5.  There is
+   a conflict for the FXMUX.  The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0031_3
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__COND_46_2_f5.  There is
+   a conflict for the FXMUX.  The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0022_31
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0001_2_f5_0. 
+   There is a conflict for the FXMUX.  The design will exhibit suboptimal
+   timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0033_31
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0005_2_f5_0. 
+   There is a conflict for the FXMUX.  The design will exhibit suboptimal
+   timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0040_31
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0034_2_f5_0. 
+   There is a conflict for the FXMUX.  The design will exhibit suboptimal
+   timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0041_31
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0036_2_f5_0. 
+   There is a conflict for the FXMUX.  The design will exhibit suboptimal
+   timing.
+WARNING:PhysDesignRules:367 - The signal <bt<1>_IBUF> is incomplete. The signal
+   does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <bt<3>_IBUF> is incomplete. The signal
    does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <sw<0>_IBUF> is incomplete. The signal
@@ -146,13 +155,13 @@ WARNING:PhysDesignRules:367 - The signal <sw<7>_IBUF> is incomplete. The signal
 Section 3 - Informational
 -------------------------
 INFO:LIT:243 - Logical network bt<3>_IBUF has no load.
-INFO:LIT:395 - The above info message is repeated 8 more times for the following
+INFO:LIT:395 - The above info message is repeated 9 more times for the following
    (max. 5 shown):
+   bt<1>_IBUF,
    sw<7>_IBUF,
    sw<6>_IBUF,
    sw<5>_IBUF,
-   sw<4>_IBUF,
-   sw<3>_IBUF
+   sw<4>_IBUF
    To see the details of these info messages, please use the -detail switch.
 INFO:MapLib:562 - No environment variables are currently set.
 INFO:LIT:244 - All of the single ended outputs in this design are using slew
@@ -164,7 +173,7 @@ INFO:PhysDesignRules:772 - To achieve optimal frequency synthesis performance
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-   2 block(s) optimized away
+   3 block(s) optimized away
 
 Section 5 - Removed Logic
 -------------------------
@@ -173,6 +182,7 @@ Optimized Block(s):
 TYPE 		BLOCK
 GND 		XST_GND
 VCC 		XST_VCC
+GND 		ps2_if/data_fifo/XST_GND
 
 To enable printing of redundant blocks removed and signals merged, set the
 detailed map report option and rerun map.
@@ -214,6 +224,8 @@ Section 6 - IOB Properties
 | sw<6>                              | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
 | sw<7>                              | IBUF             | INPUT     | LVCMOS25             |       |          |      |              |          | 0 / 0    |
 | vs                                 | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| xps2_c                             | IBUF             | INPUT     | LVCMOS25             |       |          |      |              | PULLUP   | 0 / 0    |
+| xps2_d                             | IBUF             | INPUT     | LVCMOS25             |       |          |      |              | PULLUP   | 0 / 0    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Section 7 - RPMs
