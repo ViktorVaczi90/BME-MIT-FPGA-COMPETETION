@@ -17,5 +17,11 @@
 
 <msg type="info" file="Timing" num="3389" delta="old" >This architecture does not support &apos;Discrete Jitter&apos; and &apos;Phase Error&apos; calculations, these terms will be zero in the Clock Uncertainty calculation.  Please make appropriate modification to SYSTEM_JITTER to account for the unsupported Discrete Jitter and Phase Error.</msg>
 
+<msg type="warning" file="Timing" num="3413" delta="old" >Non-Ascii characters were found and are not allowed. Please remove from sources. The non-ascii characters were replaced in the report with &apos;z&apos; : <arg fmt="%s" index="1">E:\Prog\ISE\telepztve\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise
+-v 3 -s 4 -n 3 -fastpaths -xml top_level.twx top_level.ncd -o top_level.twr
+top_level.pcf -ucf LOGSYS_SP3E.ucf
+
+</arg>.</msg>
+
 </messages>
 

@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.15 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.15 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: top_level.prj
 
@@ -104,13 +104,17 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
+Compiling verilog file "add3.v" in library work
 Compiling verilog file "VGA_DRV.v" in library work
+Module <add3> compiled
 Compiling verilog file "srl_fifo.v" in library work
 Module <VGA_DRV> compiled
 Compiling verilog file "BLOCK_framebuffer.v" in library work
 Module <srl_fifo> compiled
-Compiling verilog file "BIG_framebuffer.v" in library work
+Compiling verilog file "binary_to_BCD.v" in library work
 Module <BLOCK_framebuffer> compiled
+Compiling verilog file "BIG_framebuffer.v" in library work
+Module <binary_to_BCD> compiled
 Compiling verilog file "VGA.v" in library work
 Module <BIG_framebuffer> compiled
 Compiling verilog file "TETRIS_GAME.v" in library work
@@ -142,11 +146,9 @@ Analyzing hierarchy for module <TETRIS_GAME> in library <work> with parameters.
 	check_left_start = "00000000000000000001001110001000"
 	check_right_end = "00000000000000000001101101010111"
 	check_right_start = "00000000000000000001011101110000"
-	check_rot_end = "00000000000000000001111100111111"
-	check_rot_endtest = "00000000000000000010001100101000"
-	check_rot_start = "00000000000000000001101101011000"
-	check_rot_starttest = "00000000000000000001111101000000"
-	moves_end = "00000000000000000010111011100000"
+	check_rot_end = "00000000000000000010001100100111"
+	check_rot_start = "00000000000000000001111101000000"
+	moves_end = "00000000000000000011001011001000"
 	moves_start = "00000000000000000010011100010000"
 	number_of_blocks = "00000000000000000000000000000111"
 	teris_y_end = "00000000000000000000000000011000"
@@ -170,7 +172,11 @@ Analyzing hierarchy for module <BLOCK_framebuffer> in library <work>.
 
 Analyzing hierarchy for module <BIG_framebuffer> in library <work>.
 
+Analyzing hierarchy for module <binary_to_BCD> in library <work>.
+
 Analyzing hierarchy for module <srl_fifo> in library <work>.
+
+Analyzing hierarchy for module <add3> in library <work>.
 
 
 =========================================================================
@@ -230,11 +236,9 @@ Analyzing module <TETRIS_GAME> in library <work>.
 	check_left_start = 32'sb00000000000000000001001110001000
 	check_right_end = 32'sb00000000000000000001101101010111
 	check_right_start = 32'sb00000000000000000001011101110000
-	check_rot_end = 32'sb00000000000000000001111100111111
-	check_rot_endtest = 32'sb00000000000000000010001100101000
-	check_rot_start = 32'sb00000000000000000001101101011000
-	check_rot_starttest = 32'sb00000000000000000001111101000000
-	moves_end = 32'sb00000000000000000010111011100000
+	check_rot_end = 32'sb00000000000000000010001100100111
+	check_rot_start = 32'sb00000000000000000001111101000000
+	moves_end = 32'sb00000000000000000011001011001000
 	moves_start = 32'sb00000000000000000010011100010000
 	number_of_blocks = 32'sb00000000000000000000000000000111
 	teris_y_end = 32'sb00000000000000000000000000011000
@@ -311,6 +315,12 @@ INFO:Xst:1433 - Contents of array <horizontal> may be accessed with an index tha
 INFO:Xst:1433 - Contents of array <vertical> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 Module <TETRIS_GAME> is correct for synthesis.
  
+Analyzing module <binary_to_BCD> in library <work>.
+Module <binary_to_BCD> is correct for synthesis.
+ 
+Analyzing module <add3> in library <work>.
+Module <add3> is correct for synthesis.
+ 
 Analyzing module <ps2_if> in library <work>.
 Module <ps2_if> is correct for synthesis.
  
@@ -327,277 +337,6 @@ Module <srl_fifo> is correct for synthesis.
 
 Performing bidirectional port resolution...
 INFO:Xst:2679 - Register <i> in unit <srl_fifo> has a constant value of 0 during circuit operation. The register is replaced by logic.
-
-Synthesizing Unit <TETRIS_GAME>.
-    Related source file is "TETRIS_GAME.v".
-WARNING:Xst:647 - Input <btn<3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <btn<1>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1781 - Signal <vertical_rot_data> is used but never assigned. Tied to default value.
-WARNING:Xst:646 - Signal <ver_wire_rottest> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ver_wire_rot<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ver_wire_right<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ver_wire_left<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ver_wire_down<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ver_wire_clear_wr<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ver_wire_clear_rd<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ver_wire<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <rotationtest> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <rot_cntr_2test> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <rot_cntr_1test> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <rot_cntr_1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <rot_cntr_0test> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <rot_cntr_0> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:653 - Signal <input_delay_max> is used but never assigned. This sourceless signal will be automatically connected to value 000101.
-WARNING:Xst:1781 - Signal <horizontal_rot_data> is used but never assigned. Tied to default value.
-WARNING:Xst:646 - Signal <hor_wire_rottest> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:653 - Signal <gravity_speed> is used but never assigned. This sourceless signal will be automatically connected to value 0010100.
-WARNING:Xst:1780 - Signal <detect> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <debugreg> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <canmove_rottest> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-    Using one-hot encoding for signal <right>.
-    Found 128x13-bit ROM for signal <COND_48$rom0000>.
-    Found 128x13-bit ROM for signal <COND_25$rom0000>.
-    Found 128x13-bit ROM for signal <COND_36$rom0000>.
-    Found 128x13-bit ROM for signal <COND_37$rom0000>.
-    Found 128x13-bit ROM for signal <COND_38$rom0000>.
-    Found 128x13-bit ROM for signal <COND_39$rom0000>.
-    Found 11-bit register for signal <BIG_RD_ADDR>.
-    Found 1-bit register for signal <BIG_WR_EN>.
-    Found 8-bit register for signal <leds>.
-    Found 6-bit register for signal <BIG_WR_DATA>.
-    Found 11-bit register for signal <BIG_WR_ADDR>.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0000> created at line 244.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0001> created at line 244.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0002> created at line 244.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0003> created at line 262.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0004> created at line 277.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0005> created at line 277.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0006> created at line 277.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0007> created at line 244.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0008> created at line 244.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0009> created at line 244.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0010> created at line 262.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0011> created at line 262.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0012> created at line 262.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0013> created at line 277.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0014> created at line 277.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0015> created at line 277.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0016> created at line 244.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0017> created at line 244.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0018> created at line 244.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0019> created at line 244.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0020> created at line 244.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0021> created at line 244.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0022> created at line 244.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0023> created at line 262.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0024> created at line 262.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0025> created at line 262.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0026> created at line 262.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0027> created at line 277.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0028> created at line 277.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0029> created at line 277.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0030> created at line 277.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0031> created at line 277.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0032> created at line 277.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0033> created at line 277.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0034> created at line 313.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0036> created at line 313.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0038> created at line 313.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0039> created at line 313.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0040> created at line 313.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0041> created at line 313.
-    Found 7-bit 4-to-1 multiplexer for signal <$varindex0042> created at line 313.
-    Found 6-bit 4-to-1 multiplexer for signal <$varindex0043> created at line 313.
-    Found 6-bit adder carry out for signal <add0000$addsub0000> created at line 244.
-    Found 6-bit adder carry out for signal <add0001$addsub0000> created at line 244.
-    Found 6-bit adder carry out for signal <add0002$addsub0000> created at line 244.
-    Found 7-bit adder carry out for signal <add0003$addsub0000> created at line 262.
-    Found 7-bit adder carry out for signal <add0004$addsub0000> created at line 262.
-    Found 7-bit adder carry out for signal <add0005$addsub0000> created at line 262.
-    Found 7-bit adder carry out for signal <add0006$addsub0000> created at line 277.
-    Found 7-bit adder carry out for signal <add0007$addsub0000> created at line 277.
-    Found 7-bit adder carry out for signal <add0008$addsub0000> created at line 277.
-    Found 5-bit adder carry out for signal <BIG_RD_ADDR$addsub0000> created at line 241.
-    Found 15-bit comparator greatequal for signal <BIG_RD_ADDR$cmp_ge0000> created at line 327.
-    Found 15-bit comparator greatequal for signal <BIG_RD_ADDR$cmp_ge0001> created at line 329.
-    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0000> created at line 240.
-    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0001> created at line 259.
-    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0002> created at line 274.
-    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0003> created at line 304.
-    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0004> created at line 327.
-    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0005> created at line 329.
-    Found 15-bit comparator greatequal for signal <BIG_WR_ADDR$cmp_ge0000> created at line 478.
-    Found 15-bit comparator greatequal for signal <BIG_WR_ADDR$cmp_ge0001> created at line 439.
-    Found 4-bit comparator greatequal for signal <BIG_WR_ADDR$cmp_ge0002> created at line 448.
-    Found 4-bit comparator greater for signal <BIG_WR_ADDR$cmp_gt0000> created at line 448.
-    Found 15-bit comparator greater for signal <BIG_WR_ADDR$cmp_gt0001> created at line 446.
-    Found 15-bit comparator greater for signal <BIG_WR_ADDR$cmp_gt0002> created at line 349.
-    Found 15-bit comparator greater for signal <BIG_WR_ADDR$cmp_gt0003> created at line 357.
-    Found 15-bit comparator greater for signal <BIG_WR_ADDR$cmp_gt0004> created at line 439.
-    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0000> created at line 478.
-    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0001> created at line 439.
-    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0002> created at line 349.
-    Found 4-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0003> created at line 448.
-    Found 4-bit comparator less for signal <BIG_WR_ADDR$cmp_lt0000> created at line 448.
-    Found 15-bit comparator less for signal <BIG_WR_ADDR$cmp_lt0001> created at line 446.
-    Found 15-bit comparator less for signal <BIG_WR_ADDR$cmp_lt0002> created at line 357.
-    Found 15-bit comparator less for signal <BIG_WR_ADDR$cmp_lt0003> created at line 439.
-    Found 15-bit comparator greatequal for signal <BIG_WR_DATA$cmp_ge0000> created at line 357.
-    Found 15-bit comparator lessequal for signal <BIG_WR_DATA$cmp_le0000> created at line 357.
-    Found 1-bit register for signal <canmove_down>.
-    Found 6-bit adder carry out for signal <canmove_down$addsub0001> created at line 244.
-    Found 6-bit adder carry out for signal <canmove_down$addsub0002> created at line 244.
-    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0001> created at line 244.
-    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0002> created at line 244.
-    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0003> created at line 244.
-    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0004> created at line 244.
-    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0005> created at line 244.
-    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0006> created at line 244.
-    Found 15-bit comparator greatequal for signal <canmove_down$cmp_ge0000> created at line 242.
-    Found 15-bit comparator greatequal for signal <canmove_down$cmp_ge0001> created at line 238.
-    Found 7-bit comparator greatequal for signal <canmove_down$cmp_ge0002> created at line 244.
-    Found 15-bit comparator greater for signal <canmove_down$cmp_gt0000> created at line 242.
-    Found 15-bit comparator lessequal for signal <canmove_down$cmp_le0000> created at line 242.
-    Found 15-bit comparator lessequal for signal <canmove_down$cmp_le0001> created at line 238.
-    Found 7-bit comparator less for signal <canmove_down$cmp_lt0000> created at line 244.
-    Found 15-bit comparator less for signal <canmove_down$cmp_lt0001> created at line 242.
-    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0002> created at line 244.
-    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0003> created at line 244.
-    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0004> created at line 244.
-    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0005> created at line 244.
-    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0006> created at line 244.
-    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0007> created at line 244.
-    Found 1-bit register for signal <canmove_left>.
-    Found 8-bit comparator equal for signal <canmove_left$cmp_eq0000> created at line 262.
-    Found 6-bit comparator equal for signal <canmove_left$cmp_eq0001> created at line 262.
-    Found 8-bit comparator equal for signal <canmove_left$cmp_eq0002> created at line 262.
-    Found 6-bit comparator equal for signal <canmove_left$cmp_eq0003> created at line 262.
-    Found 8-bit comparator equal for signal <canmove_left$cmp_eq0004> created at line 262.
-    Found 6-bit comparator equal for signal <canmove_left$cmp_eq0005> created at line 262.
-    Found 15-bit comparator greatequal for signal <canmove_left$cmp_ge0000> created at line 261.
-    Found 15-bit comparator greatequal for signal <canmove_left$cmp_ge0001> created at line 257.
-    Found 15-bit comparator greater for signal <canmove_left$cmp_gt0000> created at line 261.
-    Found 15-bit comparator lessequal for signal <canmove_left$cmp_le0000> created at line 261.
-    Found 15-bit comparator lessequal for signal <canmove_left$cmp_le0001> created at line 257.
-    Found 15-bit comparator less for signal <canmove_left$cmp_lt0000> created at line 261.
-    Found 1-bit register for signal <canmove_right>.
-    Found 7-bit adder carry out for signal <canmove_right$addsub0001> created at line 277.
-    Found 7-bit adder carry out for signal <canmove_right$addsub0002> created at line 277.
-    Found 8-bit comparator equal for signal <canmove_right$cmp_eq0000> created at line 277.
-    Found 6-bit comparator equal for signal <canmove_right$cmp_eq0001> created at line 277.
-    Found 8-bit comparator equal for signal <canmove_right$cmp_eq0002> created at line 277.
-    Found 6-bit comparator equal for signal <canmove_right$cmp_eq0003> created at line 277.
-    Found 8-bit comparator equal for signal <canmove_right$cmp_eq0004> created at line 277.
-    Found 6-bit comparator equal for signal <canmove_right$cmp_eq0005> created at line 277.
-    Found 15-bit comparator greatequal for signal <canmove_right$cmp_ge0000> created at line 276.
-    Found 15-bit comparator greatequal for signal <canmove_right$cmp_ge0001> created at line 272.
-    Found 8-bit comparator greatequal for signal <canmove_right$cmp_ge0002> created at line 277.
-    Found 15-bit comparator greater for signal <canmove_right$cmp_gt0000> created at line 276.
-    Found 15-bit comparator lessequal for signal <canmove_right$cmp_le0000> created at line 276.
-    Found 15-bit comparator lessequal for signal <canmove_right$cmp_le0001> created at line 272.
-    Found 8-bit comparator less for signal <canmove_right$cmp_lt0000> created at line 277.
-    Found 15-bit comparator less for signal <canmove_right$cmp_lt0001> created at line 276.
-    Found 8-bit comparator not equal for signal <canmove_right$cmp_ne0001> created at line 277.
-    Found 6-bit comparator not equal for signal <canmove_right$cmp_ne0002> created at line 277.
-    Found 8-bit comparator not equal for signal <canmove_right$cmp_ne0003> created at line 277.
-    Found 6-bit comparator not equal for signal <canmove_right$cmp_ne0004> created at line 277.
-    Found 8-bit comparator not equal for signal <canmove_right$cmp_ne0005> created at line 277.
-    Found 6-bit comparator not equal for signal <canmove_right$cmp_ne0006> created at line 277.
-    Found 1-bit register for signal <canmove_rot>.
-    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0000> created at line 313.
-    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0001> created at line 313.
-    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0002> created at line 313.
-    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0003> created at line 313.
-    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0004> created at line 313.
-    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0005> created at line 313.
-    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0006> created at line 313.
-    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0007> created at line 313.
-    Found 15-bit comparator greatequal for signal <canmove_rot$cmp_ge0000> created at line 306.
-    Found 15-bit comparator greatequal for signal <canmove_rot$cmp_ge0001> created at line 303.
-    Found 15-bit comparator greater for signal <canmove_rot$cmp_gt0000> created at line 306.
-    Found 15-bit comparator lessequal for signal <canmove_rot$cmp_le0000> created at line 306.
-    Found 15-bit comparator lessequal for signal <canmove_rot$cmp_le0001> created at line 303.
-    Found 15-bit comparator less for signal <canmove_rot$cmp_lt0000> created at line 306.
-    Found 3-bit register for signal <color>.
-    Found 15-bit adder carry out for signal <COND_11$addsub0000>.
-    Found 15-bit adder carry out for signal <COND_12$addsub0000>.
-    Found 15-bit adder carry out for signal <COND_13$addsub0000>.
-    Found 15-bit adder carry out for signal <COND_21$addsub0000>.
-    Found 15-bit adder carry out for signal <COND_33$addsub0000>.
-    Found 15-bit adder carry out for signal <COND_34$addsub0000>.
-    Found 15-bit adder carry out for signal <COND_35$addsub0000>.
-    Found 15-bit adder carry out for signal <COND_8$addsub0000>.
-    Found 5-bit register for signal <currentrow>.
-    Found 5-bit addsub for signal <currentrow$share0000>.
-    Found 15-bit up counter for signal <cycle_cntr>.
-    Found 15-bit up counter for signal <down_cntr>.
-    Found 15-bit comparator greater for signal <down_cntr$cmp_gt0000> created at line 214.
-    Found 15-bit comparator less for signal <down_cntr$cmp_lt0000> created at line 214.
-    Found 1-bit register for signal <en_posedge>.
-    Found 5-bit register for signal <firstrow>.
-    Found 1-bit register for signal <foundrow>.
-    Found 1-bit register for signal <fullrow>.
-    Found 7-bit up counter for signal <gravity>.
-    Found 6-bit adder for signal <hor_wire>.
-    Found 6-bit adder for signal <hor_wire$add0000> created at line 489.
-    Found 4-bit adder carry out for signal <hor_wire_clear_rd$addsub0000> created at line 503.
-    Found 6-bit subtractor for signal <hor_wire_clear_wr>.
-    Found 6-bit adder for signal <hor_wire_down>.
-    Found 6-bit subtractor for signal <hor_wire_left>.
-    Found 7-bit adder carry out for signal <hor_wire_left$addsub0000> created at line 495.
-    Found 6-bit adder carry out for signal <hor_wire_left$addsub0001> created at line 495.
-    Found 6-bit adder for signal <hor_wire_right>.
-    Found 6-bit adder for signal <hor_wire_rot>.
-    Found 28-bit register for signal <horizontal>.
-    Found 6-bit up counter for signal <input_delay>.
-    Found 15-bit up counter for signal <left_cntr>.
-    Found 15-bit comparator greater for signal <left_cntr$cmp_gt0000> created at line 200.
-    Found 15-bit comparator less for signal <left_cntr$cmp_lt0000> created at line 200.
-    Found 15-bit up counter for signal <move_cntr>.
-    Found 15-bit comparator greater for signal <move_cntr$cmp_gt0000> created at line 341.
-    Found 15-bit comparator less for signal <move_cntr$cmp_lt0000> created at line 341.
-    Found 2-bit adder for signal <nextrot>.
-    Found 6-bit updown counter for signal <pos_x>.
-    Found 5-bit up counter for signal <pos_y>.
-    Found 3-bit up counter for signal <random>.
-    Found 2-bit register for signal <right>.
-    Found 15-bit up counter for signal <right_cntr>.
-    Found 15-bit comparator greater for signal <right_cntr$cmp_gt0000> created at line 207.
-    Found 15-bit comparator less for signal <right_cntr$cmp_lt0000> created at line 207.
-    Found 15-bit up counter for signal <rot_cntr>.
-    Found 15-bit comparator greater for signal <rot_cntr$cmp_gt0000> created at line 221.
-    Found 15-bit comparator less for signal <rot_cntr$cmp_lt0000> created at line 221.
-    Found 2-bit adder for signal <rot_cntr_2>.
-    Found 15-bit up counter for signal <rot_cntrtest>.
-    Found 15-bit comparator greater for signal <rot_cntrtest$cmp_gt0000> created at line 229.
-    Found 15-bit comparator less for signal <rot_cntrtest$cmp_lt0000> created at line 229.
-    Found 2-bit up counter for signal <rotation>.
-    Found 3-bit register for signal <rowcombo>.
-    Found 3-bit adder for signal <rowcombo$addsub0000> created at line 417.
-    Found 15-bit comparator greater for signal <rowcombo$cmp_gt0000> created at line 399.
-    Found 15-bit comparator greater for signal <rowcombo$cmp_gt0001> created at line 390.
-    Found 15-bit comparator less for signal <rowcombo$cmp_lt0000> created at line 399.
-    Found 15-bit comparator less for signal <rowcombo$cmp_lt0001> created at line 390.
-    Found 6-bit adder carry out for signal <ver_wire$addsub0000>.
-    Found 5-bit adder carry out for signal <ver_wire$addsub0001> created at line 488.
-    Found 5-bit adder carry out for signal <ver_wire_clear_rd$addsub0000> created at line 504.
-    Found 6-bit adder for signal <ver_wire_clear_wr$add0000> created at line 506.
-    Found 6-bit adder carry out for signal <ver_wire_down$addsub0000>.
-    Found 6-bit adder carry out for signal <ver_wire_left$addsub0000>.
-    Found 6-bit adder carry out for signal <ver_wire_right$addsub0000>.
-    Found 6-bit adder carry out for signal <ver_wire_rot$addsub0000>.
-    Found 24-bit register for signal <vertical>.
-    Found 21-bit up counter for signal <vsync_cntr>.
-    Summary:
-	inferred   6 ROM(s).
-	inferred  14 Counter(s).
-	inferred 114 D-type flip-flop(s).
-	inferred  48 Adder/Subtractor(s).
-	inferred 108 Comparator(s).
-	inferred 325 Multiplexer(s).
-Unit <TETRIS_GAME> synthesized.
-
 
 Synthesizing Unit <VGA_DRV>.
     Related source file is "VGA_DRV.v".
@@ -649,6 +388,14 @@ WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and lef
 Unit <BIG_framebuffer> synthesized.
 
 
+Synthesizing Unit <add3>.
+    Related source file is "add3.v".
+    Found 16x4-bit ROM for signal <out>.
+    Summary:
+	inferred   1 ROM(s).
+Unit <add3> synthesized.
+
+
 Synthesizing Unit <srl_fifo>.
     Related source file is "srl_fifo.v".
     Found 8-bit 16-to-1 multiplexer for signal <dout>.
@@ -692,6 +439,272 @@ WARNING:Xst:646 - Signal <data_shr<0>> is assigned but never used. This unconnec
 Unit <ps2_if> synthesized.
 
 
+Synthesizing Unit <binary_to_BCD>.
+    Related source file is "binary_to_BCD.v".
+Unit <binary_to_BCD> synthesized.
+
+
+Synthesizing Unit <TETRIS_GAME>.
+    Related source file is "TETRIS_GAME.v".
+WARNING:Xst:647 - Input <btn<3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1781 - Signal <vertical_rot_data> is used but never assigned. Tied to default value.
+WARNING:Xst:646 - Signal <ver_wire_rot<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ver_wire_right<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ver_wire_left<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ver_wire_down<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ver_wire_clear_wr<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ver_wire_clear_rd<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ver_wire<6:5>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <rot_cntr_1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <rot_cntr_0> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <right> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <nextrottest> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <input_delay_max> is used but never assigned. This sourceless signal will be automatically connected to value 001010.
+WARNING:Xst:1781 - Signal <horizontal_rot_data> is used but never assigned. Tied to default value.
+WARNING:Xst:653 - Signal <gravity_speed> is used but never assigned. This sourceless signal will be automatically connected to value 0010100.
+WARNING:Xst:1780 - Signal <detect> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <debugreg> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 128x13-bit ROM for signal <COND_48$rom0000>.
+    Found 128x13-bit ROM for signal <COND_25$rom0000>.
+    Found 128x13-bit ROM for signal <COND_36$rom0000>.
+    Found 128x13-bit ROM for signal <COND_37$rom0000>.
+    Found 128x13-bit ROM for signal <COND_38$rom0000>.
+    Found 128x13-bit ROM for signal <COND_39$rom0000>.
+    Found 11-bit register for signal <BIG_RD_ADDR>.
+    Found 1-bit register for signal <BIG_WR_EN>.
+    Found 8-bit register for signal <leds>.
+    Found 6-bit register for signal <BIG_WR_DATA>.
+    Found 11-bit register for signal <BIG_WR_ADDR>.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0000> created at line 295.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0001> created at line 295.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0002> created at line 295.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0003> created at line 312.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0004> created at line 326.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0005> created at line 326.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0006> created at line 326.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0007> created at line 295.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0008> created at line 295.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0009> created at line 295.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0010> created at line 312.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0011> created at line 312.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0012> created at line 312.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0013> created at line 326.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0014> created at line 326.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0015> created at line 326.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0016> created at line 295.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0017> created at line 295.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0018> created at line 295.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0019> created at line 295.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0020> created at line 295.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0021> created at line 295.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0022> created at line 295.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0023> created at line 312.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0024> created at line 312.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0025> created at line 312.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0026> created at line 312.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0027> created at line 326.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0028> created at line 326.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0029> created at line 326.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0030> created at line 326.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0031> created at line 326.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0032> created at line 326.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0033> created at line 326.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0034> created at line 347.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0036> created at line 347.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0038> created at line 347.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0039> created at line 347.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0040> created at line 347.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0041> created at line 347.
+    Found 7-bit 4-to-1 multiplexer for signal <$varindex0042> created at line 347.
+    Found 6-bit 4-to-1 multiplexer for signal <$varindex0043> created at line 347.
+    Found 6-bit adder carry out for signal <add0000$addsub0000> created at line 295.
+    Found 6-bit adder carry out for signal <add0001$addsub0000> created at line 295.
+    Found 6-bit adder carry out for signal <add0002$addsub0000> created at line 295.
+    Found 7-bit adder carry out for signal <add0003$addsub0000> created at line 312.
+    Found 7-bit adder carry out for signal <add0004$addsub0000> created at line 312.
+    Found 7-bit adder carry out for signal <add0005$addsub0000> created at line 312.
+    Found 7-bit adder carry out for signal <add0006$addsub0000> created at line 326.
+    Found 7-bit adder carry out for signal <add0007$addsub0000> created at line 326.
+    Found 7-bit adder carry out for signal <add0008$addsub0000> created at line 326.
+    Found 5-bit adder carry out for signal <BIG_RD_ADDR$addsub0000> created at line 292.
+    Found 10-bit comparator greatequal for signal <BIG_RD_ADDR$cmp_ge0000> created at line 358.
+    Found 10-bit comparator greatequal for signal <BIG_RD_ADDR$cmp_ge0001> created at line 360.
+    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0000> created at line 291.
+    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0001> created at line 309.
+    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0002> created at line 323.
+    Found 15-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0003> created at line 338.
+    Found 10-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0004> created at line 358.
+    Found 10-bit comparator lessequal for signal <BIG_RD_ADDR$cmp_le0005> created at line 360.
+    Found 10-bit comparator greatequal for signal <BIG_WR_ADDR$cmp_ge0000> created at line 484.
+    Found 4-bit comparator greatequal for signal <BIG_WR_ADDR$cmp_ge0001> created at line 493.
+    Found 15-bit comparator greatequal for signal <BIG_WR_ADDR$cmp_ge0002> created at line 418.
+    Found 15-bit comparator greater for signal <BIG_WR_ADDR$cmp_gt0000> created at line 382.
+    Found 10-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0000> created at line 484.
+    Found 4-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0001> created at line 493.
+    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0002> created at line 418.
+    Found 15-bit comparator lessequal for signal <BIG_WR_ADDR$cmp_le0003> created at line 382.
+    Found 6-bit adder for signal <BIG_WR_DATA$addsub0000>.
+    Found 1-bit register for signal <canmove_down>.
+    Found 6-bit adder carry out for signal <canmove_down$addsub0001> created at line 295.
+    Found 6-bit adder carry out for signal <canmove_down$addsub0002> created at line 295.
+    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0001> created at line 295.
+    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0002> created at line 295.
+    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0003> created at line 295.
+    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0004> created at line 295.
+    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0005> created at line 295.
+    Found 7-bit comparator equal for signal <canmove_down$cmp_eq0006> created at line 295.
+    Found 15-bit comparator greatequal for signal <canmove_down$cmp_ge0000> created at line 293.
+    Found 15-bit comparator greatequal for signal <canmove_down$cmp_ge0001> created at line 289.
+    Found 7-bit comparator greatequal for signal <canmove_down$cmp_ge0002> created at line 295.
+    Found 15-bit comparator greater for signal <canmove_down$cmp_gt0000> created at line 293.
+    Found 15-bit comparator lessequal for signal <canmove_down$cmp_le0000> created at line 293.
+    Found 15-bit comparator lessequal for signal <canmove_down$cmp_le0001> created at line 289.
+    Found 7-bit comparator less for signal <canmove_down$cmp_lt0000> created at line 295.
+    Found 15-bit comparator less for signal <canmove_down$cmp_lt0001> created at line 293.
+    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0002> created at line 295.
+    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0003> created at line 295.
+    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0004> created at line 295.
+    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0005> created at line 295.
+    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0006> created at line 295.
+    Found 7-bit comparator not equal for signal <canmove_down$cmp_ne0007> created at line 295.
+    Found 1-bit register for signal <canmove_left>.
+    Found 8-bit comparator equal for signal <canmove_left$cmp_eq0000> created at line 312.
+    Found 6-bit comparator equal for signal <canmove_left$cmp_eq0001> created at line 312.
+    Found 8-bit comparator equal for signal <canmove_left$cmp_eq0002> created at line 312.
+    Found 6-bit comparator equal for signal <canmove_left$cmp_eq0003> created at line 312.
+    Found 8-bit comparator equal for signal <canmove_left$cmp_eq0004> created at line 312.
+    Found 6-bit comparator equal for signal <canmove_left$cmp_eq0005> created at line 312.
+    Found 15-bit comparator greatequal for signal <canmove_left$cmp_ge0000> created at line 311.
+    Found 15-bit comparator greatequal for signal <canmove_left$cmp_ge0001> created at line 307.
+    Found 15-bit comparator greater for signal <canmove_left$cmp_gt0000> created at line 311.
+    Found 15-bit comparator lessequal for signal <canmove_left$cmp_le0000> created at line 311.
+    Found 15-bit comparator lessequal for signal <canmove_left$cmp_le0001> created at line 307.
+    Found 15-bit comparator less for signal <canmove_left$cmp_lt0000> created at line 311.
+    Found 1-bit register for signal <canmove_right>.
+    Found 7-bit adder carry out for signal <canmove_right$addsub0001> created at line 326.
+    Found 7-bit adder carry out for signal <canmove_right$addsub0002> created at line 326.
+    Found 8-bit comparator equal for signal <canmove_right$cmp_eq0000> created at line 326.
+    Found 6-bit comparator equal for signal <canmove_right$cmp_eq0001> created at line 326.
+    Found 8-bit comparator equal for signal <canmove_right$cmp_eq0002> created at line 326.
+    Found 6-bit comparator equal for signal <canmove_right$cmp_eq0003> created at line 326.
+    Found 8-bit comparator equal for signal <canmove_right$cmp_eq0004> created at line 326.
+    Found 6-bit comparator equal for signal <canmove_right$cmp_eq0005> created at line 326.
+    Found 15-bit comparator greatequal for signal <canmove_right$cmp_ge0000> created at line 325.
+    Found 15-bit comparator greatequal for signal <canmove_right$cmp_ge0001> created at line 321.
+    Found 8-bit comparator greatequal for signal <canmove_right$cmp_ge0002> created at line 326.
+    Found 15-bit comparator greater for signal <canmove_right$cmp_gt0000> created at line 325.
+    Found 15-bit comparator lessequal for signal <canmove_right$cmp_le0000> created at line 325.
+    Found 15-bit comparator lessequal for signal <canmove_right$cmp_le0001> created at line 321.
+    Found 8-bit comparator less for signal <canmove_right$cmp_lt0000> created at line 326.
+    Found 15-bit comparator less for signal <canmove_right$cmp_lt0001> created at line 325.
+    Found 8-bit comparator not equal for signal <canmove_right$cmp_ne0001> created at line 326.
+    Found 6-bit comparator not equal for signal <canmove_right$cmp_ne0002> created at line 326.
+    Found 8-bit comparator not equal for signal <canmove_right$cmp_ne0003> created at line 326.
+    Found 6-bit comparator not equal for signal <canmove_right$cmp_ne0004> created at line 326.
+    Found 8-bit comparator not equal for signal <canmove_right$cmp_ne0005> created at line 326.
+    Found 6-bit comparator not equal for signal <canmove_right$cmp_ne0006> created at line 326.
+    Found 1-bit register for signal <canmove_rot>.
+    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0000> created at line 347.
+    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0001> created at line 347.
+    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0002> created at line 347.
+    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0003> created at line 347.
+    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0004> created at line 347.
+    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0005> created at line 347.
+    Found 7-bit comparator equal for signal <canmove_rot$cmp_eq0006> created at line 347.
+    Found 6-bit comparator equal for signal <canmove_rot$cmp_eq0007> created at line 347.
+    Found 15-bit comparator greatequal for signal <canmove_rot$cmp_ge0000> created at line 340.
+    Found 15-bit comparator greatequal for signal <canmove_rot$cmp_ge0001> created at line 336.
+    Found 15-bit comparator greater for signal <canmove_rot$cmp_gt0000> created at line 340.
+    Found 15-bit comparator lessequal for signal <canmove_rot$cmp_le0000> created at line 340.
+    Found 15-bit comparator lessequal for signal <canmove_rot$cmp_le0001> created at line 336.
+    Found 15-bit comparator less for signal <canmove_rot$cmp_lt0000> created at line 340.
+    Found 3-bit register for signal <color>.
+    Found 15-bit adder carry out for signal <COND_11$addsub0000>.
+    Found 15-bit adder carry out for signal <COND_12$addsub0000>.
+    Found 15-bit adder carry out for signal <COND_13$addsub0000>.
+    Found 15-bit adder carry out for signal <COND_21$addsub0000>.
+    Found 15-bit adder carry out for signal <COND_33$addsub0000>.
+    Found 15-bit adder carry out for signal <COND_34$addsub0000>.
+    Found 15-bit adder carry out for signal <COND_35$addsub0000>.
+    Found 15-bit adder carry out for signal <COND_8$addsub0000>.
+    Found 5-bit register for signal <currentrow>.
+    Found 10-bit comparator greater for signal <currentrow$cmp_gt0000> created at line 491.
+    Found 10-bit comparator greater for signal <currentrow$cmp_gt0001> created at line 484.
+    Found 10-bit comparator less for signal <currentrow$cmp_lt0000> created at line 491.
+    Found 10-bit comparator less for signal <currentrow$cmp_lt0001> created at line 484.
+    Found 5-bit addsub for signal <currentrow$share0000>.
+    Found 15-bit up counter for signal <cycle_cntr>.
+    Found 15-bit up counter for signal <down_cntr>.
+    Found 15-bit comparator greater for signal <down_cntr$cmp_gt0000> created at line 246.
+    Found 15-bit comparator less for signal <down_cntr$cmp_lt0000> created at line 246.
+    Found 1-bit register for signal <en_posedge>.
+    Found 5-bit register for signal <firstrow>.
+    Found 1-bit register for signal <foundrow>.
+    Found 1-bit register for signal <fullrow>.
+    Found 4-bit comparator greater for signal <fullrow$cmp_gt0000> created at line 444.
+    Found 4-bit comparator less for signal <fullrow$cmp_lt0000> created at line 444.
+    Found 7-bit up counter for signal <gravity>.
+    Found 6-bit adder for signal <hor_wire>.
+    Found 6-bit adder for signal <hor_wire$add0000> created at line 568.
+    Found 4-bit adder carry out for signal <hor_wire_clear_rd$addsub0000> created at line 580.
+    Found 6-bit subtractor for signal <hor_wire_clear_wr>.
+    Found 6-bit adder for signal <hor_wire_down>.
+    Found 6-bit subtractor for signal <hor_wire_left>.
+    Found 7-bit adder carry out for signal <hor_wire_left$addsub0000> created at line 572.
+    Found 6-bit adder carry out for signal <hor_wire_left$addsub0001> created at line 572.
+    Found 6-bit adder for signal <hor_wire_right>.
+    Found 6-bit adder for signal <hor_wire_rot>.
+    Found 28-bit register for signal <horizontal>.
+    Found 6-bit up counter for signal <input_delay>.
+    Found 15-bit up counter for signal <left_cntr>.
+    Found 15-bit comparator greater for signal <left_cntr$cmp_gt0000> created at line 226.
+    Found 15-bit comparator less for signal <left_cntr$cmp_lt0000> created at line 226.
+    Found 15-bit up counter for signal <move_cntr>.
+    Found 15-bit comparator greater for signal <move_cntr$cmp_gt0000> created at line 276.
+    Found 15-bit comparator less for signal <move_cntr$cmp_lt0000> created at line 276.
+    Found 2-bit adder for signal <nextrot>.
+    Found 6-bit updown counter for signal <pos_x>.
+    Found 5-bit up counter for signal <pos_y>.
+    Found 3-bit up counter for signal <random>.
+    Found 15-bit up counter for signal <right_cntr>.
+    Found 15-bit comparator greater for signal <right_cntr$cmp_gt0000> created at line 236.
+    Found 15-bit comparator less for signal <right_cntr$cmp_lt0000> created at line 236.
+    Found 15-bit up counter for signal <rot_cntr>.
+    Found 15-bit comparator greater for signal <rot_cntr$cmp_gt0000> created at line 256.
+    Found 15-bit comparator less for signal <rot_cntr$cmp_lt0000> created at line 256.
+    Found 2-bit adder for signal <rot_cntr_2>.
+    Found 2-bit up counter for signal <rotation>.
+    Found 3-bit register for signal <rowcombo>.
+    Found 3-bit adder for signal <rowcombo$addsub0000> created at line 461.
+    Found 3-bit comparator greatequal for signal <rowcombo$cmp_ge0000> created at line 459.
+    Found 10-bit comparator greater for signal <rowcombo$cmp_gt0000> created at line 442.
+    Found 10-bit comparator greater for signal <rowcombo$cmp_gt0001> created at line 431.
+    Found 10-bit comparator less for signal <rowcombo$cmp_lt0000> created at line 442.
+    Found 10-bit comparator less for signal <rowcombo$cmp_lt0001> created at line 431.
+    Found 3-bit comparator less for signal <rowcombo$cmp_lt0002> created at line 459.
+    Found 15-bit up accumulator for signal <score>.
+    Found 6-bit adder carry out for signal <ver_wire$addsub0000>.
+    Found 5-bit adder carry out for signal <ver_wire$addsub0001> created at line 567.
+    Found 5-bit adder carry out for signal <ver_wire_clear_rd$addsub0000> created at line 581.
+    Found 6-bit adder for signal <ver_wire_clear_wr$add0000> created at line 583.
+    Found 6-bit adder carry out for signal <ver_wire_down$addsub0000>.
+    Found 6-bit adder carry out for signal <ver_wire_left$addsub0000>.
+    Found 6-bit adder carry out for signal <ver_wire_right$addsub0000>.
+    Found 6-bit adder carry out for signal <ver_wire_rot$addsub0000>.
+    Found 24-bit register for signal <vertical>.
+    Found 21-bit up counter for signal <vsync_cntr>.
+    Summary:
+	inferred   6 ROM(s).
+	inferred  13 Counter(s).
+	inferred   1 Accumulator(s).
+	inferred 112 D-type flip-flop(s).
+	inferred  49 Adder/Subtractor(s).
+	inferred 104 Comparator(s).
+	inferred 325 Multiplexer(s).
+Unit <TETRIS_GAME> synthesized.
+
+
 Synthesizing Unit <top_level>.
     Related source file is "top_level.v".
 WARNING:Xst:647 - Input <sw> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -732,9 +745,10 @@ Macro Statistics
 # RAMs                                                 : 2
  16384x6-bit dual-port RAM                             : 1
  2048x6-bit dual-port RAM                              : 1
-# ROMs                                                 : 6
+# ROMs                                                 : 13
  128x13-bit ROM                                        : 6
-# Adders/Subtractors                                   : 50
+ 16x4-bit ROM                                          : 7
+# Adders/Subtractors                                   : 51
  10-bit adder carry out                                : 2
  15-bit adder carry out                                : 8
  16-bit subtractor                                     : 4
@@ -743,7 +757,7 @@ Macro Statistics
  4-bit adder carry out                                 : 1
  5-bit adder carry out                                 : 3
  5-bit addsub                                          : 1
- 6-bit adder                                           : 6
+ 6-bit adder                                           : 7
  6-bit adder carry out                                 : 11
  6-bit subtractor                                      : 2
  7-bit adder carry out                                 : 9
@@ -760,25 +774,32 @@ Macro Statistics
  6-bit up counter                                      : 1
  6-bit updown counter                                  : 1
  7-bit up counter                                      : 1
-# Registers                                            : 54
+# Accumulators                                         : 1
+ 15-bit up accumulator                                 : 1
+# Registers                                            : 53
  1-bit register                                        : 13
  11-bit register                                       : 4
  14-bit register                                       : 1
- 2-bit register                                        : 2
+ 2-bit register                                        : 1
  3-bit register                                        : 2
  5-bit register                                        : 2
  6-bit register                                        : 8
  7-bit register                                        : 4
  8-bit register                                        : 18
-# Comparators                                          : 115
- 10-bit comparator lessequal                           : 3
+# Comparators                                          : 113
+ 10-bit comparator greatequal                          : 3
+ 10-bit comparator greater                             : 4
+ 10-bit comparator less                                : 4
+ 10-bit comparator lessequal                           : 6
  11-bit comparator greatequal                          : 1
  11-bit comparator less                                : 1
  11-bit comparator lessequal                           : 1
- 15-bit comparator greatequal                          : 13
- 15-bit comparator greater                             : 15
- 15-bit comparator less                                : 14
- 15-bit comparator lessequal                           : 18
+ 15-bit comparator greatequal                          : 9
+ 15-bit comparator greater                             : 10
+ 15-bit comparator less                                : 9
+ 15-bit comparator lessequal                           : 14
+ 3-bit comparator greatequal                           : 1
+ 3-bit comparator less                                 : 1
  4-bit comparator greatequal                           : 1
  4-bit comparator greater                              : 2
  4-bit comparator less                                 : 1
@@ -816,43 +837,15 @@ Optimizing FSM <state/FSM> on signal <state[1:2]> with gray encoding.
  10    | 11
  11    | 10
 -------------------
+WARNING:Xst:1290 - Hierarchical block <ps2_if> is unconnected in block <top_level>.
+   It will be removed from the design.
 INFO:Xst:2261 - The FF/Latch <leds_3> in Unit <TETRIS_GAME> is equivalent to the following 4 FFs/Latches, which will be removed : <leds_4> <leds_5> <leds_6> <leds_7> 
-WARNING:Xst:1426 - The value init of the FF/Latch foundrow hinder the constant cleaning in the block TETRIS_GAME.
-   You should achieve better results by setting this init to 1.
 WARNING:Xst:1710 - FF/Latch <leds_3> (without init value) has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <right_1> of sequential type is unconnected in block <TETRIS_GAME>.
-WARNING:Xst:2677 - Node <data_shr_0> of sequential type is unconnected in block <ps2_if>.
 WARNING:Xst:2404 -  FFs/Latches <leds<7:3>> (without init value) have a constant value of 0 in block <TETRIS_GAME>.
 
-Synthesizing (advanced) Unit <BIG_framebuffer>.
-INFO:Xst:3226 - The RAM <Mram_dp_ram> will be implemented as a BLOCK RAM, absorbing the following register(s): <rd_reg>
-    -----------------------------------------------------------------------
-    | ram_type           | Block                               |          |
-    -----------------------------------------------------------------------
-    | Port A                                                              |
-    |     aspect ratio   | 2048-word x 6-bit                   |          |
-    |     mode           | read-first                          |          |
-    |     clkA           | connected to signal <clk>           | rise     |
-    |     weA            | connected to signal <wr_en>         | high     |
-    |     addrA          | connected to signal <wr_addr>       |          |
-    |     diA            | connected to signal <wr_data>       |          |
-    -----------------------------------------------------------------------
-    | optimization       | speed                               |          |
-    -----------------------------------------------------------------------
-    | Port B                                                              |
-    |     aspect ratio   | 2048-word x 6-bit                   |          |
-    |     mode           | write-first                         |          |
-    |     clkB           | connected to signal <clk>           | rise     |
-    |     addrB          | connected to signal <rd_addr>       |          |
-    |     doB            | connected to signal <rd_reg>        |          |
-    -----------------------------------------------------------------------
-    | optimization       | speed                               |          |
-    -----------------------------------------------------------------------
-Unit <BIG_framebuffer> synthesized (advanced).
-
-Synthesizing (advanced) Unit <VGA>.
-INFO:Xst:3038 - The RAM <BLOCKframe/Mram_dp_ram> appears to be read-only. If that was not your intent please check the write enable description.
-INFO:Xst:3226 - The RAM <BLOCKframe/Mram_dp_ram> will be implemented as a BLOCK RAM, absorbing the following register(s): <BLOCKframe/rd_reg>
+Synthesizing (advanced) Unit <top_level>.
+INFO:Xst:3038 - The RAM <BAMBIVGA/BLOCKframe/Mram_dp_ram> appears to be read-only. If that was not your intent please check the write enable description.
+INFO:Xst:3226 - The RAM <BAMBIVGA/BLOCKframe/Mram_dp_ram> will be implemented as a BLOCK RAM, absorbing the following register(s): <BAMBIVGA/BLOCKframe/rd_reg>
     -----------------------------------------------------------------------
     | ram_type           | Block                               |          |
     -----------------------------------------------------------------------
@@ -870,12 +863,35 @@ INFO:Xst:3226 - The RAM <BLOCKframe/Mram_dp_ram> will be implemented as a BLOCK 
     |     aspect ratio   | 16384-word x 6-bit                  |          |
     |     mode           | write-first                         |          |
     |     clkB           | connected to signal <clk>           | rise     |
-    |     addrB          | connected to signal <BLOCK_ADRESS>  |          |
-    |     doB            | connected to signal <BLOCK_DATA>    |          |
+    |     addrB          | connected to signal <BAMBIVGA/BLOCK_ADRESS> |          |
+    |     doB            | connected to signal <BAMBIVGA/BLOCK_DATA> |          |
     -----------------------------------------------------------------------
     | optimization       | speed                               |          |
     -----------------------------------------------------------------------
-Unit <VGA> synthesized (advanced).
+INFO:Xst:3226 - The RAM <BAMBIVGA/BIGframe/Mram_dp_ram> will be implemented as a BLOCK RAM, absorbing the following register(s): <BAMBIVGA/BIGframe/rd_reg>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 2048-word x 6-bit                   |          |
+    |     mode           | read-first                          |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <BIGwe>         | high     |
+    |     addrA          | connected to signal <BIGwr_addr>    |          |
+    |     diA            | connected to signal <BIGwr_data>    |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 2048-word x 6-bit                   |          |
+    |     mode           | write-first                         |          |
+    |     clkB           | connected to signal <clk>           | rise     |
+    |     addrB          | connected to signal <BAMBIVGA/RDMUXwire> |          |
+    |     doB            | connected to signal <BIGrd_data>    |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <top_level> synthesized (advanced).
 
 Synthesizing (advanced) Unit <srl_fifo>.
 	Found 16-bit dynamic shift register for signal <dout<0>>.
@@ -887,7 +903,6 @@ Synthesizing (advanced) Unit <srl_fifo>.
 	Found 16-bit dynamic shift register for signal <dout<6>>.
 	Found 16-bit dynamic shift register for signal <dout<7>>.
 Unit <srl_fifo> synthesized (advanced).
-WARNING:Xst:2677 - Node <right_1> of sequential type is unconnected in block <TETRIS_GAME>.
 WARNING:Xst:2677 - Node <data_shr_0> of sequential type is unconnected in block <ps2_if>.
 
 =========================================================================
@@ -897,9 +912,10 @@ Macro Statistics
 # RAMs                                                 : 2
  16384x6-bit dual-port block RAM                       : 1
  2048x6-bit dual-port block RAM                        : 1
-# ROMs                                                 : 6
+# ROMs                                                 : 13
  128x13-bit ROM                                        : 6
-# Adders/Subtractors                                   : 50
+ 16x4-bit ROM                                          : 7
+# Adders/Subtractors                                   : 51
  10-bit adder carry out                                : 2
  15-bit adder carry out                                : 8
  2-bit adder                                           : 2
@@ -909,7 +925,7 @@ Macro Statistics
  5-bit adder                                           : 1
  5-bit adder carry out                                 : 3
  5-bit addsub                                          : 1
- 6-bit adder                                           : 5
+ 6-bit adder                                           : 6
  6-bit adder carry out                                 : 11
  6-bit subtractor                                      : 2
  7-bit adder carry out                                 : 9
@@ -926,19 +942,25 @@ Macro Statistics
  6-bit up counter                                      : 1
  6-bit updown counter                                  : 1
  7-bit up counter                                      : 1
-# Registers                                            : 166
- Flip-Flops                                            : 166
+# Accumulators                                         : 1
+ 15-bit up accumulator                                 : 1
+# Registers                                            : 154
+ Flip-Flops                                            : 154
 # Shift Registers                                      : 8
  16-bit dynamic shift register                         : 8
-# Comparators                                          : 115
- 10-bit comparator lessequal                           : 3
+# Comparators                                          : 112
+ 10-bit comparator greatequal                          : 3
+ 10-bit comparator greater                             : 4
+ 10-bit comparator less                                : 4
+ 10-bit comparator lessequal                           : 6
  11-bit comparator greatequal                          : 1
- 11-bit comparator less                                : 1
  11-bit comparator lessequal                           : 1
- 15-bit comparator greatequal                          : 13
- 15-bit comparator greater                             : 15
- 15-bit comparator less                                : 14
- 15-bit comparator lessequal                           : 18
+ 15-bit comparator greatequal                          : 9
+ 15-bit comparator greater                             : 10
+ 15-bit comparator less                                : 9
+ 15-bit comparator lessequal                           : 14
+ 3-bit comparator greatequal                           : 1
+ 3-bit comparator less                                 : 1
  4-bit comparator greatequal                           : 1
  4-bit comparator greater                              : 2
  4-bit comparator less                                 : 1
@@ -964,93 +986,104 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1426 - The value init of the FF/Latch foundrow hinder the constant cleaning in the block TETRIS_GAME.
-   You should achieve better results by setting this init to 1.
-WARNING:Xst:1293 - FF/Latch <horizontal_0_4> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_0_5> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_0_6> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_1_1> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_1_2> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_1_3> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_1_4> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_1_5> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_1_6> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_2_2> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_2_3> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_2_4> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_2_5> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_2_6> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_3_2> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_3_3> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_3_4> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_3_5> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_3_6> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_0_2> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_0_3> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_0_4> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_0_5> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_1_1> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_1_2> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_1_3> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_1_4> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_1_5> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_2_2> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_2_3> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_2_4> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_2_5> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_3_2> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_3_3> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_3_4> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vertical_3_5> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_0_2> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <horizontal_0_3> has a constant value of 0 in block <TETRIS_GAME>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_6> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_3_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_3_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_3_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_3_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_2_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_2_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_2_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_2_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_1> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_1_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/vertical_0_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_2_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_2_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_2_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_2_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_2_6> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_3_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_3_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_3_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_3_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_3_6> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_1> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_5> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_1_6> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_2> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_3> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TETRIS_GAME/horizontal_0_4> has a constant value of 0 in block <top_level>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <TETRIS_GAME/score_8> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <TETRIS_GAME/score_9> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <TETRIS_GAME/score_10> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <TETRIS_GAME/score_11> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <TETRIS_GAME/score_12> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <TETRIS_GAME/score_13> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <TETRIS_GAME/score_14> of sequential type is unconnected in block <top_level>.
 
 Optimizing unit <top_level> ...
 
-Optimizing unit <TETRIS_GAME> ...
-
 Optimizing unit <srl_fifo> ...
 
-Optimizing unit <VGA> ...
-
 Optimizing unit <ps2_if> ...
+WARNING:Xst:2677 - Node <ps2_rd> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_cntr_0> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_cntr_1> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_cntr_2> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_cntr_3> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_cntr_4> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_cntr_5> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_cntr_6> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_cntr_7> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_cntr_8> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_cntr_9> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_cntr_10> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:1290 - Hierarchical block <ps2_if/data_fifo> is unconnected in block <top_level>.
+   It will be removed from the design.
+WARNING:Xst:2677 - Node <ps2_if/bit_cntr_3> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/bit_cntr_2> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/bit_cntr_1> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/bit_cntr_0> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/data_shr_10> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/data_shr_9> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/data_shr_8> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/data_shr_7> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/data_shr_6> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/data_shr_5> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/data_shr_4> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/data_shr_3> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/data_shr_2> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/data_shr_1> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/data_valid> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/ps2c_dl_1> of sequential type is unconnected in block <top_level>.
+WARNING:Xst:2677 - Node <ps2_if/ps2c_dl_0> of sequential type is unconnected in block <top_level>.
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block top_level, actual ratio is 30.
-FlipFlop TETRIS_GAME/color_0 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/color_1 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/color_2 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/down_cntr_0 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/down_cntr_1 has been replicated 1 time(s)
+Found area constraint ratio of 100 (+ 5) on block top_level, actual ratio is 27.
 FlipFlop TETRIS_GAME/move_cntr_0 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/move_cntr_1 has been replicated 1 time(s)
 FlipFlop TETRIS_GAME/move_cntr_2 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/move_cntr_3 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/move_cntr_5 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/pos_y_0 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/pos_y_1 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/right_cntr_0 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/right_cntr_1 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/rot_cntr_0 has been replicated 2 time(s)
-FlipFlop TETRIS_GAME/rot_cntr_1 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/rotation_0 has been replicated 1 time(s)
 FlipFlop TETRIS_GAME/rotation_1 has been replicated 1 time(s)
 
 Final Macro Processing ...
-
-Processing Unit <top_level> :
-	Found 3-bit shift register for signal <ps2_if/data_shr_8>.
-Unit <top_level> processed.
 
 =========================================================================
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 307
- Flip-Flops                                            : 307
-# Shift Registers                                      : 1
- 3-bit shift register                                  : 1
+# Registers                                            : 252
+ Flip-Flops                                            : 252
 
 =========================================================================
 
@@ -1079,41 +1112,38 @@ Design Statistics
 # IOs                              : 32
 
 Cell Usage :
-# BELS                             : 1892
-#      GND                         : 2
-#      INV                         : 61
-#      LUT1                        : 148
-#      LUT2                        : 98
-#      LUT2_D                      : 11
-#      LUT2_L                      : 2
-#      LUT3                        : 254
-#      LUT3_D                      : 19
-#      LUT3_L                      : 9
-#      LUT4                        : 520
-#      LUT4_D                      : 41
-#      LUT4_L                      : 49
-#      MUXCY                       : 360
-#      MUXF5                       : 114
+# BELS                             : 1769
+#      GND                         : 1
+#      INV                         : 55
+#      LUT1                        : 141
+#      LUT2                        : 95
+#      LUT2_D                      : 6
+#      LUT2_L                      : 3
+#      LUT3                        : 224
+#      LUT3_D                      : 17
+#      LUT3_L                      : 28
+#      LUT4                        : 478
+#      LUT4_D                      : 42
+#      LUT4_L                      : 43
+#      MUXCY                       : 332
+#      MUXF5                       : 103
 #      MUXF6                       : 5
 #      VCC                         : 1
-#      XORCY                       : 198
-# FlipFlops/Latches                : 308
-#      FD                          : 27
-#      FDE                         : 82
-#      FDR                         : 30
-#      FDRE                        : 155
-#      FDRSE                       : 1
-#      FDS                         : 2
-#      FDSE                        : 11
+#      XORCY                       : 195
+# FlipFlops/Latches                : 252
+#      FD                          : 24
+#      FDE                         : 61
+#      FDR                         : 21
+#      FDRE                        : 125
+#      FDS                         : 18
+#      FDSE                        : 3
 # RAMS                             : 7
 #      RAMB16_S1_S1                : 6
 #      RAMB16_S9_S9                : 1
-# Shift Registers                  : 9
-#      SRL16E                      : 9
 # Clock Buffers                    : 2
 #      BUFG                        : 2
-# IO Buffers                       : 22
-#      IBUF                        : 5
+# IO Buffers                       : 21
+#      IBUF                        : 4
 #      IBUFG                       : 1
 #      OBUF                        : 16
 # DCMs                             : 1
@@ -1125,13 +1155,11 @@ Device utilization summary:
 
 Selected Device : 3s250etq144-4 
 
- Number of Slices:                      661  out of   2448    27%  
- Number of Slice Flip Flops:            308  out of   4896     6%  
- Number of 4 input LUTs:               1221  out of   4896    24%  
-    Number used as logic:              1212
-    Number used as Shift registers:       9
+ Number of Slices:                      606  out of   2448    24%  
+ Number of Slice Flip Flops:            252  out of   4896     5%  
+ Number of 4 input LUTs:               1132  out of   4896    23%  
  Number of IOs:                          32
- Number of bonded IOBs:                  22  out of    108    20%  
+ Number of bonded IOBs:                  21  out of    108    19%  
  Number of BRAMs:                         7  out of     12    58%  
  Number of GCLKs:                         2  out of     24     8%  
  Number of DCMs:                          1  out of      4    25%  
@@ -1157,7 +1185,7 @@ Clock Information:
 -----------------------------------+--------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)    | Load  |
 -----------------------------------+--------------------------+-------+
-clk16M                             | clk_gen/DCM_SP_inst:CLKFX| 324   |
+clk16M                             | clk_gen/DCM_SP_inst:CLKFX| 259   |
 -----------------------------------+--------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -1168,8 +1196,8 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 16.531ns (Maximum Frequency: 60.491MHz)
-   Minimum input arrival time before clock: 5.010ns
+   Minimum period: 17.828ns (Maximum Frequency: 56.091MHz)
+   Minimum input arrival time before clock: 7.485ns
    Maximum output required time after clock: 4.283ns
    Maximum combinational path delay: No path found
 
@@ -1179,54 +1207,56 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk16M'
-  Clock period: 16.531ns (frequency: 60.491MHz)
-  Total number of paths / destination ports: 35564 / 892
+  Clock period: 17.828ns (frequency: 56.091MHz)
+  Total number of paths / destination ports: 35175 / 719
 -------------------------------------------------------------------------
-Delay:               10.580ns (Levels of Logic = 10)
-  Source:            TETRIS_GAME/move_cntr_7 (FF)
-  Destination:       TETRIS_GAME/currentrow_3 (FF)
+Delay:               11.410ns (Levels of Logic = 8)
+  Source:            TETRIS_GAME/score_4 (FF)
+  Destination:       TETRIS_GAME/BIG_WR_DATA_4 (FF)
   Source Clock:      clk16M rising 1.6X
   Destination Clock: clk16M rising 1.6X
 
-  Data Path: TETRIS_GAME/move_cntr_7 to TETRIS_GAME/currentrow_3
+  Data Path: TETRIS_GAME/score_4 to TETRIS_GAME/BIG_WR_DATA_4
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            16   0.591   1.209  TETRIS_GAME/move_cntr_7 (TETRIS_GAME/move_cntr_7)
-     LUT4:I0->O            1   0.704   0.000  TETRIS_GAME/Mcompar_BIG_RD_ADDR_cmp_ge0000_lut<1> (TETRIS_GAME/Mcompar_BIG_RD_ADDR_cmp_ge0000_lut<1>)
-     MUXCY:S->O            1   0.464   0.000  TETRIS_GAME/Mcompar_BIG_RD_ADDR_cmp_ge0000_cy<1> (TETRIS_GAME/Mcompar_BIG_RD_ADDR_cmp_ge0000_cy<1>)
-     MUXCY:CI->O           1   0.059   0.000  TETRIS_GAME/Mcompar_BIG_RD_ADDR_cmp_ge0000_cy<2> (TETRIS_GAME/Mcompar_BIG_RD_ADDR_cmp_ge0000_cy<2>)
-     MUXCY:CI->O           1   0.059   0.000  TETRIS_GAME/Mcompar_BIG_RD_ADDR_cmp_ge0000_cy<3> (TETRIS_GAME/Mcompar_BIG_RD_ADDR_cmp_ge0000_cy<3>)
-     MUXCY:CI->O           7   0.459   0.883  TETRIS_GAME/Mcompar_BIG_RD_ADDR_cmp_ge0000_cy<4> (TETRIS_GAME/BIG_WR_ADDR_cmp_ge0001)
-     LUT2_D:I0->O          4   0.704   0.622  TETRIS_GAME/currentrow_not000221 (TETRIS_GAME/N51)
-     LUT4_D:I2->O          5   0.704   0.637  TETRIS_GAME/currentrow_mux0001<0>31 (TETRIS_GAME/N123)
-     LUT4:I3->O            3   0.704   0.610  TETRIS_GAME/currentrow_mux0001<1>1 (TETRIS_GAME/currentrow_mux0001<1>)
-     LUT4:I1->O            1   0.704   0.455  TETRIS_GAME/currentrow_mux0000<3>1_SW0 (N215)
-     LUT3:I2->O            1   0.704   0.000  TETRIS_GAME/currentrow_mux0000<3>1 (TETRIS_GAME/currentrow_mux0000<3>)
-     FDE:D                     0.308          TETRIS_GAME/currentrow_3
+     FDE:C->Q             12   0.591   1.136  TETRIS_GAME/score_4 (TETRIS_GAME/score_4)
+     LUT4:I0->O            6   0.704   0.704  TETRIS_GAME/BCD_CONV/m2/Mrom_out11 (TETRIS_GAME/BCD_CONV/c2<0>)
+     LUT4:I2->O            2   0.704   0.482  TETRIS_GAME/BCD_CONV/m4/Mrom_out11_SW0 (N135)
+     LUT3_D:I2->O          2   0.704   0.451  TETRIS_GAME/BCD_CONV/m4/Mrom_out11 (TETRIS_GAME/BCD_CONV/c4<0>)
+     LUT4:I3->O            1   0.704   0.000  TETRIS_GAME/BIG_WR_DATA_mux0001<1>140_G (N367)
+     MUXF5:I1->O           1   0.321   0.424  TETRIS_GAME/BIG_WR_DATA_mux0001<1>140 (TETRIS_GAME/BIG_WR_DATA_mux0001<1>140)
+     LUT4:I3->O            4   0.704   0.591  TETRIS_GAME/BIG_WR_DATA_mux0001<1>175 (TETRIS_GAME/Madd_BIG_WR_DATA_addsub0000_cy<1>)
+     LUT4:I3->O            2   0.704   0.451  TETRIS_GAME/BIG_WR_DATA_mux0000<0>1 (N88)
+     LUT4:I3->O            1   0.704   0.420  TETRIS_GAME/BIG_WR_DATA_mux0000<1>_SW0 (N82)
+     FDS:S                     0.911          TETRIS_GAME/BIG_WR_DATA_4
     ----------------------------------------
-    Total                     10.580ns (6.164ns logic, 4.416ns route)
-                                       (58.3% logic, 41.7% route)
+    Total                     11.410ns (6.751ns logic, 4.659ns route)
+                                       (59.2% logic, 40.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk16M'
-  Total number of paths / destination ports: 68 / 68
+  Total number of paths / destination ports: 56 / 46
 -------------------------------------------------------------------------
-Offset:              5.010ns (Levels of Logic = 2)
-  Source:            rst (PAD)
-  Destination:       BAMBIVGA/bambiVGA/vsync_reg_9 (FF)
+Offset:              7.485ns (Levels of Logic = 6)
+  Source:            bt<1> (PAD)
+  Destination:       TETRIS_GAME/pos_x_3 (FF)
   Destination Clock: clk16M rising 1.6X
 
-  Data Path: rst to BAMBIVGA/bambiVGA/vsync_reg_9
+  Data Path: bt<1> to TETRIS_GAME/pos_x_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            26   1.218   1.260  rst_IBUF (rst_IBUF)
-     MUXF5:S->O           10   0.739   0.882  BAMBIVGA/bambiVGA/vsync_reg_and000060_f5 (BAMBIVGA/bambiVGA/vsync_reg_and0000)
-     FDRE:R                    0.911          BAMBIVGA/bambiVGA/vsync_reg_0
+     IBUF:I->O             1   1.218   0.455  bt_1_IBUF (bt_1_IBUF)
+     LUT4_L:I2->LO         1   0.704   0.104  TETRIS_GAME/pos_x_not00021_SW0_SW1 (N408)
+     LUT4:I3->O            1   0.704   0.499  TETRIS_GAME/pos_x_not00021_SW0 (N303)
+     LUT4:I1->O            9   0.704   0.899  TETRIS_GAME/pos_x_and0001 (TETRIS_GAME/pos_x_and0001)
+     LUT3:I1->O            2   0.704   0.482  TETRIS_GAME/Mcount_pos_x_cy<1>1 (TETRIS_GAME/Mcount_pos_x_cy<1>)
+     LUT4:I2->O            1   0.704   0.000  TETRIS_GAME/Mcount_pos_x_xor<3>11 (Result<3>4)
+     FDRE:D                    0.308          TETRIS_GAME/pos_x_3
     ----------------------------------------
-    Total                      5.010ns (2.868ns logic, 2.142ns route)
-                                       (57.2% logic, 42.8% route)
+    Total                      7.485ns (5.046ns logic, 2.439ns route)
+                                       (67.4% logic, 32.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk16M'
@@ -1250,14 +1280,14 @@ Offset:              4.283ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 36.00 secs
-Total CPU time to Xst completion: 36.85 secs
+Total REAL time to Xst completion: 26.00 secs
+Total CPU time to Xst completion: 25.22 secs
  
 --> 
 
-Total memory usage is 352364 kilobytes
+Total memory usage is 323852 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   86 (   0 filtered)
+Number of warnings :  114 (   0 filtered)
 Number of infos    :   76 (   0 filtered)
 

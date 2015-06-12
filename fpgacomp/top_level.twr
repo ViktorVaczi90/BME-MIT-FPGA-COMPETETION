@@ -2,8 +2,8 @@
 Release 14.7 Trace  (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-E:\XILINXISE\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s
-4 -n 3 -fastpaths -xml top_level.twx top_level.ncd -o top_level.twr
+E:\Prog\ISE\telepztve\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise
+-v 3 -s 4 -n 3 -fastpaths -xml top_level.twx top_level.ncd -o top_level.twr
 top_level.pcf -ucf LOGSYS_SP3E.ucf
 
 Design file:              top_level.ncd
@@ -33,6 +33,16 @@ INFO:Timing:3389 - This architecture does not support 'Discrete Jitter' and
    Uncertainty calculation.  Please make appropriate modification to 
    SYSTEM_JITTER to account for the unsupported Discrete Jitter and Phase 
    Error.
+WARNING:Timing:3413 - Non-Ascii characters were found and are not allowed. 
+   Please remove from sources. The non-ascii characters were replaced in the 
+   report with 'z' : 
+   E:\Prog\ISE\telepztve\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle 
+   ise
+   -v 3 -s 4 -n 3 -fastpaths -xml top_level.twx top_level.ncd -o 
+   top_level.twr
+   top_level.pcf -ucf LOGSYS_SP3E.ucf
+
+   .
 
 
 
@@ -45,11 +55,10 @@ Setup/Hold to clock clk16M
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-bt<0>       |    7.525(R)|   -4.051(R)|clk               |   0.000|
-bt<2>       |    7.058(R)|   -3.951(R)|clk               |   0.000|
-rst         |    9.310(R)|   -2.504(R)|clk               |   0.000|
-xps2_c      |    3.671(R)|   -1.842(R)|clk               |   0.000|
-xps2_d      |    4.874(R)|   -2.477(R)|clk               |   0.000|
+bt<0>       |    9.443(R)|   -5.719(R)|clk               |   0.000|
+bt<1>       |   10.788(R)|   -5.400(R)|clk               |   0.000|
+bt<2>       |    8.738(R)|   -5.472(R)|clk               |   0.000|
+rst         |    6.549(R)|   -2.955(R)|clk               |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock clk16M to Pad
@@ -57,17 +66,17 @@ Clock clk16M to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-hs          |    5.748(R)|clk               |   0.000|
-ld<0>       |    5.535(R)|clk               |   0.000|
-ld<1>       |    5.725(R)|clk               |   0.000|
-ld<2>       |    5.213(R)|clk               |   0.000|
-rgb<0>      |    5.197(R)|clk               |   0.000|
-rgb<1>      |    5.656(R)|clk               |   0.000|
-rgb<2>      |    5.154(R)|clk               |   0.000|
-rgb<3>      |    5.938(R)|clk               |   0.000|
-rgb<4>      |    5.196(R)|clk               |   0.000|
-rgb<5>      |    5.100(R)|clk               |   0.000|
-vs          |    5.459(R)|clk               |   0.000|
+hs          |    5.729(R)|clk               |   0.000|
+ld<0>       |    5.164(R)|clk               |   0.000|
+ld<1>       |    5.147(R)|clk               |   0.000|
+ld<2>       |    5.810(R)|clk               |   0.000|
+rgb<0>      |    4.922(R)|clk               |   0.000|
+rgb<1>      |    5.648(R)|clk               |   0.000|
+rgb<2>      |    5.384(R)|clk               |   0.000|
+rgb<3>      |    5.647(R)|clk               |   0.000|
+rgb<4>      |    5.379(R)|clk               |   0.000|
+rgb<5>      |    5.231(R)|clk               |   0.000|
+vs          |    6.064(R)|clk               |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk16M
@@ -75,18 +84,18 @@ Clock to Setup on destination clock clk16M
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk16M         |   10.822|         |         |         |
+clk16M         |   10.290|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Thu Jun 11 14:44:38 2015 
+Analysis completed Thu Jun 11 23:26:01 2015 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 171 MB
+Peak Memory Usage: 173 MB
 
 
 

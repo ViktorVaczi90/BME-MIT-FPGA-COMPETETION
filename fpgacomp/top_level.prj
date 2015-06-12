@@ -1,6 +1,8 @@
+verilog work "add3.v"
 verilog work "VGA_DRV.v"
 verilog work "srl_fifo.v"
 verilog work "BLOCK_framebuffer.v"
+verilog work "binary_to_BCD.v"
 verilog work "BIG_framebuffer.v"
 verilog work "VGA.v"
 verilog work "TETRIS_GAME.v"
