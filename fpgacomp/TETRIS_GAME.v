@@ -226,11 +226,11 @@ module TETRIS_GAME(
 	end
 	//***********************Leesés 
 	
-	//*********************Képernyõ vége
+	/*//*********************Képernyõ vége
 	always @ (posedge clk)
 	if( en_posedge == 0 && en == 1 ) 
 		vsync_cntr <= vsync_cntr + 1;
-	//*********************Képernyõ vége
+	//*********************Képernyõ vége*/
 	
 	//****Ütemezõ cntr növelése, képernyõn kívül
 	always @ ( posedge clk)
