@@ -33,9 +33,13 @@ module TETRIS_GAME(
 	 input ps2_en
     );
 	//***************** parameters/positions
-	
-	
-	
+	parameter number_start = 28;
+	parameter score_x_pos = 30;
+	parameter score_y_pos = 3;
+	parameter nextblock_x_pos = 30;
+	parameter nextblock_y_pos = 5;
+	parameter level_x_pos = 30;
+	parameter level_y_pos = 10;
 	//***************** end of parameters/positions
 	reg [5:0] level; initial level = 0;
 	reg [14:0] levelscore; initial levelscore = 0;
@@ -579,52 +583,63 @@ module TETRIS_GAME(
 			 next_horizontal[3] <= horizontal_rot_data[{nextcolor,rotation,2'b11}];
 
 		end
-		
+		/*
+			parameter number_start = 28;
+	parameter score_x_pos = 30;
+	parameter score_y_pos = 3;
+	parameter nextblock_x_pos = 30;
+	parameter nextblock_y_pos = 5;
+	parameter level_x_pos = 30;
+	parameter level_y_pos = 10;
+		*/
 		if ( move_cntr == 2600 )
 		begin
 			leds <= rowcombo;
 		end
 		if ( move_cntr == 2601 )
 			begin
-				BIG_WR_ADDR <= {5'd2,6'd30};
+				BIG_WR_ADDR <= {score_y_pos[4:0],6'd30};
 				if(HUNDREDSwire)
-				BIG_WR_DATA <= HUNDREDSwire+54;
+				BIG_WR_DATA <= HUNDREDSwire+number_start;
 				else
 				BIG_WR_DATA <= 0;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2602 )
 			begin
-				BIG_WR_ADDR <= {5'd2,6'd31};
+				BIG_WR_ADDR <= {score_y_pos[4:0],6'd31};
 				if(HUNDREDSwire || TENSwire)
-				BIG_WR_DATA <= TENSwire+54;
+				BIG_WR_DATA <= TENSwire+number_start;
 				else
 				BIG_WR_DATA <= 0;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2603 )
 			begin
-				BIG_WR_ADDR <= {5'd2,6'd32};
-				BIG_WR_DATA <= ONESwire+54;
+				BIG_WR_ADDR <= {score_y_pos[4:0],6'd32};
+				BIG_WR_DATA <= ONESwire+number_start;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2604 )
 			begin
-				BIG_WR_ADDR <= {5'd2,6'd33};
-				BIG_WR_DATA <= 54;
+				BIG_WR_ADDR <= {score_y_pos[4:0],6'd33};
+				BIG_WR_DATA <= number_start;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2605 )
 			begin
-				BIG_WR_ADDR <= {5'd2,6'd34};
-				BIG_WR_DATA <= 54;
+				BIG_WR_ADDR <= {score_y_pos[4:0],6'd34};
+				BIG_WR_DATA <= number_start;
 				BIG_WR_EN <= 1;
 			end
-			
+			/*
+				parameter level_x_pos = 30;
+	parameter level_y_pos = 1;
+			*/
 			if ( move_cntr == 2606 )
 			begin
-				BIG_WR_ADDR <= {5'd10,6'd34};
-				BIG_WR_DATA <= 54+level;
+				BIG_WR_ADDR <= {level_y_pos[4:0],level_x_pos[5:0]};//{level_x_pos[4:0],level_y_pos[5:0]};
+				BIG_WR_DATA <= number_start+level;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2607)
@@ -646,10 +661,10 @@ module TETRIS_GAME(
 	end
 	
 
-	assign clear_next_ver = 5'b00100 + move_cntr[3:2];
-	assign clear_next_hor = 6'b100010 + move_cntr[1:0];
-	assign write_next_ver = 5'b00100 + next_vertical[move_cntr[1:0]];
-	assign write_next_hor = 6'b100010 + next_horizontal[move_cntr[1:0]];	
+	assign clear_next_ver = nextblock_y_pos[4:0] + move_cntr[3:2];
+	assign clear_next_hor = nextblock_x_pos[5:0] + move_cntr[1:0];
+	assign write_next_ver = nextblock_y_pos[4:0] + next_vertical[move_cntr[1:0]];
+	assign write_next_hor = nextblock_x_pos[5:0] + next_horizontal[move_cntr[1:0]];	
 	//********************************************************************************END OF MOVES*****************************************************************************************
 	
 	//*****************Az alap, le, balra, jobbra és rotálva lévõ elemk kiolvasásához szükséges
