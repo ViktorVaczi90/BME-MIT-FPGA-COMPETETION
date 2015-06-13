@@ -32,10 +32,24 @@ module TETRIS_GAME(
 	 input [7:0] ps2,
 	 input ps2_en
     );
+	//***************** parameters/positions
+	
+	
+	
+	//***************** end of parameters/positions
+	reg [5:0] level; initial level = 0;
+	reg [14:0] levelscore; initial levelscore = 0;
+	wire [4:0] clear_next_ver;
+	wire [5:0] clear_next_hor;
+	wire [4:0] write_next_ver;
+	wire [5:0] write_next_hor;
+	reg [2:0] nextcolor;
 	 reg [14:0] score; initial score = 0;
 	 //*******PS2 kezelése
-	 reg [4:0] right;
-	 reg detect;
+	 reg right_keyboard;
+	 reg left_keyboard;
+	 reg down_keyboard;
+	 reg rot_keyboard; 
 	 //*******PS2 kezelése
 	 
 	 //****************Bejövõk initje
@@ -131,12 +145,14 @@ module TETRIS_GAME(
 	 reg [14:0] move_cntr;		initial move_cntr = 0;
 	 reg [14:0] cycle_cntr;		initial cycle_cntr = 0;
 	 reg [6:0] gravity;			initial gravity = 0; //ALWAYS MOVE DOWN WHEN == 1
-	 reg [6:0] gravity_speed;	initial gravity_speed = 20;
+	 reg [6:0] gravity_speed;	initial gravity_speed = 21;
 	 reg [20:0] vsync_cntr;	 	initial vsync_cntr = 0;
 	 reg [5:0] pos_x; 			initial pos_x = 5;
 	 reg [4:0] pos_y; 			initial pos_y = 1;
 	 reg [5:0] vertical [3:0];
 	 reg [6:0] horizontal [3:0];
+	 reg [5:0] next_vertical [3:0];
+	 reg [6:0] next_horizontal [3:0];
 	 //********Címzés, és cntr-ek, valamint alap helyzet és forma
 	 
 	 //***Alap forma beállítása
@@ -145,12 +161,21 @@ module TETRIS_GAME(
 	 vertical[1] = 0;
 	 vertical[2] = 1;
 	 vertical[3]  = 1;
-	 end
-	 initial begin 
 	 horizontal[0] = 0;
 	 horizontal[1] = 1;
 	 horizontal[2] = 0;
 	 horizontal[3]  = 1;
+	 
+	 next_vertical[0] = 0;
+	 next_vertical[1] = 0;
+	 next_vertical[2] = 1;
+	 next_vertical[3]  = 1;
+	 next_horizontal[0] = 0;
+	 next_horizontal[1] = 1;
+	 next_horizontal[2] = 0;
+	 next_horizontal[3]  = 1;
+	 
+	 nextcolor <= 1;
 	 end
 	 //***Alap forma beállítása
 	 
@@ -164,7 +189,10 @@ module TETRIS_GAME(
 	 wire [3:0] ONESwire, TENSwire;
     wire [1:0] HUNDREDSwire;
 	 binary_to_BCD BCD_CONV(.A(score),.ONES(ONESwire),.TENS(TENSwire),.HUNDREDS(HUNDREDSwire));
-	 
+	 always@ ( posedge clk)
+	 begin
+		level <= levelscore[14:3];
+		end
 	 //****Késleltetés (gombokhoz)
 	 always @ (posedge clk)
 	 begin
@@ -178,7 +206,7 @@ module TETRIS_GAME(
 	 //****Random blokk dobása !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Nem jó 
 	 always @ ( posedge clk)
 	 begin
-	 if ( random == number_of_blocks ) 
+	 if ( random == number_of_blocks  || ps2_en) 
 	 random <= 1;
 	 else random <= random + 1;
 	 end
@@ -189,7 +217,7 @@ module TETRIS_GAME(
 	begin
 	if( en_posedge == 0 && en == 1 ) 
 		gravity <= gravity + 1;
-	if ( gravity == gravity_speed )
+	if ( gravity == gravity_speed - level )
 		gravity <=0;
 	end
 	//***********************Leesés 
@@ -339,17 +367,17 @@ module TETRIS_GAME(
 			BIG_RD_ADDR <= {ver_wire_rot[4:0],hor_wire_rot[5:0]};
 		if(rot_cntr >= 2 && rot_cntr <= 5 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end))
 			begin
-				debugreg[rot_cntr] <= BIG_RD_DATA;
+				/*debugreg[rot_cntr] <= BIG_RD_DATA;
 				debugreg[rot_cntr + 4]<= horizontal_rot_data[{color,nextrot,rot_cntr_2}];
 				debugreg[rot_cntr + 8] <= horizontal[rot_cntr ];
 				debugreg[rot_cntr + 12]<= vertical_rot_data[{color,nextrot,rot_cntr_2}];
-				debugreg[rot_cntr + 16] <= vertical[rot_cntr ];
+				debugreg[rot_cntr + 16] <= vertical[rot_cntr ];*/
 			if(BIG_RD_DATA&& 
 				!(//nem saját
-				(horizontal[rot_cntr + 0]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]  && vertical[rot_cntr ] == vertical_rot_data[{color,nextrot,rot_cntr_2}] ) ||
-				(horizontal[rot_cntr + 1]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]   && vertical[rot_cntr +1] == vertical_rot_data[{color,nextrot,rot_cntr_2}]) ||
-				(horizontal[rot_cntr + 2]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]   && vertical[rot_cntr +2] == vertical_rot_data[{color,nextrot,rot_cntr_2}]) ||
-				(horizontal[rot_cntr + 3]  == horizontal_rot_data[{color,nextrot,rot_cntr_2}]   && vertical[rot_cntr +3] == vertical_rot_data[{color,nextrot,rot_cntr_2}])))
+				(horizontal[rot_cntr + 0]  == horizontal_rot_data[{color[2:0],nextrot[1:0],rot_cntr_2[1:0]}]  && vertical[rot_cntr ] == vertical_rot_data[{color[2:0],nextrot[1:0],rot_cntr_2[1:0]}] ) ||
+				(horizontal[rot_cntr + 1]  == horizontal_rot_data[{color[2:0],nextrot[1:0],rot_cntr_2[1:0]}]   && vertical[rot_cntr +1] == vertical_rot_data[{color[2:0],nextrot[1:0],rot_cntr_2[1:0]}]) ||
+				(horizontal[rot_cntr + 2]  == horizontal_rot_data[{color[2:0],nextrot[1:0],rot_cntr_2[1:0]}]   && vertical[rot_cntr +2] == vertical_rot_data[{color[2:0],nextrot[1:0],rot_cntr_2[1:0]}]) ||
+				(horizontal[rot_cntr + 3]  == horizontal_rot_data[{color[2:0],nextrot[1:0],rot_cntr_2[1:0]}]   && vertical[rot_cntr +3] == vertical_rot_data[{color[2:0],nextrot[1:0],rot_cntr_2[1:0]}])))
 					canmove_rot <= 0;
 			end
 		//*******************************CHECKROT END*/*****************************************************************
@@ -359,11 +387,6 @@ module TETRIS_GAME(
 			BIG_RD_ADDR <= {ver_wire_clear_rd[4:0],hor_wire_clear_rd[5:0]};
 		if ( (!move_cntr[14:11]) &&  gravity == 1 && !canmove_down && move_cntr[9:0] >= 512 && move_cntr[9:0] <= 512+16*20 )
 			BIG_RD_ADDR <= {ver_wire_clear_rd[4:0],hor_wire_clear_rd[5:0]};
-			//*****Check rows second
-		/*if( gravity == 1 && !canmove_down && move_cntr >= 1024 && move_cntr <= 1024+16*20 )
-			BIG_RD_ADDR <= {ver_wire_clear_rd[4:0],hor_wire_clear_rd[5:0]};
-		if ( gravity == 1 && !canmove_down && move_cntr >= 1536 && move_cntr <= 1536+16*20 )
-			BIG_RD_ADDR <= {ver_wire_clear_rd[4:0],hor_wire_clear_rd[5:0]};*/
 		//*******************************CHECKROW END*/
 
 	end
@@ -374,8 +397,14 @@ module TETRIS_GAME(
 	always @ ( posedge clk )
 	begin
 		//****************PS2 kezelése
-		if ( ps2_en == 1 && ps2 == 8'b01000001 )
-			right <= 1;
+		if ( ps2_en == 1 && ps2 == 8'h41 )
+			left_keyboard <= 1;
+		if ( ps2_en == 1 && ps2 == 8'h44 )
+			right_keyboard <= 1;
+		if ( ps2_en == 1 && ps2 == 8'h53 )
+			down_keyboard <= 1;
+		if ( ps2_en == 1 && (ps2 ==  8'h20 || ps2 == 8'h57) )
+			rot_keyboard <= 1;
 		//****************PS2 kezelése
 		
 		//*************Elõzõ pozíció törlése
@@ -390,17 +419,26 @@ module TETRIS_GAME(
 		//*************Elõzõ pozíció törlése
 		
 		//*************************************************Ha tud és meg van nyomva a megfelelõ gomb akkor mozog/fordul
-		if ( move_cntr == 10 && gravity == 1 && canmove_down ) 
+		if ( move_cntr == 10 && (gravity == 1 || down_keyboard || (btn[3] && ! input_delay)) && canmove_down ) 
+		begin
 			pos_y <= pos_y + 1;
-		if ( move_cntr == 11 && canmove_right && btn[0] && !( gravity == 1 && !canmove_down) && ! input_delay ) //SORRENDET ÁT KELL GONDOLNI, LEHET HOGY NEM TUD LEFELE MENNI, LERAKJA, DE MÉG ELMEGY EGYET BALRA JOBBRA.
+			down_keyboard<=0;
+		end
+		if ( move_cntr == 11 && canmove_right && (right_keyboard  || (btn[1] && ! input_delay))&& !( gravity == 1 && !canmove_down) ) //SORRENDET ÁT KELL GONDOLNI, LEHET HOGY NEM TUD LEFELE MENNI, LERAKJA, DE MÉG ELMEGY EGYET BALRA JOBBRA.
+		begin
 			pos_x <= pos_x + 1;
-		if ( move_cntr == 12 && canmove_left && /*right*/btn[1] && !( gravity == 1 && !canmove_down ) && ! input_delay )
+			right_keyboard<=0;
+		end	
+		if ( move_cntr == 12 && canmove_left &&( left_keyboard || (btn[2] && ! input_delay)) && !( gravity == 1 && !canmove_down ) && ! input_delay )
 		begin
 			pos_x <= pos_x - 1;
-			right <= 0;//****************PS2 höz kell
+			left_keyboard <= 0;//****************PS2 höz kell
 		end
-		if ( move_cntr == 13 && btn[2] && !( gravity == 1 && !canmove_down )&& canmove_rot && ! input_delay ) 
+		if (  move_cntr == 13 && canmove_rot && (rot_keyboard || (btn[0] && ! input_delay))&& !( gravity == 1 && !canmove_down )  && ! input_delay ) 
+		begin
 			rotation <= rotation + 1;
+			rot_keyboard<=0;
+		end
 		if ( move_cntr == 14 && !( gravity == 1 && !canmove_down ) && ! input_delay ) 
 			begin
 				 vertical[0] <= vertical_rot_data[{color,rotation,2'b00}];
@@ -476,6 +514,7 @@ module TETRIS_GAME(
 				if ( (!move_cntr[14:11]) &&  move_cntr[9:0] == 511 )
 				begin
 					currentrow<=0; 
+				   levelscore <= levelscore +rowcombo;
 					if(rowcombo == 4)
 					score <=score + 8;
 					else 
@@ -506,21 +545,39 @@ module TETRIS_GAME(
 				end
 		end
 	//***********************************************END OF CLEARING UP FULL ROWS*************************************
-	
+	if ( gravity == 1 && move_cntr == 2498 && !canmove_down )//Ha leérne akkor a rotációt nullába állítom
+	begin
+			rotation <= 0;
+			color <= nextcolor;
+			nextcolor <= random;
+			 pos_x<= 5;
+			 pos_y<= 1;
+	end
+		if ( gravity == 1 && move_cntr == 2499 && !canmove_down )//Ha leérne akkor a rotációt nullába állítom
+		begin 
+
+			vertical[0] <= next_vertical[0];
+			 vertical[1] <= next_vertical[1];
+			 vertical[2] <= next_vertical[2];
+			 vertical[3] <= next_vertical[3];
+			 horizontal[0] <= next_horizontal[0];
+			 horizontal[1] <= next_horizontal[1];
+			 horizontal[2] <= next_horizontal[2];
+			 horizontal[3] <= next_horizontal[3];
+
+		end
 		if ( gravity == 1 && move_cntr == 2500 && !canmove_down ) 		//EZT A FELTÉTELT MÉG A LEFT RIGHTBA BE KELL ÍRNI.
 		begin
 
-			 vertical[0] <= vertical_rot_data[{color,rotation,2'b00}];
-			 vertical[1] <= vertical_rot_data[{color,rotation,2'b01}];
-			 vertical[2] <= vertical_rot_data[{color,rotation,2'b10}];
-			 vertical[3]  <= vertical_rot_data[{color,rotation,2'b11}];
-			 horizontal[0] <= horizontal_rot_data[{color,rotation,2'b00}];
-			 horizontal[1] <= horizontal_rot_data[{color,rotation,2'b01}];
-			 horizontal[2] <= horizontal_rot_data[{color,rotation,2'b10}];
-			 horizontal[3]  <= horizontal_rot_data[{color,rotation,2'b11}];
-			 color <= random;
-			 pos_x<= 5;
-			 pos_y<= 1;
+			 next_vertical[0] <= vertical_rot_data[{nextcolor,rotation,2'b00}];
+			 next_vertical[1] <= vertical_rot_data[{nextcolor,rotation,2'b01}];
+			 next_vertical[2] <= vertical_rot_data[{nextcolor,rotation,2'b10}];
+			 next_vertical[3] <= vertical_rot_data[{nextcolor,rotation,2'b11}];
+			 next_horizontal[0] <= horizontal_rot_data[{nextcolor,rotation,2'b00}];
+			 next_horizontal[1] <= horizontal_rot_data[{nextcolor,rotation,2'b01}];
+			 next_horizontal[2] <= horizontal_rot_data[{nextcolor,rotation,2'b10}];
+			 next_horizontal[3] <= horizontal_rot_data[{nextcolor,rotation,2'b11}];
+
 		end
 		
 		if ( move_cntr == 2600 )
@@ -530,13 +587,19 @@ module TETRIS_GAME(
 		if ( move_cntr == 2601 )
 			begin
 				BIG_WR_ADDR <= {5'd2,6'd30};
+				if(HUNDREDSwire)
 				BIG_WR_DATA <= HUNDREDSwire+54;
+				else
+				BIG_WR_DATA <= 0;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2602 )
 			begin
 				BIG_WR_ADDR <= {5'd2,6'd31};
+				if(HUNDREDSwire || TENSwire)
 				BIG_WR_DATA <= TENSwire+54;
+				else
+				BIG_WR_DATA <= 0;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2603 )
@@ -557,10 +620,36 @@ module TETRIS_GAME(
 				BIG_WR_DATA <= 54;
 				BIG_WR_EN <= 1;
 			end
-		if ( move_cntr == 2606)
+			
+			if ( move_cntr == 2606 )
+			begin
+				BIG_WR_ADDR <= {5'd10,6'd34};
+				BIG_WR_DATA <= 54+level;
+				BIG_WR_EN <= 1;
+			end
+		if ( move_cntr == 2607)
+			BIG_WR_EN <= 0;
+		if ( move_cntr >= 2610 && move_cntr <= 2625 )
+			begin
+				BIG_WR_ADDR <= {clear_next_ver,clear_next_hor};
+				BIG_WR_DATA <= 0;
+				BIG_WR_EN <= 1;
+			end
+		if ( move_cntr >= 2626 && move_cntr >= 2629 )
+			begin
+				BIG_WR_ADDR <= {write_next_ver,write_next_hor};
+				BIG_WR_DATA <= nextcolor;
+				BIG_WR_EN <= 1;
+			end
+		if ( move_cntr == 2629)
 			BIG_WR_EN <= 0;
 	end
 	
+
+	assign clear_next_ver = 5'b00100 + move_cntr[3:2];
+	assign clear_next_hor = 6'b100010 + move_cntr[1:0];
+	assign write_next_ver = 5'b00100 + next_vertical[move_cntr[1:0]];
+	assign write_next_hor = 6'b100010 + next_horizontal[move_cntr[1:0]];	
 	//********************************************************************************END OF MOVES*****************************************************************************************
 	
 	//*****************Az alap, le, balra, jobbra és rotálva lévõ elemk kiolvasásához szükséges
@@ -584,14 +673,14 @@ module TETRIS_GAME(
 	//*****************Sortörléshez szükséges ki- és beolvasási kábelek
 	
 	//DEBUG
-	assign ver_wire_rot = tetris_y_begin + pos_y + vertical_rot_data[{color[2:0],nextrot[1:0],rot_cntr[1:0]}];
-	assign hor_wire_rot = tetris_x_begin + pos_x + horizontal_rot_data[{color[2:0],nextrot[1:0],rot_cntr[1:0]}]; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
-	assign nextrottest = rotation + 1;
+	//assign ver_wire_rot = tetris_y_begin + pos_y + vertical_rot_data[{color[2:0],nextrot[1:0],rot_cntr[1:0]}];
+	//assign hor_wire_rot = tetris_x_begin + pos_x + horizontal_rot_data[{color[2:0],nextrot[1:0],rot_cntr[1:0]}]; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
+	//assign nextrottest = rotation + 1;
 	//END OF DEBUG
 	
-	assign rot_cntr_0 = rot_cntr + 3;
-	assign rot_cntr_1 = rot_cntr + 1;
-	assign rot_cntr_2 = rot_cntr + 2;
+	assign rot_cntr_0 = rot_cntr[1:0] + 3;
+	assign rot_cntr_1 = rot_cntr[1:0] + 1;
+	assign rot_cntr_2 = rot_cntr[1:0] + 2;
 	
 	assign nextrot = rotation + 1;
 endmodule

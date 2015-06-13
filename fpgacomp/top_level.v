@@ -30,44 +30,84 @@ wire enwire;
 wire [31:0] ps2_data;
 wire [31:0] ps2_status;
 reg  ps2_rd;
-reg  [10:0] ps2_cntr;
+//reg  [5:0] ps2_cntr;
 reg  [7:0] out;
 reg  [1:0] state;
 initial state = 2'b00;
+reg [20:0] ps2initcntr; initial ps2initcntr = 2000000;
+reg [3:0] ps2state2; initial ps2state2 = 1;
 reg  ps2_valid;
 reg last_element;initial last_element = 1;
-
+/*
 always @ ( posedge clk )
 begin
 	if ( rst )
 		ps2_cntr = 0;
 	else 
 		ps2_cntr = ps2_cntr + 1;
-end
-
-always @ ( posedge clk )
+end*/
+always @ ( posedge clk)
 begin
-	if ( ps2_valid == 1 )
-		ps2_valid <= 0;
-	if ( ps2_cntr == 1 )
-		ps2_rd <= 1;
-	if ( ps2_cntr >= 64 )
+	if (ps2state2 == 5)
+	begin
+		if(ps2initcntr /*ps2_status[0]*/)
+		begin
+			ps2_rd <= 1;	
+			ps2initcntr <= ps2initcntr -1;
+		end
+		else
+			ps2_rd <= 0;
+			ps2state2 <= 0;
+	end
+	
+	if (ps2state2 == 0)
+	begin
+		
+		if(!ps2_status[0]) 
+		begin
+			ps2_rd <= 1;
+			ps2state2 <= 1;
+		end
+		else
+			ps2_rd <= 0;
+	end
+	
+	if (ps2state2 == 1)
 	begin
 		ps2_rd <= 0;
-		if ( ps2_status[0] == 0 )
-			begin
+		//out <= ps2_data[7:0];
+		ps2state2 <= 2;
+	end
+	
+	if (ps2state2 == 2)
+	begin
+		ps2_rd <= 0;
+		if(!ps2_status[0])// If not empty than another read in the next state
+			ps2state2 <= 3;
+		else// Else wait until there is something in the fifo again in the first state.
+			ps2state2<= 0;
+	end	
+	
+	if (ps2state2 == 3)
+	begin
+		ps2_rd <= 1;
+		ps2state2<=2;
+	end	
+	if ( ps2_valid == 1 )
+		ps2_valid <= 0;
+	if ( ps2state2 == 1   )
+	begin
+		out <= ps2_data[7:0];
 				case ( state )
 				2'b00:
 					begin
 						if ( ps2_data[7:0] == 8'b11100000 )
 							state <= 2'b01;
 						else if ( ps2_data[7:0] == 8'b11110000 )
-							state <= 2'b10;
+							state <= 2'b11;
 						else
 							begin
 								ps2_valid <= 1;
-								state <= 0;
-								out <= ps2_data[7:0];
 							end
 					end
 				2'b01:
@@ -88,11 +128,6 @@ begin
 				default:
 					state <= 2'b00;
 				endcase
-			end
-		/*else
-			begin
-				out <= 8'b00000000;
-			end*/
 	end
 end
 //assign ld = ps2_data[7:0];
@@ -112,7 +147,7 @@ VGA BAMBIVGA(
 	 
 TETRIS_GAME TETRIS_GAME(
 	 .btn(bt),
-	 .leds(ld), //ide voltak kötve  ledek
+	 //.leds(ld), //ide voltak kötve  ledek
     .clk(clk),
     .rst(rst),
     .en(enwire),
@@ -134,6 +169,6 @@ ps2_if ps2_if(
    .status(ps2_status),
    .data(ps2_data)
 );
-
+assign ld = {ps2_status[1:0],out[5:0]};
 
 endmodule
