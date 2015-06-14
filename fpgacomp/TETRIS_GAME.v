@@ -34,14 +34,14 @@ module TETRIS_GAME(
     );
 	//***************** parameters/positions
 	parameter number_start = 28;
-	parameter score_x_pos = 30;
-	parameter score_y_pos = 3;
-	parameter nextblock_x_pos = 30;
-	parameter nextblock_y_pos = 5;
-	parameter level_x_pos = 30;
-	parameter level_y_pos = 10;
+	parameter score_x_pos = 27;
+	parameter score_y_pos = 8;
+	parameter nextblock_x_pos = 29;
+	parameter nextblock_y_pos = 21;
+	parameter level_x_pos = 32;
+	parameter level_y_pos = 14;
 	//***************** end of parameters/positions
-	reg [5:0] level; initial level = 0;
+	reg [5:0] level; initial level = 1;
 	reg [14:0] levelscore; initial levelscore = 0;
 	wire [4:0] clear_next_ver;
 	wire [5:0] clear_next_hor;
@@ -195,7 +195,7 @@ module TETRIS_GAME(
 	 binary_to_BCD BCD_CONV(.A(score),.ONES(ONESwire),.TENS(TENSwire),.HUNDREDS(HUNDREDSwire));
 	 always@ ( posedge clk)
 	 begin
-		level <= levelscore[14:3];
+		level <= levelscore[14:3] + 1;
 		end
 	 //****Késleltetés (gombokhoz)
 	 always @ (posedge clk)
@@ -555,7 +555,7 @@ module TETRIS_GAME(
 			color <= nextcolor;
 			nextcolor <= random;
 			 pos_x<= 5;
-			 pos_y<= 1;
+			 pos_y<= 0;
 	end
 		if ( gravity == 1 && move_cntr == 2499 && !canmove_down )//Ha leérne akkor a rotációt nullába állítom
 		begin 
@@ -598,7 +598,7 @@ module TETRIS_GAME(
 		end
 		if ( move_cntr == 2601 )
 			begin
-				BIG_WR_ADDR <= {score_y_pos[4:0],6'd30};
+				BIG_WR_ADDR <= {score_y_pos[4:0],6'd327};
 				if(HUNDREDSwire)
 				BIG_WR_DATA <= HUNDREDSwire+number_start;
 				else
@@ -607,7 +607,7 @@ module TETRIS_GAME(
 			end
 		if ( move_cntr == 2602 )
 			begin
-				BIG_WR_ADDR <= {score_y_pos[4:0],6'd31};
+				BIG_WR_ADDR <= {score_y_pos[4:0],6'd28};
 				if(HUNDREDSwire || TENSwire)
 				BIG_WR_DATA <= TENSwire+number_start;
 				else
@@ -616,19 +616,19 @@ module TETRIS_GAME(
 			end
 		if ( move_cntr == 2603 )
 			begin
-				BIG_WR_ADDR <= {score_y_pos[4:0],6'd32};
+				BIG_WR_ADDR <= {score_y_pos[4:0],6'd29};
 				BIG_WR_DATA <= ONESwire+number_start;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2604 )
 			begin
-				BIG_WR_ADDR <= {score_y_pos[4:0],6'd33};
+				BIG_WR_ADDR <= {score_y_pos[4:0],6'd30};
 				BIG_WR_DATA <= number_start;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2605 )
 			begin
-				BIG_WR_ADDR <= {score_y_pos[4:0],6'd34};
+				BIG_WR_ADDR <= {score_y_pos[4:0],6'd31};
 				BIG_WR_DATA <= number_start;
 				BIG_WR_EN <= 1;
 			end

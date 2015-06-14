@@ -2,8 +2,8 @@
 Release 14.7 Trace  (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-E:\XILINXISE\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s
-4 -n 3 -fastpaths -xml top_level.twx top_level.ncd -o top_level.twr
+E:\Prog\ISE\telepztve\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise
+-v 3 -s 4 -n 3 -fastpaths -xml top_level.twx top_level.ncd -o top_level.twr
 top_level.pcf -ucf LOGSYS_SP3E.ucf
 
 Design file:              top_level.ncd
@@ -33,6 +33,16 @@ INFO:Timing:3389 - This architecture does not support 'Discrete Jitter' and
    Uncertainty calculation.  Please make appropriate modification to 
    SYSTEM_JITTER to account for the unsupported Discrete Jitter and Phase 
    Error.
+WARNING:Timing:3413 - Non-Ascii characters were found and are not allowed. 
+   Please remove from sources. The non-ascii characters were replaced in the 
+   report with 'z' : 
+   E:\Prog\ISE\telepztve\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle 
+   ise
+   -v 3 -s 4 -n 3 -fastpaths -xml top_level.twx top_level.ncd -o 
+   top_level.twr
+   top_level.pcf -ucf LOGSYS_SP3E.ucf
+
+   .
 
 
 
@@ -45,13 +55,13 @@ Setup/Hold to clock clk16M
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-bt<0>       |    8.026(R)|   -4.809(R)|clk               |   0.000|
-bt<1>       |    8.973(R)|   -5.162(R)|clk               |   0.000|
-bt<2>       |    9.766(R)|   -5.402(R)|clk               |   0.000|
-bt<3>       |    7.699(R)|   -4.192(R)|clk               |   0.000|
-rst         |    9.560(R)|   -2.142(R)|clk               |   0.000|
-xps2_c      |    4.132(R)|   -2.216(R)|clk               |   0.000|
-xps2_d      |    4.493(R)|   -2.177(R)|clk               |   0.000|
+bt<0>       |    8.518(R)|   -5.480(R)|clk               |   0.000|
+bt<1>       |    8.288(R)|   -4.875(R)|clk               |   0.000|
+bt<2>       |    8.255(R)|   -3.964(R)|clk               |   0.000|
+bt<3>       |    6.479(R)|   -3.573(R)|clk               |   0.000|
+rst         |    8.906(R)|   -2.027(R)|clk               |   0.000|
+xps2_c      |    3.263(R)|   -1.515(R)|clk               |   0.000|
+xps2_d      |    3.127(R)|   -1.078(R)|clk               |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock clk16M to Pad
@@ -59,22 +69,22 @@ Clock clk16M to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-hs          |    5.101(R)|clk               |   0.000|
-ld<0>       |    5.924(R)|clk               |   0.000|
-ld<1>       |    5.619(R)|clk               |   0.000|
-ld<2>       |    5.927(R)|clk               |   0.000|
-ld<3>       |    5.896(R)|clk               |   0.000|
-ld<4>       |    5.463(R)|clk               |   0.000|
-ld<5>       |    5.182(R)|clk               |   0.000|
-ld<6>       |    8.215(R)|clk               |   0.000|
-ld<7>       |    5.153(R)|clk               |   0.000|
-rgb<0>      |    5.197(R)|clk               |   0.000|
-rgb<1>      |    5.656(R)|clk               |   0.000|
-rgb<2>      |    5.468(R)|clk               |   0.000|
-rgb<3>      |    6.809(R)|clk               |   0.000|
-rgb<4>      |    5.877(R)|clk               |   0.000|
-rgb<5>      |    5.754(R)|clk               |   0.000|
-vs          |    5.523(R)|clk               |   0.000|
+hs          |    5.100(R)|clk               |   0.000|
+ld<0>       |    6.370(R)|clk               |   0.000|
+ld<1>       |    6.217(R)|clk               |   0.000|
+ld<2>       |    6.655(R)|clk               |   0.000|
+ld<3>       |    6.434(R)|clk               |   0.000|
+ld<4>       |    6.769(R)|clk               |   0.000|
+ld<5>       |    6.315(R)|clk               |   0.000|
+ld<6>       |    7.855(R)|clk               |   0.000|
+ld<7>       |    5.266(R)|clk               |   0.000|
+rgb<0>      |    5.580(R)|clk               |   0.000|
+rgb<1>      |    5.485(R)|clk               |   0.000|
+rgb<2>      |    6.193(R)|clk               |   0.000|
+rgb<3>      |    5.699(R)|clk               |   0.000|
+rgb<4>      |    5.544(R)|clk               |   0.000|
+rgb<5>      |    5.836(R)|clk               |   0.000|
+vs          |    5.568(R)|clk               |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk16M
@@ -82,18 +92,18 @@ Clock to Setup on destination clock clk16M
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk16M         |   11.053|         |         |         |
+clk16M         |   10.198|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Sat Jun 13 20:53:36 2015 
+Analysis completed Sun Jun 14 03:18:33 2015 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 177 MB
+Peak Memory Usage: 181 MB
 
 
 
