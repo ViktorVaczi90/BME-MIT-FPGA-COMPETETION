@@ -32,6 +32,7 @@ module TETRIS_GAME(
 	 input [7:0] ps2,
 	 input ps2_en
     );
+	reg pause_keyboard; initial pause_keyboard = 0;
 	//***************** parameters/positions
 	parameter number_start = 28;
 	parameter score_x_pos = 27;
@@ -189,14 +190,75 @@ module TETRIS_GAME(
 	 reg [2:0] random;					initial random = 1;
 	 reg [5:0] input_delay;
 	 reg [5:0] input_delay_max; 		initial input_delay_max = 10;
+	 
+	 //***************************** GAME ÁLLAPOTGÉP
+	 reg [5:0] ver_clr; 	initial ver_clr = 0;
+	 reg [6:0] hor_clr;	initial hor_clr = 0;
+	 reg [6:0] gamestate; initial gamestate = 1;
+	 reg [5:0] clear_cntr; initial clear_cntr = 0;
+	 reg game_over; initial game_over = 0;
+	 reg keyboard_new; initial keyboard_new = 0;
+		always @ ( posedge clk )
+		begin
+		if (pos_y == 0 &&  gravity == 1 && move_cntr == 1 && !canmove_down) 
+			game_over <= 1;
+		if ( ps2_en == 1 && ps2 == 8'h50 )
+			pause_keyboard <= 1;
+		if ( ps2_en == 1 && ps2 == 8'h4E )
+			keyboard_new <= 1;
+		if ( en_posedge == 0 && en == 1 );
+			begin
+			case (gamestate)
+				1:// GAME PLAYING
+					begin
+						if ( pause_keyboard == 1)
+						begin
+							gamestate <= 2;
+							pause_keyboard <= 0;
+						end
+						if ( game_over == 1)
+						begin
+							gamestate <= 3;
+							game_over <= 0;
+						end
+					end
+				2://PAUSE
+					begin
+						if ( pause_keyboard == 1)
+						begin
+							gamestate <= 1;
+							pause_keyboard <= 0;
+						end
+					end
+				3://GAME_OVER 
+				begin
+					game_over <= 0;
+					if (keyboard_new)
+					begin
+						clear_cntr <= 400;
+						gamestate <= 4;
+						keyboard_new <= 0;
+					end
+				end
+				4://NEW_GAME
+				begin
+				clear_cntr <= clear_cntr -1;
+				if(!clear_cntr)
+					gamestate<= 1;
+				end
+			endcase
+	 		end
+		end
+	 
+	 //***************************** END OF GAME ÁLLAPOTGÉP
 	 //****Választás a blokkokból, delay (gombokhoz)
 	 wire [3:0] ONESwire, TENSwire;
     wire [1:0] HUNDREDSwire;
 	 binary_to_BCD BCD_CONV(.A(score),.ONES(ONESwire),.TENS(TENSwire),.HUNDREDS(HUNDREDSwire));
 	 always@ ( posedge clk)
 	 begin
-		level <= levelscore[14:3] + 1;
-		end
+	 level <= levelscore[14:3] + 1;
+	 end
 	 //****Késleltetés (gombokhoz)
 	 always @ (posedge clk)
 	 begin
@@ -218,11 +280,14 @@ module TETRIS_GAME(
 	 
 	//***********************Leesés 
 	always @ (posedge clk)
+	if ( gamestate == 1)
 	begin
-	if( en_posedge == 0 && en == 1 ) 
-		gravity <= gravity + 1;
-	if ( gravity == gravity_speed - level )
-		gravity <=0;
+		begin
+		if( en_posedge == 0 && en == 1 ) 
+			gravity <= gravity + 1;
+		if ( gravity == gravity_speed - level )
+			gravity <=0;
+		end
 	end
 	//***********************Leesés 
 	
@@ -316,6 +381,7 @@ module TETRIS_GAME(
 	//*************************************************************************Check blokk******************************************************************************************
 	
 	always@(posedge clk)
+	if ( gamestate == 1)
 	begin
 		//*******************************CHECKDOWN BEGIN
 		if ( down_cntr == 0 && ( cycle_cntr > check_down_start && cycle_cntr < check_down_end ) ) 
@@ -409,8 +475,88 @@ module TETRIS_GAME(
 			down_keyboard <= 1;
 		if ( ps2_en == 1 && (ps2 ==  8'h20 || ps2 == 8'h57) )
 			rot_keyboard <= 1;
+		if( cycle_cntr == 1)
+		begin
+				BIG_WR_ADDR <= {5'd2,6'd2 };
+				BIG_WR_DATA <= 28+gamestate;//G
+				BIG_WR_EN <= 1;
+			end
+		if(cycle_cntr == 2)
+		BIG_WR_EN <= 0;
 		//****************PS2 kezelése
-		
+	if ( gamestate == 3)
+	begin
+			if ( move_cntr ==3 )
+			begin
+				BIG_WR_ADDR <= {5'd5,6'd14 };
+				BIG_WR_DATA <= 44;//G
+				BIG_WR_EN <= 1;
+			end
+			if ( move_cntr ==4 )
+			begin
+				BIG_WR_ADDR <= {5'd5,6'd15 };
+				BIG_WR_DATA <= 38;//A
+				BIG_WR_EN <= 1;
+			end
+			if ( move_cntr ==5 )
+			begin
+				BIG_WR_ADDR <= {5'd5,6'd16 };
+				BIG_WR_DATA <= 50;//M
+				BIG_WR_EN <= 1;
+			end
+			if ( move_cntr ==6 )
+			begin
+				BIG_WR_ADDR <= {5'd5,6'd17 };
+				BIG_WR_DATA <= 42;//E
+				BIG_WR_EN <= 1;
+			end
+			if ( move_cntr ==7 )
+			begin
+				BIG_WR_ADDR <= {5'd6,6'd14 };
+				BIG_WR_DATA <= 52;//O
+				BIG_WR_EN <= 1;
+			end
+			if ( move_cntr ==8 )
+			begin
+				BIG_WR_ADDR <= {5'd6,6'd15 };
+				BIG_WR_DATA <= 59;//V
+				BIG_WR_EN <= 1;
+			end
+			if ( move_cntr ==9 )
+			begin
+				BIG_WR_ADDR <= {5'd6,6'd16 };
+				BIG_WR_DATA <= 42;//E
+				BIG_WR_EN <= 1;
+			end	
+			if ( move_cntr ==10 )
+			begin
+				BIG_WR_ADDR <= {5'd6,6'd17 };
+				BIG_WR_DATA <= 55;//R
+				BIG_WR_EN <= 1;
+			end				
+		if ( move_cntr == 11) 
+			BIG_WR_EN <= 0;
+	end
+	if ( gamestate == 4 )
+	begin
+				if ( move_cntr == 1 ) 
+					currentrow <= 0;
+				if ( move_cntr[3:0] >= 1 && move_cntr[3:0] <= 11 && move_cntr >= 1 && move_cntr <= 1000)
+					begin
+						BIG_WR_ADDR <= {ver_clr,hor_clr};
+						BIG_WR_DATA <= 63;
+						BIG_WR_EN <= 1;
+					end
+				if ( move_cntr[3:0] == 12) 
+				begin
+					BIG_WR_EN <= 0;
+					currentrow <= currentrow + 1;
+				end
+				ver_clr <= tetris_x_begin + move_cntr[3:0];
+				hor_clr <= tetris_y_begin + currentrow;
+	end
+	if ( gamestate == 1)
+	begin
 		//*************Elõzõ pozíció törlése
 		if ( move_cntr >1 && move_cntr <= 6 )
 			begin
@@ -533,7 +679,7 @@ module TETRIS_GAME(
 					end
 					if ( move_cntr[9:0] >= 512 && move_cntr[9:0] <= 512+16*20 )
 					begin
-						if ( move_cntr[3:0] >= 2 && move_cntr[3:0] <= 12 )//TODO READ
+						if ( move_cntr[3:0] >= 2 && move_cntr[3:0] <= 12 )
 							begin
 								BIG_WR_ADDR <= {ver_wire_clear_wr[4:0],hor_wire_clear_wr[5:0]};
 								BIG_WR_DATA <= BIG_RD_DATA;
@@ -614,13 +760,13 @@ module TETRIS_GAME(
 				BIG_WR_DATA <= 0;
 				BIG_WR_EN <= 1;
 			end
-		if ( move_cntr == 2603 )
+		if ( move_cntr == 2603 && (HUNDREDSwire || TENSwire || ONESwire) )
 			begin
 				BIG_WR_ADDR <= {score_y_pos[4:0],6'd29};
 				BIG_WR_DATA <= ONESwire+number_start;
 				BIG_WR_EN <= 1;
 			end
-		if ( move_cntr == 2604 )
+		if ( move_cntr == 2604 && (HUNDREDSwire || TENSwire || ONESwire))
 			begin
 				BIG_WR_ADDR <= {score_y_pos[4:0],6'd30};
 				BIG_WR_DATA <= number_start;
@@ -639,7 +785,7 @@ module TETRIS_GAME(
 			if ( move_cntr == 2606 )
 			begin
 				BIG_WR_ADDR <= {level_y_pos[4:0],level_x_pos[5:0]};//{level_x_pos[4:0],level_y_pos[5:0]};
-				BIG_WR_DATA <= number_start+level;
+				BIG_WR_DATA <= number_start + level;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2607)
@@ -659,7 +805,7 @@ module TETRIS_GAME(
 		if ( move_cntr == 2629)
 			BIG_WR_EN <= 0;
 	end
-	
+	end
 
 	assign clear_next_ver = nextblock_y_pos[4:0] + move_cntr[3:2];
 	assign clear_next_hor = nextblock_x_pos[5:0] + move_cntr[1:0];

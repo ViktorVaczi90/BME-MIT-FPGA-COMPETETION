@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=C:\Users\Greg\Desktop\fpga_-master\fpgacomp\top_level.ncd
-OUTFILE=C:\Users\Greg\Desktop\fpga_-master\fpgacomp\top_level.bit
+INFILE=F:\Users\Viktor\Desktop\FPGACOMP2\fpgacomp\top_level.ncd
+OUTFILE=F:\Users\Viktor\Desktop\FPGACOMP2\fpgacomp\top_level.bit
 FAMILY=Spartan3E
 PART=xc3s250e-4tq144
-WORKINGDIR=C:\Users\Greg\Desktop\fpga_-master\fpgacomp
+WORKINGDIR=F:\Users\Viktor\Desktop\FPGACOMP2\fpgacomp
 LICENSE=WebPack
 USER_INFO=__0_0_0

@@ -9,53 +9,56 @@ Target Device  : xc3s250e
 Target Package : tq144
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Sun Jun 14 03:17:44 2015
+Mapped Date    : Sun Jun 14 16:23:51 2015
 
 Mapping design into LUTs...
 Running directed packing...
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0011_3
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0003_2_f5. 
-   There is a conflict for the FXMUX.  The design will exhibit suboptimal
-   timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_47_3 failed to
-   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0013_2_f5.  There is a
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_45_3 failed to
+   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0003_2_f5.  There is a
    conflict for the FXMUX.  The design will exhibit suboptimal timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_42_3 failed to
-   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0007_2_f5.  There is a
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_43_3 failed to
+   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0020_2_f5.  There is a
    conflict for the FXMUX.  The design will exhibit suboptimal timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0025_3
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0023_2_f5. 
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0001_3
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0022_2_f5. 
    There is a conflict for the FXMUX.  The design will exhibit suboptimal
    timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0019_3
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0016_2_f5. 
-   There is a conflict for the FXMUX.  The design will exhibit suboptimal
-   timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0030_3
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0027_2_f5. 
-   There is a conflict for the FXMUX.  The design will exhibit suboptimal
-   timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0011_31
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0003_2_f5_0. 
-   There is a conflict for the FXMUX.  The design will exhibit suboptimal
-   timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_42_31 failed to
-   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0007_2_f5_0.  There is a
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_46_3 failed to
+   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0031_2_f5.  There is a
    conflict for the FXMUX.  The design will exhibit suboptimal timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0025_31
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0023_2_f5_0. 
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_44_3 failed to
+   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0023_2_f5.  There is a
+   conflict for the FXMUX.  The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0005_3
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0033_2_f5. 
    There is a conflict for the FXMUX.  The design will exhibit suboptimal
    timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0019_31
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0016_2_f5_0. 
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_45_31 failed to
+   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0003_2_f5_0.  There is a
+   conflict for the FXMUX.  The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_43_31 failed to
+   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0020_2_f5_0.  There is a
+   conflict for the FXMUX.  The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0001_31
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0022_2_f5_0. 
+   There is a conflict for the FXMUX.  The design will exhibit suboptimal
+   timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_46_31 failed to
+   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0031_2_f5_0.  There is a
+   conflict for the FXMUX.  The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__COND_44_31 failed to
+   merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0023_2_f5_0.  There is a
+   conflict for the FXMUX.  The design will exhibit suboptimal timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0034_31
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0040_2_f5_0. 
    There is a conflict for the FXMUX.  The design will exhibit suboptimal
    timing.
 WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0036_31
    failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0041_2_f5_0. 
    There is a conflict for the FXMUX.  The design will exhibit suboptimal
    timing.
-WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0030_31
-   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0027_2_f5_0. 
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0005_31
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0033_2_f5_0. 
    There is a conflict for the FXMUX.  The design will exhibit suboptimal
    timing.
 Running delay-based LUT packing...
@@ -83,18 +86,18 @@ Design Summary
 
 Design Summary:
 Number of errors:      0
-Number of warnings:   20
+Number of warnings:   22
 Logic Utilization:
-  Number of Slice Flip Flops:           335 out of   4,896    6%
-  Number of 4 input LUTs:             1,328 out of   4,896   27%
+  Number of Slice Flip Flops:           361 out of   4,896    7%
+  Number of 4 input LUTs:             1,490 out of   4,896   30%
 Logic Distribution:
-  Number of occupied Slices:            824 out of   2,448   33%
-    Number of Slices containing only related logic:     824 out of     824 100%
-    Number of Slices containing unrelated logic:          0 out of     824   0%
+  Number of occupied Slices:            914 out of   2,448   37%
+    Number of Slices containing only related logic:     914 out of     914 100%
+    Number of Slices containing unrelated logic:          0 out of     914   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       1,509 out of   4,896   30%
-    Number used as logic:             1,319
-    Number used as a route-thru:        181
+  Total Number of 4 input LUTs:       1,672 out of   4,896   34%
+    Number used as logic:             1,481
+    Number used as a route-thru:        182
     Number used as Shift registers:       9
 
   The Slice Logic Distribution report is not meaningful if the design is
@@ -105,9 +108,9 @@ Logic Distribution:
   Number of BUFGMUXs:                     2 out of      24    8%
   Number of DCMs:                         1 out of       4   25%
 
-Average Fanout of Non-Clock Nets:                3.72
+Average Fanout of Non-Clock Nets:                3.78
 
-Peak Memory Usage:  273 MB
+Peak Memory Usage:  287 MB
 Total REAL time to MAP completion:  3 secs 
 Total CPU time to MAP completion:   3 secs 
 
