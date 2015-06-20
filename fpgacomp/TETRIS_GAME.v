@@ -468,14 +468,14 @@ module TETRIS_GAME(
 			down_keyboard <= 1;
 		if ( ps2_en == 1 && (ps2 ==  8'h20 || ps2 == 8'h57) )
 			rot_keyboard <= 1;
-		if( cycle_cntr == 1)
+		/*if( cycle_cntr == 1)
 		begin
 				BIG_WR_ADDR <= {5'd2,6'd2 };
 				BIG_WR_DATA <= 28+gamestate;//G
 				BIG_WR_EN <= 1;
 			end
 		if(cycle_cntr == 2)
-		BIG_WR_EN <= 0;
+		BIG_WR_EN <= 0;*/
 		//****************PS2 kezelése
 	if ( gamestate == 3)
 	begin
@@ -727,7 +727,7 @@ module TETRIS_GAME(
 		end
 		if ( move_cntr == 2601 )
 			begin
-				BIG_WR_ADDR <= {score_y_pos[4:0],6'd327};
+				BIG_WR_ADDR <= {score_y_pos[4:0],6'd27};
 				if(HUNDREDSwire)
 				BIG_WR_DATA <= HUNDREDSwire+number_start;
 				else
@@ -781,7 +781,7 @@ module TETRIS_GAME(
 				BIG_WR_DATA <= nextcolor;
 				BIG_WR_EN <= 1;
 			end
-		if ( move_cntr == 2629)
+		if ( move_cntr == 2630)
 			BIG_WR_EN <= 0;
 	end
 	end

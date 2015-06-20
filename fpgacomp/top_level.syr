@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: top_level.prj
 
@@ -133,7 +133,6 @@ Compiling verilog file "VGA.v" in library work
 Module <BIG_framebuffer> compiled
 Compiling verilog file "TETRIS_GAME.v" in library work
 Module <VGA> compiled
-WARNING:HDLCompilers:298 - "TETRIS_GAME.v" line 730 Too many digits specified in decimal constant
 Compiling verilog file "ps2_if.v" in library work
 Module <TETRIS_GAME> compiled
 Compiling verilog file "music_module.v" in library work
@@ -1553,14 +1552,13 @@ Optimizing unit <ps2_if> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block top_level, actual ratio is 49.
+Found area constraint ratio of 100 (+ 5) on block top_level, actual ratio is 48.
 FlipFlop TETRIS_GAME/move_cntr_0 has been replicated 1 time(s)
 FlipFlop TETRIS_GAME/move_cntr_1 has been replicated 1 time(s)
 FlipFlop TETRIS_GAME/move_cntr_2 has been replicated 1 time(s)
 FlipFlop TETRIS_GAME/move_cntr_3 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/move_cntr_4 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/move_cntr_6 has been replicated 1 time(s)
-FlipFlop TETRIS_GAME/move_cntr_8 has been replicated 1 time(s)
+FlipFlop TETRIS_GAME/move_cntr_5 has been replicated 1 time(s)
+FlipFlop TETRIS_GAME/move_cntr_7 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -1572,8 +1570,8 @@ Unit <top_level> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 471
- Flip-Flops                                            : 471
+# Registers                                            : 470
+ Flip-Flops                                            : 470
 # Shift Registers                                      : 1
  3-bit shift register                                  : 1
 
@@ -1604,30 +1602,29 @@ Design Statistics
 # IOs                              : 33
 
 Cell Usage :
-# BELS                             : 3051
+# BELS                             : 3056
 #      GND                         : 1
 #      INV                         : 80
 #      LUT1                        : 272
-#      LUT2                        : 172
-#      LUT2_D                      : 13
-#      LUT2_L                      : 4
+#      LUT2                        : 182
+#      LUT2_D                      : 11
+#      LUT2_L                      : 5
 #      LUT3                        : 354
 #      LUT3_D                      : 18
-#      LUT3_L                      : 14
-#      LUT4                        : 880
-#      LUT4_D                      : 79
-#      LUT4_L                      : 99
-#      MULT_AND                    : 2
-#      MUXCY                       : 535
-#      MUXF5                       : 182
+#      LUT3_L                      : 24
+#      LUT4                        : 882
+#      LUT4_D                      : 83
+#      LUT4_L                      : 90
+#      MUXCY                       : 530
+#      MUXF5                       : 184
 #      MUXF6                       : 8
 #      VCC                         : 1
-#      XORCY                       : 337
-# FlipFlops/Latches                : 472
+#      XORCY                       : 331
+# FlipFlops/Latches                : 471
 #      FD                          : 68
 #      FDE                         : 120
 #      FDR                         : 94
-#      FDRE                        : 150
+#      FDRE                        : 149
 #      FDS                         : 36
 #      FDSE                        : 4
 # RAMS                             : 11
@@ -1652,10 +1649,10 @@ Device utilization summary:
 
 Selected Device : 3s250etq144-4 
 
- Number of Slices:                     1067  out of   2448    43%  
- Number of Slice Flip Flops:            472  out of   4896     9%  
- Number of 4 input LUTs:               1994  out of   4896    40%  
-    Number used as logic:              1985
+ Number of Slices:                     1079  out of   2448    44%  
+ Number of Slice Flip Flops:            471  out of   4896     9%  
+ Number of 4 input LUTs:               2010  out of   4896    41%  
+    Number used as logic:              2001
     Number used as Shift registers:       9
  Number of IOs:                          33
  Number of bonded IOBs:                  25  out of    108    23%  
@@ -1684,7 +1681,7 @@ Clock Information:
 -----------------------------------+--------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)    | Load  |
 -----------------------------------+--------------------------+-------+
-clk16M                             | clk_gen/DCM_SP_inst:CLKFX| 492   |
+clk16M                             | clk_gen/DCM_SP_inst:CLKFX| 491   |
 -----------------------------------+--------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -1695,7 +1692,7 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 21.522ns (Maximum Frequency: 46.464MHz)
+   Minimum period: 20.087ns (Maximum Frequency: 49.782MHz)
    Minimum input arrival time before clock: 7.569ns
    Maximum output required time after clock: 11.576ns
    Maximum combinational path delay: No path found
@@ -1706,33 +1703,32 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk16M'
-  Clock period: 21.522ns (frequency: 46.464MHz)
-  Total number of paths / destination ports: 71647 / 1212
+  Clock period: 20.087ns (frequency: 49.782MHz)
+  Total number of paths / destination ports: 66870 / 1209
 -------------------------------------------------------------------------
-Delay:               13.774ns (Levels of Logic = 9)
-  Source:            TETRIS_GAME/score_4 (FF)
-  Destination:       TETRIS_GAME/BIG_WR_ADDR_2 (FF)
+Delay:               12.856ns (Levels of Logic = 8)
+  Source:            TETRIS_GAME/score_5 (FF)
+  Destination:       TETRIS_GAME/BIG_WR_ADDR_10 (FF)
   Source Clock:      clk16M rising 1.6X
   Destination Clock: clk16M rising 1.6X
 
-  Data Path: TETRIS_GAME/score_4 to TETRIS_GAME/BIG_WR_ADDR_2
+  Data Path: TETRIS_GAME/score_5 to TETRIS_GAME/BIG_WR_ADDR_10
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              12   0.591   1.136  TETRIS_GAME/score_4 (TETRIS_GAME/score_4)
-     LUT4_D:I0->O          3   0.704   0.535  TETRIS_GAME/BCD_CONV/m2/Mrom_out11 (TETRIS_GAME/BCD_CONV/c2<0>)
-     LUT4:I3->O            2   0.704   0.526  TETRIS_GAME/BCD_CONV/m4/Mrom_out31_SW0 (N203)
-     LUT2_D:I1->O          3   0.704   0.535  TETRIS_GAME/BCD_CONV/m4/Mrom_out31 (TETRIS_GAME/BCD_CONV/c4<3>)
-     LUT4:I3->O            4   0.704   0.587  TETRIS_GAME/BCD_CONV/m7/Mrom_out111 (TETRIS_GAME/BCD_CONV/m7/Mrom_out1)
-     MUXF5:S->O            1   0.739   0.424  TETRIS_GAME/BIG_WR_ADDR_or0000_SW0 (N239)
-     LUT4_D:I3->O         18   0.704   1.072  TETRIS_GAME/BIG_WR_ADDR_and00031 (TETRIS_GAME/BIG_WR_ADDR_and0003)
-     LUT4_D:I3->O          2   0.704   0.451  TETRIS_GAME/BIG_WR_ADDR_mux0000<2>2112 (N331)
-     LUT4_L:I3->LO         1   0.704   0.104  TETRIS_GAME/BIG_WR_ADDR_mux0000<2>224 (TETRIS_GAME/BIG_WR_ADDR_mux0000<2>224)
-     LUT4:I3->O            3   0.704   0.531  TETRIS_GAME/BIG_WR_ADDR_mux0000<2>238 (N79)
-     FDS:S                     0.911          TETRIS_GAME/BIG_WR_ADDR_2
+     FD:C->Q              23   0.591   1.281  TETRIS_GAME/score_5 (TETRIS_GAME/score_5)
+     LUT4:I1->O            1   0.704   0.424  TETRIS_GAME/BCD_CONV/m2/Mrom_out11 (TETRIS_GAME/BCD_CONV/c2<0>)
+     LUT4:I3->O            6   0.704   0.748  TETRIS_GAME/BCD_CONV/m4/Mrom_out31_SW0 (N215)
+     LUT2:I1->O            5   0.704   0.637  TETRIS_GAME/BCD_CONV/m4/Mrom_out31 (TETRIS_GAME/BCD_CONV/c4<3>)
+     LUT4:I3->O            8   0.704   0.761  TETRIS_GAME/BIG_WR_ADDR_and00171 (TETRIS_GAME/BIG_WR_ADDR_and0017)
+     LUT4:I3->O           10   0.704   0.886  TETRIS_GAME/BIG_WR_ADDR_or0000 (TETRIS_GAME/BIG_WR_ADDR_or0000)
+     LUT4:I3->O           19   0.704   1.164  TETRIS_GAME/BIG_WR_ADDR_and00031 (TETRIS_GAME/BIG_WR_ADDR_and0003)
+     LUT2_D:I1->O          1   0.704   0.424  TETRIS_GAME/BIG_WR_EN_mux0000431 (N135)
+     LUT4:I3->O            1   0.704   0.000  TETRIS_GAME/BIG_WR_ADDR_mux0000<10>681 (TETRIS_GAME/BIG_WR_ADDR_mux0000<10>68)
+     FDS:D                     0.308          TETRIS_GAME/BIG_WR_ADDR_10
     ----------------------------------------
-    Total                     13.774ns (7.873ns logic, 5.901ns route)
-                                       (57.2% logic, 42.8% route)
+    Total                     12.856ns (6.531ns logic, 6.325ns route)
+                                       (50.8% logic, 49.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk16M'
@@ -1749,7 +1745,7 @@ Offset:              7.569ns (Levels of Logic = 5)
     ----------------------------------------  ------------
      IBUF:I->O             1   1.218   0.595  bt_3_IBUF (bt_3_IBUF)
      LUT4:I0->O            2   0.704   0.622  TETRIS_GAME/down_keyboard_and00001 (TETRIS_GAME/down_keyboard_and0000)
-     LUT3:I0->O            1   0.704   0.499  TETRIS_GAME/down_keyboard_not00011_SW1 (N512)
+     LUT3:I0->O            1   0.704   0.499  TETRIS_GAME/down_keyboard_not00011_SW1 (N592)
      LUT4:I1->O            6   0.704   0.844  TETRIS_GAME/down_keyboard_not00011 (TETRIS_GAME/pos_y_not0001)
      LUT4:I0->O            1   0.704   0.420  TETRIS_GAME/down_keyboard_not0001 (TETRIS_GAME/down_keyboard_not0001)
      FDE:CE                    0.555          TETRIS_GAME/down_keyboard
@@ -1790,14 +1786,14 @@ Offset:              11.576ns (Levels of Logic = 12)
 =========================================================================
 
 
-Total REAL time to Xst completion: 47.00 secs
-Total CPU time to Xst completion: 47.01 secs
+Total REAL time to Xst completion: 49.00 secs
+Total CPU time to Xst completion: 48.89 secs
  
 --> 
 
-Total memory usage is 389820 kilobytes
+Total memory usage is 391612 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  159 (   0 filtered)
+Number of warnings :  158 (   0 filtered)
 Number of infos    :  112 (   0 filtered)
 
