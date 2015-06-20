@@ -133,8 +133,9 @@ case (data_shr[8:1])
    8'h66: ascii_val = 8'h08;		// backspace
    
    // arrows
-   8'h74: ascii_val = 8'h4A;		// left arrow
-   8'h6b: ascii_val = 8'h42;		// right arrow
+   8'h74: ascii_val = 8'h34;		// left arrow
+   8'h6b: ascii_val = 8'h36;		// right arrow
+	8'h72: ascii_val = 8'h32;		//down arrow
    
    8'hF0: ascii_val = 8'hF0;		   // BREAK CODE
    default: ascii_val = 8'h23;		// #

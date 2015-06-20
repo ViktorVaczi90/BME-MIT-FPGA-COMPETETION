@@ -35,31 +35,13 @@ reg  ps2_rd;
 reg  [7:0] out;
 reg  [1:0] state;
 initial state = 2'b00;
-reg [20:0] ps2initcntr; initial ps2initcntr = 2000000;
+
 reg [3:0] ps2state2; initial ps2state2 = 1;
 reg  ps2_valid;
 reg last_element;initial last_element = 1;
-/*
-always @ ( posedge clk )
-begin
-	if ( rst )
-		ps2_cntr = 0;
-	else 
-		ps2_cntr = ps2_cntr + 1;
-end*/
+
 always @ ( posedge clk)
 begin
-	if (ps2state2 == 5)
-	begin
-		if(ps2initcntr /*ps2_status[0]*/)
-		begin
-			ps2_rd <= 1;	
-			ps2initcntr <= ps2initcntr -1;
-		end
-		else
-			ps2_rd <= 0;
-			ps2state2 <= 0;
-	end
 	
 	if (ps2state2 == 0)
 	begin
@@ -76,24 +58,8 @@ begin
 	if (ps2state2 == 1)
 	begin
 		ps2_rd <= 0;
-		//out <= ps2_data[7:0];
-		ps2state2 <= 2;
+		ps2state2 <= 0;
 	end
-	
-	if (ps2state2 == 2)
-	begin
-		ps2_rd <= 0;
-		if(!ps2_status[0])// If not empty than another read in the next state
-			ps2state2 <= 3;
-		else// Else wait until there is something in the fifo again in the first state.
-			ps2state2<= 0;
-	end	
-	
-	if (ps2state2 == 3)
-	begin
-		ps2_rd <= 1;
-		ps2state2<=2;
-	end	
 	if ( ps2_valid == 1 )
 		ps2_valid <= 0;
 	if ( ps2state2 == 1   )
