@@ -23,11 +23,12 @@ module TETRIS_GAME(
     input clk,
     input rst,
     input en,
-	 output reg [7:0] leds,
+	 output [7:0] leds,
     output reg [10:0] BIG_RD_ADDR,
     output reg [10:0] BIG_WR_ADDR,
     output reg BIG_WR_EN,
     output reg [5:0] BIG_WR_DATA,
+	 output reg [5:0] level,
     input[5:0] BIG_RD_DATA,
 	 input [7:0] ps2,
 	 input ps2_en
@@ -42,7 +43,7 @@ module TETRIS_GAME(
 	parameter level_x_pos = 32;
 	parameter level_y_pos = 14;
 	//***************** end of parameters/positions
-	reg [5:0] level; initial level = 1;
+   initial level = 1;
 	reg [14:0] levelscore; initial levelscore = 0;
 	wire [4:0] clear_next_ver;
 	wire [5:0] clear_next_hor;
@@ -206,7 +207,7 @@ module TETRIS_GAME(
 			pause_keyboard <= 1;
 		if ( ps2_en == 1 && ps2 == 8'h4E )
 			keyboard_new <= 1;
-		if ( en_posedge == 0 && en == 1 );
+		if ( en_posedge == 0 && en == 1 )
 			begin
 			case (gamestate)
 				1:// GAME PLAYING
@@ -235,16 +236,13 @@ module TETRIS_GAME(
 					game_over <= 0;
 					if (keyboard_new)
 					begin
-						clear_cntr <= 400;
 						gamestate <= 4;
 						keyboard_new <= 0;
 					end
 				end
 				4://NEW_GAME
 				begin
-				clear_cntr <= clear_cntr -1;
-				if(!clear_cntr)
-					gamestate<= 1;
+				gamestate<= 1;
 				end
 			endcase
 	 		end
@@ -437,11 +435,6 @@ module TETRIS_GAME(
 			BIG_RD_ADDR <= {ver_wire_rot[4:0],hor_wire_rot[5:0]};
 		if(rot_cntr >= 2 && rot_cntr <= 5 &&  (cycle_cntr > check_rot_start && cycle_cntr < check_rot_end))
 			begin
-				/*debugreg[rot_cntr] <= BIG_RD_DATA;
-				debugreg[rot_cntr + 4]<= horizontal_rot_data[{color,nextrot,rot_cntr_2}];
-				debugreg[rot_cntr + 8] <= horizontal[rot_cntr ];
-				debugreg[rot_cntr + 12]<= vertical_rot_data[{color,nextrot,rot_cntr_2}];
-				debugreg[rot_cntr + 16] <= vertical[rot_cntr ];*/
 			if(BIG_RD_DATA&& 
 				!(//nem saját
 				(horizontal[rot_cntr + 0]  == horizontal_rot_data[{color[2:0],nextrot[1:0],rot_cntr_2[1:0]}]  && vertical[rot_cntr ] == vertical_rot_data[{color[2:0],nextrot[1:0],rot_cntr_2[1:0]}] ) ||
@@ -539,21 +532,25 @@ module TETRIS_GAME(
 	end
 	if ( gamestate == 4 )
 	begin
+				levelscore <= 0;
+				score <= 0;
 				if ( move_cntr == 1 ) 
-					currentrow <= 0;
-				if ( move_cntr[3:0] >= 1 && move_cntr[3:0] <= 11 && move_cntr >= 1 && move_cntr <= 1000)
 					begin
-						BIG_WR_ADDR <= {ver_clr,hor_clr};
-						BIG_WR_DATA <= 63;
+					currentrow <= 0;
+					rowcombo <= 0;
+					end
+				if ( move_cntr[3:0] >= 2 && move_cntr[3:0] <= 12 && move_cntr >= 1 && move_cntr <= 1000)
+					begin
+						BIG_WR_ADDR <= {ver_wire_clear_wr,hor_wire_clear_wr};
+						BIG_WR_DATA <= 0;
 						BIG_WR_EN <= 1;
 					end
 				if ( move_cntr[3:0] == 12) 
 				begin
 					BIG_WR_EN <= 0;
+					if(currentrow <19)
 					currentrow <= currentrow + 1;
 				end
-				ver_clr <= tetris_x_begin + move_cntr[3:0];
-				hor_clr <= tetris_y_begin + currentrow;
 	end
 	if ( gamestate == 1)
 	begin
@@ -657,7 +654,6 @@ module TETRIS_GAME(
 						begin
 								currentrow <= currentrow +1;
 								fullrow <= 1;											// Új lehetoség egy teli  sorra
-								leds <= rowcombo;
 						end
 					end
 				end
@@ -693,7 +689,7 @@ module TETRIS_GAME(
 						end
 					end
 				end
-		end
+			end
 	//***********************************************END OF CLEARING UP FULL ROWS*************************************
 	if ( gravity == 1 && move_cntr == 2498 && !canmove_down )//Ha leérne akkor a rotációt nullába állítom
 	begin
@@ -728,19 +724,6 @@ module TETRIS_GAME(
 			 next_horizontal[2] <= horizontal_rot_data[{nextcolor,rotation,2'b10}];
 			 next_horizontal[3] <= horizontal_rot_data[{nextcolor,rotation,2'b11}];
 
-		end
-		/*
-			parameter number_start = 28;
-	parameter score_x_pos = 30;
-	parameter score_y_pos = 3;
-	parameter nextblock_x_pos = 30;
-	parameter nextblock_y_pos = 5;
-	parameter level_x_pos = 30;
-	parameter level_y_pos = 10;
-		*/
-		if ( move_cntr == 2600 )
-		begin
-			leds <= rowcombo;
 		end
 		if ( move_cntr == 2601 )
 			begin
@@ -778,13 +761,9 @@ module TETRIS_GAME(
 				BIG_WR_DATA <= number_start;
 				BIG_WR_EN <= 1;
 			end
-			/*
-				parameter level_x_pos = 30;
-	parameter level_y_pos = 1;
-			*/
 			if ( move_cntr == 2606 )
 			begin
-				BIG_WR_ADDR <= {level_y_pos[4:0],level_x_pos[5:0]};//{level_x_pos[4:0],level_y_pos[5:0]};
+				BIG_WR_ADDR <= {level_y_pos[4:0],level_x_pos[5:0]};
 				BIG_WR_DATA <= number_start + level;
 				BIG_WR_EN <= 1;
 			end
@@ -844,4 +823,5 @@ module TETRIS_GAME(
 	assign rot_cntr_2 = rot_cntr[1:0] + 2;
 	
 	assign nextrot = rotation + 1;
+	assign leds = gamestate;
 endmodule

@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Sun Jun 14 16:24:42 2015
+Sat Jun 20 17:32:48 2015
 
 
 INFO: The IO information is provided in three file formats as part of the Place and Route (PAR) process.  These formats are:
@@ -151,7 +151,7 @@ Pinout by Pin Number:
 |P129      |           |DIFFSI   |IP_L06N_0/GCLK9          |UNUSED   |           |0             |          |         |           |         |       |          |           |                |
 |P130      |           |DIFFM    |IO_L07P_0/GCLK10         |UNUSED   |           |0             |          |         |           |         |       |          |           |                |
 |P131      |           |DIFFS    |IO_L07N_0/GCLK11         |UNUSED   |           |0             |          |         |           |         |       |          |           |                |
-|P132      |           |IOB      |IO                       |UNUSED   |           |0             |          |         |           |         |       |          |           |                |
+|P132      |aud_out    |IOB      |IO                       |OUTPUT   |LVCMOS25*  |0             |12        |SLOW     |NONE**     |         |       |LOCATED   |NO         |NONE            |
 |P133      |           |         |GND                      |         |           |              |          |         |           |         |       |          |           |                |
 |P134      |rgb<1>     |IOB      |IO_L08P_0                |OUTPUT   |LVCMOS25*  |0             |12        |SLOW     |NONE**     |         |       |LOCATED   |NO         |NONE            |
 |P135      |rgb<3>     |IOB      |IO_L08N_0/VREF_0         |OUTPUT   |LVCMOS25*  |0             |12        |SLOW     |NONE**     |         |       |LOCATED   |NO         |NONE            |

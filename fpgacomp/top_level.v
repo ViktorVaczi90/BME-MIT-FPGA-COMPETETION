@@ -10,7 +10,8 @@ module top_level(
    output       vs,
 	output [7:0] ld,
 	input [3:0] bt,
-	input [7:0] sw
+	input [7:0] sw,
+	output aud_out
 );
 
 // Generating 25 MHz system clock
@@ -26,7 +27,7 @@ wire [5:0] 	BIGwr_data;
 wire [10:0] BIGrd_addr;
 wire [5:0] BIGrd_data;
 wire enwire;
-
+wire [5:0] levelwire;
 wire [31:0] ps2_data;
 wire [31:0] ps2_status;
 reg  ps2_rd;
@@ -130,6 +131,10 @@ begin
 				endcase
 	end
 end
+music_module mymusic(
+		.clk(clk),
+		.inlevel(levelwire[3:0]),
+		.audio_out(aud_out));
 //assign ld = ps2_data[7:0];
 VGA BAMBIVGA(
     .clk(clk),
@@ -143,11 +148,12 @@ VGA BAMBIVGA(
 	 .BIG_WR_DATA(BIGwr_data),
 	 .BIG_RD_DATA(BIGrd_data),
 	 .en(enwire)
+
     );
 	 
 TETRIS_GAME TETRIS_GAME(
 	 .btn(bt),
-	 //.leds(ld), //ide voltak kötve  ledek
+	 .leds(ld), //ide voltak kötve  ledek
     .clk(clk),
     .rst(rst),
     .en(enwire),
@@ -157,7 +163,8 @@ TETRIS_GAME TETRIS_GAME(
     .BIG_WR_DATA(BIGwr_data),
     .BIG_RD_DATA(BIGrd_data),
 	 .ps2(out),
-	 .ps2_en(ps2_valid)
+	 .ps2_en(ps2_valid),
+	 .level(levelwire)
     );
 	 
 ps2_if ps2_if(
@@ -169,6 +176,6 @@ ps2_if ps2_if(
    .status(ps2_status),
    .data(ps2_data)
 );
-assign ld = {ps2_status[1:0],out[5:0]};
+//assign ld = {ps2_status[1:0],out[5:0]};
 
 endmodule
