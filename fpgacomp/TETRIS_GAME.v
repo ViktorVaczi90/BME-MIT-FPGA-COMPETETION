@@ -173,7 +173,7 @@ module TETRIS_GAME(
 	 reg en_posedge;
 	 reg [2:0] random;					initial random = 1;
 	 reg [5:0] input_delay;
-	 reg [5:0] input_delay_max; 		initial input_delay_max = 10;
+	 reg [5:0] input_delay_max; 		initial input_delay_max = 11;
 	 reg [5:0] random_2; 				initial random_2 = 0;
 	 reg [2:0] first_element;
 	 reg [2:0] second_element;
@@ -655,13 +655,13 @@ module TETRIS_GAME(
 			down_keyboard <= 0;
 		moved_in_this_frame <= 1;
 		end
-		if ( input_delay[2] && move_cntr == 11 && canmove_right && (right_keyboard  || (btn[1] && ! input_delay))&& (!( gravity == 1 && !canmove_down)) && (!moved_in_this_frame)  ) //SORRENDET ÁT KELL GONDOLNI, LEHET HOGY NEM TUD LEFELE MENNI, LERAKJA, DE MÉG ELMEGY EGYET BALRA JOBBRA.
+		if ( /*!input_delay[1:0]  &&*/ move_cntr == 11 && canmove_right && (right_keyboard  || (btn[1] && ! input_delay))&& (!( gravity == 1 && !canmove_down)) && (!moved_in_this_frame)  ) //SORRENDET ÁT KELL GONDOLNI, LEHET HOGY NEM TUD LEFELE MENNI, LERAKJA, DE MÉG ELMEGY EGYET BALRA JOBBRA.
 		begin
 			pos_x <= pos_x + 1;
 			right_keyboard <= 0;
 			moved_in_this_frame <= 1;
 		end	
-		if ( input_delay[2] && move_cntr == 12 && canmove_left &&( left_keyboard || (btn[2] && ! input_delay)) && (!( gravity == 1 && !canmove_down )) && (!moved_in_this_frame)  )
+		if ( /*!input_delay[1:0] && */move_cntr == 12 && canmove_left &&( left_keyboard || (btn[2] && ! input_delay)) && (!( gravity == 1 && !canmove_down )) && (!moved_in_this_frame)  )
 		begin
 			pos_x <= pos_x - 1;
 			left_keyboard <= 0;//****************PS2 höz kell
@@ -673,7 +673,7 @@ module TETRIS_GAME(
 			rot_keyboard<=0;
 			moved_in_this_frame <= 1;
 		end
-		if ( move_cntr == 14 && !( gravity == 1 && !canmove_down ) && ! input_delay ) 
+		if ( move_cntr == 14 && !( gravity == 1 && !canmove_down ) && ! input_delay ) //WHAT IS THIS????
 			begin
 				moved_in_this_frame <= 0;
 				 vertical[0] <= vertical_rot_data[{color,rotation,2'b00}];

@@ -1,14 +1,10 @@
 Release 14.7 Drc P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Mon Jun 22 00:22:54 2015
+Mon Jun 22 01:03:12 2015
 
 drc -z top_level.ncd top_level.pcf
 
-WARNING:PhysDesignRules:367 - The signal <bt<1>_IBUF> is incomplete. The signal
-   does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <bt<2>_IBUF> is incomplete. The signal
-   does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <sw<0>_IBUF> is incomplete. The signal
    does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <sw<1>_IBUF> is incomplete. The signal
@@ -28,5 +24,5 @@ WARNING:PhysDesignRules:367 - The signal <sw<7>_IBUF> is incomplete. The signal
 INFO:PhysDesignRules:772 - To achieve optimal frequency synthesis performance
    with the CLKFX and CLKFX180 outputs of the DCM comp clk_gen/DCM_SP_inst,
    consult the device Interactive Data Sheet.
-DRC detected 0 errors and 10 warnings.  Please see the previously displayed
+DRC detected 0 errors and 8 warnings.  Please see the previously displayed
 individual error or warning messages for more details.
