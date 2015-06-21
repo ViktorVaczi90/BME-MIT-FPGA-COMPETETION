@@ -33,7 +33,8 @@ module TETRIS_GAME(
 	 input [7:0] ps2,
 	 input ps2_en,
 	 output full_row,
-	 output music_pause
+	 output music_pause,
+	 output music_game_over
     );
 	reg pause_keyboard; initial pause_keyboard = 0;
 	//***************** parameters/positions
@@ -899,4 +900,5 @@ module TETRIS_GAME(
 	assign nextrot = rotation + 1;
 	assign leds = gamestate;
 	assign full_row = rowcombo;
+	assign music_game_over = gamestate == 3;
 endmodule

@@ -31,6 +31,7 @@ wire [5:0] levelwire;
 wire [31:0] ps2_data;
 wire [31:0] ps2_status;
 wire music_pause_wire;
+wire music_game_over_wire;
 wire full_row_wire;
 reg  ps2_rd;
 reg  [7:0] out;
@@ -103,7 +104,9 @@ music_module mymusic(
 		.inlevel(levelwire[3:0]),
 		.audio_out(aud_out),
 		.full_row(full_row_wire),
-		.music_pause(music_pause_wire));
+		.music_pause(music_pause_wire),
+		.music_game_over(music_game_over_wire),
+		.leds(ld));
 //assign ld = ps2_data[7:0];
 VGA BAMBIVGA(
     .clk(clk),
@@ -122,7 +125,7 @@ VGA BAMBIVGA(
 	 
 TETRIS_GAME TETRIS_GAME(
 	 .btn(bt),
-	 .leds(ld), //ide voltak kötve  ledek
+	 //.leds(ld), //ide voltak kötve  ledek
     .clk(clk),
     .rst(rst),
     .en(enwire),
@@ -135,7 +138,8 @@ TETRIS_GAME TETRIS_GAME(
 	 .ps2_en(ps2_valid),
 	 .level(levelwire),
 	 .full_row(full_row_wire),
-	 .music_pause(music_pause_wire)
+	 .music_pause(music_pause_wire),
+	 .music_game_over(music_game_over_wire)
     );
 	 
 ps2_if ps2_if(

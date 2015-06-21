@@ -5,7 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompilers" num="259" delta="new" ><arg fmt="%s" index="1">&quot;TETRIS_GAME.v&quot; line 255 </arg>Connection to input port &apos;<arg fmt="%s" index="2">score</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;TETRIS_GAME.v&quot; line 256 </arg>Connection to input port &apos;<arg fmt="%s" index="2">score</arg>&apos; does not match port size
 </msg>
 
 <msg type="info" file="Xst" num="2546" delta="old" >&quot;<arg fmt="%s" index="1">wavetable.v</arg>&quot; line <arg fmt="%d" index="2">28</arg>: reading initialization file &quot;<arg fmt="%s" index="3">square.bin</arg>&quot;.
@@ -14,7 +14,7 @@
 <msg type="info" file="Xst" num="2546" delta="old" >&quot;<arg fmt="%s" index="1">wavetable2.v</arg>&quot; line <arg fmt="%d" index="2">28</arg>: reading initialization file &quot;<arg fmt="%s" index="3">sine.bin</arg>&quot;.
 </msg>
 
-<msg type="info" file="Xst" num="2546" delta="old" >&quot;<arg fmt="%s" index="1">song_reader.v</arg>&quot; line <arg fmt="%d" index="2">108</arg>: reading initialization file &quot;<arg fmt="%s" index="3">notes.hex</arg>&quot;.
+<msg type="info" file="Xst" num="2546" delta="new" >&quot;<arg fmt="%s" index="1">song_reader.v</arg>&quot; line <arg fmt="%d" index="2">108</arg>: reading initialization file &quot;<arg fmt="%s" index="3">notes.hex</arg>&quot;.
 </msg>
 
 <msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">notes</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
@@ -53,7 +53,7 @@
 <msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">notes</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
 </msg>
 
-<msg type="info" file="Xst" num="2546" delta="old" >&quot;<arg fmt="%s" index="1">song_reader2.v</arg>&quot; line <arg fmt="%d" index="2">108</arg>: reading initialization file &quot;<arg fmt="%s" index="3">notes2.hex</arg>&quot;.
+<msg type="info" file="Xst" num="2546" delta="new" >&quot;<arg fmt="%s" index="1">song_reader2.v</arg>&quot; line <arg fmt="%d" index="2">108</arg>: reading initialization file &quot;<arg fmt="%s" index="3">notes2.hex</arg>&quot;.
 </msg>
 
 <msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">notes</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
@@ -98,10 +98,10 @@
 <msg type="info" file="Xst" num="2546" delta="old" >&quot;<arg fmt="%s" index="1">BIG_framebuffer.v</arg>&quot; line <arg fmt="%d" index="2">15</arg>: reading initialization file &quot;<arg fmt="%s" index="3">BIG.bin</arg>&quot;.
 </msg>
 
-<msg type="info" file="Xst" num="2546" delta="new" >&quot;<arg fmt="%s" index="1">TETRIS_GAME.v</arg>&quot; line <arg fmt="%d" index="2">140</arg>: reading initialization file &quot;<arg fmt="%s" index="3">vertical.bin</arg>&quot;.
+<msg type="info" file="Xst" num="2546" delta="old" >&quot;<arg fmt="%s" index="1">TETRIS_GAME.v</arg>&quot; line <arg fmt="%d" index="2">141</arg>: reading initialization file &quot;<arg fmt="%s" index="3">vertical.bin</arg>&quot;.
 </msg>
 
-<msg type="info" file="Xst" num="2546" delta="new" >&quot;<arg fmt="%s" index="1">TETRIS_GAME.v</arg>&quot; line <arg fmt="%d" index="2">141</arg>: reading initialization file &quot;<arg fmt="%s" index="3">horizontal.bin</arg>&quot;.
+<msg type="info" file="Xst" num="2546" delta="old" >&quot;<arg fmt="%s" index="1">TETRIS_GAME.v</arg>&quot; line <arg fmt="%d" index="2">142</arg>: reading initialization file &quot;<arg fmt="%s" index="3">horizontal.bin</arg>&quot;.
 </msg>
 
 <msg type="info" file="Xst" num="1432" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">vertical</arg>&gt; may be accessed with a negative index, causing simulation mismatch.
@@ -473,6 +473,18 @@
 <msg type="info" file="Xst" num="1767" delta="old" >HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 </msg>
 
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">freqwire2_game_over_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mymusic</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">freqwire2_game_over_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mymusic</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">freqwire1_game_over_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mymusic</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">freqwire1_game_over_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mymusic</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">out_level_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sinwave</arg>&gt;.
 </msg>
 
@@ -494,13 +506,13 @@
 <msg type="info" file="Xst" num="3225" delta="old" >The RAM &lt;<arg fmt="%s" index="1">Mrom__varindex0000</arg>&gt; will be implemented as BLOCK RAM
 </msg>
 
-<msg type="info" file="Xst" num="3044" delta="old" >The ROM &lt;<arg fmt="%s" index="1">Mrom_notes_cntr_varindex0000</arg>&gt; will be implemented as a read-only BLOCK RAM, absorbing the register: &lt;<arg fmt="%s" index="2">notes_cntr</arg>&gt;.
+<msg type="info" file="Xst" num="3044" delta="new" >The ROM &lt;<arg fmt="%s" index="1">Mrom_notes_cntr_varindex0000</arg>&gt; will be implemented as a read-only BLOCK RAM, absorbing the register: &lt;<arg fmt="%s" index="2">notes_cntr</arg>&gt;.
 </msg>
 
-<msg type="info" file="Xst" num="3225" delta="old" >The RAM &lt;<arg fmt="%s" index="1">Mrom_notes_cntr_varindex0000</arg>&gt; will be implemented as BLOCK RAM
+<msg type="info" file="Xst" num="3225" delta="new" >The RAM &lt;<arg fmt="%s" index="1">Mrom_notes_cntr_varindex0000</arg>&gt; will be implemented as BLOCK RAM
 </msg>
 
-<msg type="info" file="Xst" num="3045" delta="old" >The ROM description &lt;<arg fmt="%s" index="1">Mrom_notes_cntr_varindex0000</arg>&gt; will be implemented on LUTs because the limited number of device block RAMs. If you want to be implemented as block RAM, please select a larger device.
+<msg type="info" file="Xst" num="3045" delta="new" >The ROM description &lt;<arg fmt="%s" index="1">Mrom_notes_cntr_varindex0000</arg>&gt; will be implemented on LUTs because the limited number of device block RAMs. If you want to be implemented as block RAM, please select a larger device.
 </msg>
 
 <msg type="info" file="Xst" num="3038" delta="old" >The RAM &lt;<arg fmt="%s" index="1">BAMBIVGA/BLOCKframe/Mram_dp_ram</arg>&gt; appears to be read-only. If that was not your intent please check the write enable description.
@@ -525,7 +537,19 @@
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">data_shr_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ps2_if</arg>&gt;.
 </msg>
 
-<msg type="info" file="Xst" num="2697" delta="old" >Unit &lt;<arg fmt="%s" index="1">music_module</arg>&gt; : the RAMs &lt;<arg fmt="%s" index="2">myfreq/Mrom__varindex0000</arg>&gt;, &lt;<arg fmt="%s" index="3">myfreq2/Mrom__varindex0000</arg>&gt; are packed into the single block RAM &lt;<arg fmt="%s" index="4">myfreq/Mrom__varindex00001</arg>&gt;
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">freqwire1_game_over_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">music_module</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">freqwire1_game_over_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">music_module</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">freqwire2_game_over_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">music_module</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">freqwire2_game_over_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">music_module</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="info" file="Xst" num="2697" delta="old" >Unit &lt;<arg fmt="%s" index="1">music_module</arg>&gt; : the RAMs &lt;<arg fmt="%s" index="2">myfreq2/Mrom__varindex0000</arg>&gt;, &lt;<arg fmt="%s" index="3">myfreq/Mrom__varindex0000</arg>&gt; are packed into the single block RAM &lt;<arg fmt="%s" index="4">myfreq2/Mrom__varindex00001</arg>&gt;
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">firstsong/notes_cntr_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">music_module</arg>&gt;.
@@ -804,13 +828,19 @@
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">TETRIS_GAME/levelscore_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">top_level</arg>&gt;.
 </msg>
 
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">freqwire1_game_over_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">1</arg> in block &lt;<arg fmt="%s" index="3">music_module</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">freqwire2_game_over_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">1</arg> in block &lt;<arg fmt="%s" index="3">music_module</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">firstsong2/repeat_times_2</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">music_module</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">firstsong2/repeat_times_3</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">music_module</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">firstsong2/repeat_times_3</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">music_module</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">firstsong2/repeat_times_3</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">music_module</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">firstsong2/repeat_times_3</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">music_module</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">firstsong2/repeat_times_2</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">music_module</arg>&gt;. This FF/Latch will be trimmed during the optimization process.

@@ -45,13 +45,13 @@ Setup/Hold to clock clk16M
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-bt<0>       |    9.293(R)|   -4.868(R)|clk               |   0.000|
-bt<1>       |   10.229(R)|   -3.796(R)|clk               |   0.000|
-bt<2>       |    9.482(R)|   -4.886(R)|clk               |   0.000|
-bt<3>       |    9.129(R)|   -4.305(R)|clk               |   0.000|
-rst         |    7.666(R)|   -3.077(R)|clk               |   0.000|
-xps2_c      |    3.280(R)|   -1.527(R)|clk               |   0.000|
-xps2_d      |    3.062(R)|   -1.024(R)|clk               |   0.000|
+bt<0>       |    9.179(R)|   -3.166(R)|clk               |   0.000|
+bt<1>       |   10.642(R)|   -4.449(R)|clk               |   0.000|
+bt<2>       |   12.203(R)|   -6.402(R)|clk               |   0.000|
+bt<3>       |    9.721(R)|   -3.153(R)|clk               |   0.000|
+rst         |    9.818(R)|   -2.309(R)|clk               |   0.000|
+xps2_c      |    3.389(R)|   -1.616(R)|clk               |   0.000|
+xps2_d      |    3.813(R)|   -1.633(R)|clk               |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock clk16M to Pad
@@ -59,18 +59,19 @@ Clock clk16M to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-aud_out     |   18.508(R)|mymusic/clk       |   0.000|
-hs          |    5.477(R)|clk               |   0.000|
-ld<0>       |    7.882(R)|clk               |   0.000|
-ld<1>       |    6.284(R)|clk               |   0.000|
-ld<2>       |    8.537(R)|clk               |   0.000|
-rgb<0>      |    5.182(R)|clk               |   0.000|
-rgb<1>      |    5.915(R)|clk               |   0.000|
-rgb<2>      |    5.444(R)|clk               |   0.000|
-rgb<3>      |    5.949(R)|clk               |   0.000|
-rgb<4>      |    5.194(R)|clk               |   0.000|
-rgb<5>      |    5.490(R)|clk               |   0.000|
-vs          |    5.916(R)|clk               |   0.000|
+aud_out     |   19.302(R)|mymusic/clk       |   0.000|
+hs          |    6.918(R)|clk               |   0.000|
+ld<0>       |   13.806(R)|mymusic/clk       |   0.000|
+ld<1>       |   13.670(R)|mymusic/clk       |   0.000|
+ld<2>       |   11.975(R)|mymusic/clk       |   0.000|
+ld<3>       |   11.691(R)|mymusic/clk       |   0.000|
+rgb<0>      |    6.738(R)|clk               |   0.000|
+rgb<1>      |    5.868(R)|clk               |   0.000|
+rgb<2>      |    6.460(R)|clk               |   0.000|
+rgb<3>      |    5.464(R)|clk               |   0.000|
+rgb<4>      |    6.312(R)|clk               |   0.000|
+rgb<5>      |    6.093(R)|clk               |   0.000|
+vs          |    6.739(R)|clk               |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk16M
@@ -78,18 +79,18 @@ Clock to Setup on destination clock clk16M
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk16M         |   11.785|         |         |         |
+clk16M         |   11.488|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Sun Jun 21 15:12:09 2015 
+Analysis completed Sun Jun 21 17:04:06 2015 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 190 MB
+Peak Memory Usage: 191 MB
 
 
 
