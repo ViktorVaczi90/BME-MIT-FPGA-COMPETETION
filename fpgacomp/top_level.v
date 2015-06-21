@@ -62,8 +62,12 @@ begin
 		ps2_rd <= 0;
 		ps2state2 <= 0;
 	end
+	
 	if ( ps2_valid == 1 )
 		ps2_valid <= 0;
+		
+		
+		
 	if ( ps2state2 == 1   )
 	begin
 		out <= ps2_data[7:0];
@@ -99,14 +103,42 @@ begin
 				endcase
 	end
 end
+wire down_pulse, left_pulse, right_pulse;
+button_machine downbutton(
+		.clk(clk),
+		.button(8'h32),
+		.ps2_out(ps2_data[7:0]),
+		.ps2_pulse(ps2state2),
+		//.leds(ld[7:0]),
+		.pulse(down_pulse)
+		);
+		
+button_machine leftbutton(
+		.clk(clk),
+		.button(8'h34),
+		.ps2_out(ps2_data[7:0]),
+		.ps2_pulse(ps2state2),
+		.leds(ld[7:0]),
+		.pulse(left_pulse)
+		);
+		
+button_machine rightbutton(
+		.clk(clk),
+		.button(8'h36),
+		.ps2_out(ps2_data[7:0]),
+		.ps2_pulse(ps2state2),
+		//.leds(ld[7:0]),
+		.pulse(right_pulse)
+		);
+		
 music_module mymusic(
 		.inclk(clk),
 		.inlevel(levelwire[3:0]),
 		.audio_out(aud_out),
 		.full_row(full_row_wire),
 		.music_pause(music_pause_wire),
-		.music_game_over(music_game_over_wire),
-		.leds(ld));
+		.music_game_over(music_game_over_wire)/*,
+		.leds(ld)*/);
 //assign ld = ps2_data[7:0];
 VGA BAMBIVGA(
     .clk(clk),
@@ -120,7 +152,6 @@ VGA BAMBIVGA(
 	 .BIG_WR_DATA(BIGwr_data),
 	 .BIG_RD_DATA(BIGrd_data),
 	 .en(enwire)
-
     );
 	 
 TETRIS_GAME TETRIS_GAME(
@@ -139,7 +170,10 @@ TETRIS_GAME TETRIS_GAME(
 	 .level(levelwire),
 	 .full_row(full_row_wire),
 	 .music_pause(music_pause_wire),
-	 .music_game_over(music_game_over_wire)
+	 .music_game_over(music_game_over_wire),
+	 .down_pulse(down_pulse),
+	 .left_pulse(left_pulse),
+	 .right_pulse(right_pulse)
     );
 	 
 ps2_if ps2_if(

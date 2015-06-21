@@ -5,15 +5,15 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="info" file="LIT" num="243" delta="old" >Logical network <arg fmt="%s" index="1">sw&lt;7&gt;_IBUF</arg> has no load.
+<msg type="info" file="LIT" num="243" delta="old" >Logical network <arg fmt="%s" index="1">bt&lt;2&gt;_IBUF</arg> has no load.
 </msg>
 
-<msg type="info" file="LIT" num="395" delta="old" >The above <arg fmt="%s" index="1">info</arg> message is repeated <arg fmt="%d" index="2">7</arg> more times for the following (max. 5 shown):
-<arg fmt="%s" index="3">sw&lt;6&gt;_IBUF,
+<msg type="info" file="LIT" num="395" delta="old" >The above <arg fmt="%s" index="1">info</arg> message is repeated <arg fmt="%d" index="2">9</arg> more times for the following (max. 5 shown):
+<arg fmt="%s" index="3">bt&lt;1&gt;_IBUF,
+sw&lt;7&gt;_IBUF,
+sw&lt;6&gt;_IBUF,
 sw&lt;5&gt;_IBUF,
-sw&lt;4&gt;_IBUF,
-sw&lt;3&gt;_IBUF,
-sw&lt;2&gt;_IBUF</arg>
+sw&lt;4&gt;_IBUF</arg>
 To see the details of these <arg fmt="%s" index="4">info</arg> messages, please use the -detail switch.
 </msg>
 
@@ -25,9 +25,6 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 
 <msg type="warning" file="LIT" num="176" delta="old" >Clock buffer is designated to drive clock loads. <arg fmt="%s" index="1">BUFGMUX symbol &quot;physical_group_clk/clk_gen/BUFG_clkfx&quot; (output signal=clk)</arg> has a mix of clock and non-clock loads. The non-clock loads are:
 <arg fmt="%s" index="2">Pin I0 of mymusic/clk1</arg>
-</msg>
-
-<msg type="warning" file="Pack" num="266" delta="new" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/gamestate_FSM_Out01</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/BIG_WR_DATA_mux0000&lt;2&gt;2_SW0_SW1</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
 </msg>
 
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0011_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0003_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
@@ -48,7 +45,7 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0005_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0032_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
 </msg>
 
-<msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux_hor_wire_down_varindex0000_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0019_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
+<msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux_hor_wire_down_varindex0000_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0018_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
 </msg>
 
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0033_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0039_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
@@ -66,16 +63,16 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0024_31</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0022_2_f5_0</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
 </msg>
 
-<msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0035_31</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0040_2_f5_0</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
-</msg>
-
-<msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0005_31</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0032_2_f5_0</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
-</msg>
-
-<msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux_hor_wire_down_varindex0000_31</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0019_2_f5_0</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
+<msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux_hor_wire_down_varindex0000_31</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0018_2_f5_0</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
 </msg>
 
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0033_31</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0039_2_f5_0</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
+</msg>
+
+<msg type="warning" file="PhysDesignRules" num="367" delta="old" >The signal &lt;<arg fmt="%s" index="1">bt&lt;1&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
+</msg>
+
+<msg type="warning" file="PhysDesignRules" num="367" delta="old" >The signal &lt;<arg fmt="%s" index="1">bt&lt;2&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="old" >The signal &lt;<arg fmt="%s" index="1">sw&lt;0&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.

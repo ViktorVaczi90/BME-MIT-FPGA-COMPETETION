@@ -34,7 +34,10 @@ module TETRIS_GAME(
 	 input ps2_en,
 	 output full_row,
 	 output music_pause,
-	 output music_game_over
+	 output music_game_over,
+	 input down_pulse,
+	 input left_pulse,
+	 input right_pulse
     );
 	reg pause_keyboard; initial pause_keyboard = 0;
 	//***************** parameters/positions
@@ -491,14 +494,25 @@ module TETRIS_GAME(
 	begin
 		
 		//****************PS2 kezelése
-		if ( ps2_en == 1 && ( ps2 == 8'h41 || ps2 == 8'h34 ) )
+		//if ( ps2_en == 1 && ( ps2 == 8'h41 || ps2 == 8'h34 ) )
+		if (left_pulse && pos_y)
 			left_keyboard <= 1;
-		if ( ps2_en == 1 && ( ps2 == 8'h44 || ps2 == 8'h36 ) )
+		if ( !canmove_left )
+			left_keyboard <= 0;
+		//if ( ps2_en == 1 && ( ps2 == 8'h44 || ps2 == 8'h36 ) )
+		if (right_pulse && pos_y)
 			right_keyboard <= 1;
-		if ( ps2_en == 1 && ( ps2 == 8'h53 || ps2 == 8'h32 ) )
+		if ( !canmove_right )
+			right_keyboard <= 0;
+		//if ( ps2_en == 1 && ( ps2 == 8'h53 || ps2 == 8'h32 ) )
+		if(down_pulse && pos_y)
 			down_keyboard <= 1;
-		if ( ps2_en == 1 && (ps2 ==  8'h20 || ps2 == 8'h57) )
+		if ( !canmove_down )
+			down_keyboard <= 0;
+		if ( ps2_en == 1 && (ps2 ==  8'h20 || ps2 == 8'h57)  && pos_y)
 			rot_keyboard <= 1;
+		if ( !canmove_rot )
+			rot_keyboard <= 0;
 		/*if( cycle_cntr == 1)
 		begin
 				BIG_WR_ADDR <= {5'd2,6'd2 };
@@ -628,35 +642,36 @@ module TETRIS_GAME(
 				BIG_WR_ADDR <= {ver_wire[4:0],hor_wire[5:0]};
 				BIG_WR_DATA <= 0;
 				BIG_WR_EN <= 1;
+				moved_in_this_frame <= 0;
 			end
 		if ( move_cntr == 7)
 			BIG_WR_EN <= 0;
 		//*************Elõzõ pozíció törlése
 		
 		//*************************************************Ha tud és meg van nyomva a megfelelõ gomb akkor mozog/fordul
-		if ( move_cntr == 10 && (gravity == 1 || down_keyboard || (btn[3] && ! input_delay)) && canmove_down && !moved_in_this_frame ) 
+		if ( move_cntr == 10 && (gravity == 1 || down_keyboard || (btn[3] && ! input_delay)) && canmove_down && (!moved_in_this_frame) ) 
 		begin
 			pos_y <= pos_y + 1;
 			down_keyboard <= 0;
-			//moved_in_this_frame <= 1;
+		moved_in_this_frame <= 1;
 		end
-		if ( move_cntr == 11 && canmove_right && (right_keyboard  || (btn[1] && ! input_delay))&& !( gravity == 1 && !canmove_down) && !moved_in_this_frame  ) //SORRENDET ÁT KELL GONDOLNI, LEHET HOGY NEM TUD LEFELE MENNI, LERAKJA, DE MÉG ELMEGY EGYET BALRA JOBBRA.
+		if ( input_delay[2] && move_cntr == 11 && canmove_right && (right_keyboard  || (btn[1] && ! input_delay))&& (!( gravity == 1 && !canmove_down)) && (!moved_in_this_frame)  ) //SORRENDET ÁT KELL GONDOLNI, LEHET HOGY NEM TUD LEFELE MENNI, LERAKJA, DE MÉG ELMEGY EGYET BALRA JOBBRA.
 		begin
 			pos_x <= pos_x + 1;
 			right_keyboard <= 0;
-			//moved_in_this_frame <= 1;
+			moved_in_this_frame <= 1;
 		end	
-		if ( move_cntr == 12 && canmove_left &&( left_keyboard || (btn[2] && ! input_delay)) && !( gravity == 1 && !canmove_down ) && ! input_delay && !moved_in_this_frame  )
+		if ( input_delay[2] && move_cntr == 12 && canmove_left &&( left_keyboard || (btn[2] && ! input_delay)) && (!( gravity == 1 && !canmove_down )) && (!moved_in_this_frame)  )
 		begin
 			pos_x <= pos_x - 1;
 			left_keyboard <= 0;//****************PS2 höz kell
-			//moved_in_this_frame <= 1;
+			moved_in_this_frame <= 1;
 		end
-		if (  move_cntr == 13 && canmove_rot && (rot_keyboard || (btn[0] && ! input_delay))&& !( gravity == 1 && !canmove_down )  && ! input_delay && !moved_in_this_frame  ) 
+		if (  move_cntr == 13 && canmove_rot && (rot_keyboard || (btn[0] && ! input_delay))&& !( gravity == 1 && !canmove_down )  && (! input_delay )&& (!moved_in_this_frame)  ) 
 		begin
 			rotation <= rotation + 1;
 			rot_keyboard<=0;
-			//moved_in_this_frame <= 1;
+			moved_in_this_frame <= 1;
 		end
 		if ( move_cntr == 14 && !( gravity == 1 && !canmove_down ) && ! input_delay ) 
 			begin
