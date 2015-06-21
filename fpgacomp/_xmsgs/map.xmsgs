@@ -27,6 +27,9 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 <arg fmt="%s" index="2">Pin I0 of mymusic/clk1</arg>
 </msg>
 
+<msg type="warning" file="Pack" num="266" delta="new" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/gamestate_FSM_Out01</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/BIG_WR_DATA_mux0000&lt;2&gt;2_SW0_SW1</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
+</msg>
+
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0011_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0003_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
 </msg>
 
@@ -37,6 +40,9 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 </msg>
 
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0024_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0022_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
+</msg>
+
+<msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0035_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0040_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
 </msg>
 
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0005_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0032_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.

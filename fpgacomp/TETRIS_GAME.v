@@ -38,13 +38,14 @@ module TETRIS_GAME(
     );
 	reg pause_keyboard; initial pause_keyboard = 0;
 	//***************** parameters/positions
-	parameter number_start = 28;
+	parameter number_start = 35;
 	parameter score_x_pos = 27;
 	parameter score_y_pos = 8;
 	parameter nextblock_x_pos = 29;
 	parameter nextblock_y_pos = 21;
 	parameter level_x_pos = 32;
 	parameter level_y_pos = 14;
+	parameter levelscore_y_pos = 8;
 	//***************** end of parameters/positions
    initial level = 1;
 	reg [14:0] levelscore; initial levelscore = 0;
@@ -241,6 +242,7 @@ module TETRIS_GAME(
 	 
 	 //***************************** END OF GAME ÁLLAPOTGÉP
 	 //****Választás a blokkokból, delay (gombokhoz)
+	 wire [3:0] levelscoreTHOUSHANDSwire, levelscoreHUNDREDSwire, levelscoreTENSwire, levelscoreONESwire;
 	 wire [3:0] THOUSHANDSwire, HUNDREDSwire, TENSwire, ONESwire;
 	 wire [3:0] levelONESwire, levelTENSwire;
 	 
@@ -252,16 +254,26 @@ module TETRIS_GAME(
 		 .tens(TENSwire),
 		 .ones(ONESwire)
 		 );
-	 BCD_SCORE BCD_LEVEL(
-    .score(level),
-    .clk(clk),
-    .ones(levelONESwire),
-    .tens(levelTENSwire)
-    );
+	BCD_SCORE BCD_LEVEL(
+		 .score(level),
+		 .clk(clk),
+		 .ones(levelONESwire),
+		 .tens(levelTENSwire)
+		 );
+	BCD_SCORE BCD_LEVELSCORE(
+		 .score(levelscore),
+		 .clk(clk),
+		 .thousands(levelscoreTHOUSHANDSwire),
+		 .hundreds(levelscoreHUNDREDSwire),
+		 .tens(levelscoreTENSwire),
+		 .ones(levelscoreONESwire)
+		 );
 	 
 	 always@ ( posedge clk)
 	 begin
-	 level <= levelscore[14:3] + 1;
+	 if (levelscore [14:3] <=15)
+		level <= levelscore[14:3] + 1;
+	 else level <= 16;
 	 end
 	 //****Késleltetés (gombokhoz)
 	 always @ (posedge clk)
@@ -477,7 +489,7 @@ module TETRIS_GAME(
 	
 	always @ ( posedge clk )
 	begin
-		moved_in_this_frame <= 0;
+		
 		//****************PS2 kezelése
 		if ( ps2_en == 1 && ( ps2 == 8'h41 || ps2 == 8'h34 ) )
 			left_keyboard <= 1;
@@ -501,49 +513,49 @@ module TETRIS_GAME(
 			if ( move_cntr ==3 )
 			begin
 				BIG_WR_ADDR <= {5'd5,6'd14 };
-				BIG_WR_DATA <= 44;//G
+				BIG_WR_DATA <= 49;//G
 				BIG_WR_EN <= 1;
 			end
 			if ( move_cntr ==4 )
 			begin
 				BIG_WR_ADDR <= {5'd5,6'd15 };
-				BIG_WR_DATA <= 38;//A
+				BIG_WR_DATA <= 45;//A
 				BIG_WR_EN <= 1;
 			end
 			if ( move_cntr ==5 )
 			begin
 				BIG_WR_ADDR <= {5'd5,6'd16 };
-				BIG_WR_DATA <= 50;//M
+				BIG_WR_DATA <= 52;//M
 				BIG_WR_EN <= 1;
 			end
 			if ( move_cntr ==6 )
 			begin
 				BIG_WR_ADDR <= {5'd5,6'd17 };
-				BIG_WR_DATA <= 42;//E
+				BIG_WR_DATA <= 48;//E
 				BIG_WR_EN <= 1;
 			end
 			if ( move_cntr ==7 )
 			begin
 				BIG_WR_ADDR <= {5'd6,6'd14 };
-				BIG_WR_DATA <= 52;//O
+				BIG_WR_DATA <= 54;//O
 				BIG_WR_EN <= 1;
 			end
 			if ( move_cntr ==8 )
 			begin
 				BIG_WR_ADDR <= {5'd6,6'd15 };
-				BIG_WR_DATA <= 59;//V
+				BIG_WR_DATA <= 60;//V
 				BIG_WR_EN <= 1;
 			end
 			if ( move_cntr ==9 )
 			begin
 				BIG_WR_ADDR <= {5'd6,6'd16 };
-				BIG_WR_DATA <= 42;//E
+				BIG_WR_DATA <= 48;//E
 				BIG_WR_EN <= 1;
 			end	
 			if ( move_cntr ==10 )
 			begin
 				BIG_WR_ADDR <= {5'd6,6'd17 };
-				BIG_WR_DATA <= 55;//R
+				BIG_WR_DATA <= 56;//R
 				BIG_WR_EN <= 1;
 			end				
 		if ( move_cntr == 11) 
@@ -626,28 +638,29 @@ module TETRIS_GAME(
 		begin
 			pos_y <= pos_y + 1;
 			down_keyboard <= 0;
-			moved_in_this_frame <= 1;
+			//moved_in_this_frame <= 1;
 		end
 		if ( move_cntr == 11 && canmove_right && (right_keyboard  || (btn[1] && ! input_delay))&& !( gravity == 1 && !canmove_down) && !moved_in_this_frame  ) //SORRENDET ÁT KELL GONDOLNI, LEHET HOGY NEM TUD LEFELE MENNI, LERAKJA, DE MÉG ELMEGY EGYET BALRA JOBBRA.
 		begin
 			pos_x <= pos_x + 1;
 			right_keyboard <= 0;
-			moved_in_this_frame <= 1;
+			//moved_in_this_frame <= 1;
 		end	
 		if ( move_cntr == 12 && canmove_left &&( left_keyboard || (btn[2] && ! input_delay)) && !( gravity == 1 && !canmove_down ) && ! input_delay && !moved_in_this_frame  )
 		begin
 			pos_x <= pos_x - 1;
 			left_keyboard <= 0;//****************PS2 höz kell
-			moved_in_this_frame <= 1;
+			//moved_in_this_frame <= 1;
 		end
 		if (  move_cntr == 13 && canmove_rot && (rot_keyboard || (btn[0] && ! input_delay))&& !( gravity == 1 && !canmove_down )  && ! input_delay && !moved_in_this_frame  ) 
 		begin
 			rotation <= rotation + 1;
 			rot_keyboard<=0;
-			moved_in_this_frame <= 1;
+			//moved_in_this_frame <= 1;
 		end
 		if ( move_cntr == 14 && !( gravity == 1 && !canmove_down ) && ! input_delay ) 
 			begin
+				moved_in_this_frame <= 0;
 				 vertical[0] <= vertical_rot_data[{color,rotation,2'b00}];
 				 vertical[1] <= vertical_rot_data[{color,rotation,2'b01}];
 				 vertical[2] <= vertical_rot_data[{color,rotation,2'b10}];
@@ -761,7 +774,10 @@ module TETRIS_GAME(
 	end
 		if ( gravity == 1 && move_cntr == 2499 && !canmove_down )//Ha leérne akkor a rotációt nullába állítom
 		begin 
-
+		left_keyboard <= 0;
+		right_keyboard <= 0;
+		down_keyboard <=0;
+		rot_keyboard <= 0;
 			vertical[0] <= next_vertical[0];
 			 vertical[1] <= next_vertical[1];
 			 vertical[2] <= next_vertical[2];
@@ -775,53 +791,59 @@ module TETRIS_GAME(
 		if ( gravity == 1 && move_cntr == 2500 && !canmove_down ) 		//EZT A FELTÉTELT MÉG A LEFT RIGHTBA BE KELL ÍRNI.
 		begin
 
-			 next_vertical[0] <= vertical_rot_data[{nextcolor,rotation,2'b00}];
-			 next_vertical[1] <= vertical_rot_data[{nextcolor,rotation,2'b01}];
-			 next_vertical[2] <= vertical_rot_data[{nextcolor,rotation,2'b10}];
-			 next_vertical[3] <= vertical_rot_data[{nextcolor,rotation,2'b11}];
-			 next_horizontal[0] <= horizontal_rot_data[{nextcolor,rotation,2'b00}];
-			 next_horizontal[1] <= horizontal_rot_data[{nextcolor,rotation,2'b01}];
-			 next_horizontal[2] <= horizontal_rot_data[{nextcolor,rotation,2'b10}];
-			 next_horizontal[3] <= horizontal_rot_data[{nextcolor,rotation,2'b11}];
+			 next_vertical[0] <= vertical_rot_data[{nextcolor,2'b0,2'b00}];
+			 next_vertical[1] <= vertical_rot_data[{nextcolor,2'b0,2'b01}];
+			 next_vertical[2] <= vertical_rot_data[{nextcolor,2'b0,2'b10}];
+			 next_vertical[3] <= vertical_rot_data[{nextcolor,2'b0,2'b11}];
+			 next_horizontal[0] <= horizontal_rot_data[{nextcolor,2'b0,2'b00}];
+			 next_horizontal[1] <= horizontal_rot_data[{nextcolor,2'b0,2'b01}];
+			 next_horizontal[2] <= horizontal_rot_data[{nextcolor,2'b0,2'b10}];
+			 next_horizontal[3] <= horizontal_rot_data[{nextcolor,2'b0,2'b11}];
 
 		end
 		if ( move_cntr == 2600 )
 			begin
 				BIG_WR_ADDR <= {score_y_pos[4:0],6'd27};
 				if(THOUSHANDSwire)
-				BIG_WR_DATA <= THOUSHANDSwire+number_start;
+					BIG_WR_DATA <= THOUSHANDSwire+number_start;
 				else
-				BIG_WR_DATA <= 0;
+					BIG_WR_DATA <= 0;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2601 )
 			begin
 				BIG_WR_ADDR <= {score_y_pos[4:0],6'd28};
 				if(THOUSHANDSwire || HUNDREDSwire)
-				BIG_WR_DATA <= HUNDREDSwire+number_start;
+					BIG_WR_DATA <= HUNDREDSwire+number_start;
 				else
-				BIG_WR_DATA <= 0;
+					BIG_WR_DATA <= 0;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2602 )
 			begin
 				BIG_WR_ADDR <= {score_y_pos[4:0],6'd29};
 				if(THOUSHANDSwire || HUNDREDSwire || TENSwire)
-				BIG_WR_DATA <= TENSwire+number_start;
+					BIG_WR_DATA <= TENSwire+number_start;
 				else
-				BIG_WR_DATA <= 0;
+					BIG_WR_DATA <= 0;
 				BIG_WR_EN <= 1;
 			end
-		if ( move_cntr == 2603 && (THOUSHANDSwire || HUNDREDSwire || TENSwire || ONESwire) )
+		if ( move_cntr == 2603  )
 			begin
 				BIG_WR_ADDR <= {score_y_pos[4:0],6'd30};
-				BIG_WR_DATA <= ONESwire+number_start;
+				if (THOUSHANDSwire || HUNDREDSwire || TENSwire || ONESwire)
+					BIG_WR_DATA <= ONESwire+number_start;
+				else 
+					BIG_WR_DATA <= 0;
 				BIG_WR_EN <= 1;
 			end
-		if ( move_cntr == 2604 && (THOUSHANDSwire || HUNDREDSwire || TENSwire || ONESwire))
+		if ( move_cntr == 2604 )
 			begin
 				BIG_WR_ADDR <= {score_y_pos[4:0],6'd31};
-				BIG_WR_DATA <= number_start;
+				if(THOUSHANDSwire || HUNDREDSwire || TENSwire || ONESwire)
+					BIG_WR_DATA <= number_start;
+				else
+					BIG_WR_DATA <= 0;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2605 )
@@ -830,10 +852,13 @@ module TETRIS_GAME(
 				BIG_WR_DATA <= number_start;
 				BIG_WR_EN <= 1;
 			end
-		if ( move_cntr == 2606 && ( levelTENSwire ) )
+		if ( move_cntr == 2606 )
 			begin
 				BIG_WR_ADDR <= {level_y_pos[4:0],level_x_pos[5:0]};
-				BIG_WR_DATA <= number_start + levelTENSwire;
+				if( levelTENSwire ) 
+					BIG_WR_DATA <= number_start + levelTENSwire;
+				else
+					BIG_WR_DATA <= 0;
 				BIG_WR_EN <= 1;
 			end
 		if ( move_cntr == 2607 )
@@ -856,7 +881,43 @@ module TETRIS_GAME(
 				BIG_WR_DATA <= nextcolor;
 				BIG_WR_EN <= 1;
 			end
-		if ( move_cntr == 2630)
+		if ( move_cntr == 2630 )
+			begin
+				BIG_WR_ADDR <= {levelscore_y_pos[4:0],6'd3};
+				if( levelscoreTHOUSHANDSwire ) 
+					BIG_WR_DATA <= number_start + levelscoreTHOUSHANDSwire;
+				else
+					BIG_WR_DATA <= 0;
+				BIG_WR_EN <= 1;
+			end
+			
+		if ( move_cntr == 2631 )
+			begin
+				BIG_WR_ADDR <= {levelscore_y_pos[4:0],6'd4};
+				if( levelscoreTHOUSHANDSwire || levelscoreHUNDREDSwire) 
+					BIG_WR_DATA <= number_start + levelscoreHUNDREDSwire;
+				else
+					BIG_WR_DATA <= 0;
+				BIG_WR_EN <= 1;
+			end
+		if ( move_cntr == 2632 )
+			begin
+				BIG_WR_ADDR <= {levelscore_y_pos[4:0],6'd5};
+				if( levelscoreTHOUSHANDSwire || levelscoreHUNDREDSwire || levelscoreTENSwire) 
+					BIG_WR_DATA <= number_start + levelscoreTENSwire;
+				else
+					BIG_WR_DATA <= 0;
+				BIG_WR_EN <= 1;
+			end
+
+		if ( move_cntr == 2633 )
+			begin
+				BIG_WR_ADDR <= {levelscore_y_pos[4:0],6'd6};
+				BIG_WR_DATA <= number_start + levelscoreONESwire;
+				BIG_WR_EN <= 1;
+			end
+
+		if ( move_cntr == 2634)
 			BIG_WR_EN <= 0;
 	end
 	end
