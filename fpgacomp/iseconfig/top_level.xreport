@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2015-06-20T19:29:10</DateModified>
+  <DateModified>2015-06-21T14:30:07</DateModified>
   <ModuleName>top_level</ModuleName>
-  <SummaryTimeStamp>2015-06-07T20:18:06</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/Greg/Desktop/fpga_-master/fpgacomp/iseconfig/top_level.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/Greg/Desktop/fpga_-master/fpgacomp\</ImplementationReportsDirectory>
+  <SummaryTimeStamp>2015-06-20T23:45:08</SummaryTimeStamp>
+  <SavedFilePath>F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp/iseconfig/top_level.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>F:/Users/Viktor/Desktop/FPGACOMP2/fpgacomp\</ImplementationReportsDirectory>
   <DateInitialized>2015-05-20T12:50:31</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

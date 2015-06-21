@@ -1,13 +1,13 @@
 Release 14.7 - Bitgen P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 Loading device for application Rf_Device from file '3s250e.nph' in environment
-E:\Prog\ISE\telepítve\14.7\ISE_DS\ISE\.
+E:\XILINXISE\14.7\ISE_DS\ISE\.
    "top_level" is an NCD, version 3.2, device xc3s250e, package tq144, speed -4
 Opened constraints file top_level.pcf.
 
-Sat Jun 20 21:35:46 2015
+Sun Jun 21 15:12:13 2015
 
-E:\Prog\ISE\telepítve\14.7\ISE_DS\ISE\bin\nt64\unwrapped\bitgen.exe -intstyle ise -w -g DebugBitstream:No -g Binary:no -g CRC:Enable -g ConfigRate:1 -g ProgPin:PullUp -g DonePin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g DCMShutdown:Disable -g StartUpClk:CClk -g DONE_cycle:4 -g GTS_cycle:5 -g GWE_cycle:6 -g LCK_cycle:NoWait -g Security:None -g DonePipe:Yes -g DriveDone:No top_level.ncd 
+E:\XILINXISE\14.7\ISE_DS\ISE\bin\nt64\unwrapped\bitgen.exe -intstyle ise -w -g DebugBitstream:No -g Binary:no -g CRC:Enable -g ConfigRate:1 -g ProgPin:PullUp -g DonePin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g DCMShutdown:Disable -g StartUpClk:CClk -g DONE_cycle:4 -g GTS_cycle:5 -g GWE_cycle:6 -g LCK_cycle:NoWait -g Security:None -g DonePipe:Yes -g DriveDone:No top_level.ncd 
 
 Summary of Bitgen Options:
 +----------------------+----------------------+

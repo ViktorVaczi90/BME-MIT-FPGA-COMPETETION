@@ -30,8 +30,9 @@ wire enwire;
 wire [5:0] levelwire;
 wire [31:0] ps2_data;
 wire [31:0] ps2_status;
+wire music_pause_wire;
+wire full_row_wire;
 reg  ps2_rd;
-//reg  [5:0] ps2_cntr;
 reg  [7:0] out;
 reg  [1:0] state;
 initial state = 2'b00;
@@ -98,9 +99,11 @@ begin
 	end
 end
 music_module mymusic(
-		.clk(clk),
+		.inclk(clk),
 		.inlevel(levelwire[3:0]),
-		.audio_out(aud_out));
+		.audio_out(aud_out),
+		.full_row(full_row_wire),
+		.music_pause(music_pause_wire));
 //assign ld = ps2_data[7:0];
 VGA BAMBIVGA(
     .clk(clk),
@@ -130,7 +133,9 @@ TETRIS_GAME TETRIS_GAME(
     .BIG_RD_DATA(BIGrd_data),
 	 .ps2(out),
 	 .ps2_en(ps2_valid),
-	 .level(levelwire)
+	 .level(levelwire),
+	 .full_row(full_row_wire),
+	 .music_pause(music_pause_wire)
     );
 	 
 ps2_if ps2_if(

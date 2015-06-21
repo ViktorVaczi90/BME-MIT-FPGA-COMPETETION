@@ -5,14 +5,14 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Sat Jun 20 21:33:51 2015">
+  <application stringID="Map" timeStamp="Sun Jun 21 15:11:07 2015">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
         <column stringID="value"/>
         <row stringID="row" value="0">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="E:\Prog\ISE\telepítve\14.7\ISE_DS\ISE\\lib\nt64;E:\Prog\ISE\telepítve\14.7\ISE_DS\ISE\\bin\nt64;E:\Prog\ISE\telepítve\14.7\ISE_DS\ISE\bin\nt64;E:\Prog\ISE\telepítve\14.7\ISE_DS\ISE\lib\nt64;E:\Prog\ISE\telepítve\14.7\ISE_DS\ISE\..\..\..\DocNav;E:\Prog\ISE\telepítve\14.7\ISE_DS\PlanAhead\bin;E:\Prog\ISE\telepítve\14.7\ISE_DS\EDK\bin\nt64;E:\Prog\ISE\telepítve\14.7\ISE_DS\EDK\lib\nt64;E:\Prog\ISE\telepítve\14.7\ISE_DS\EDK\gnu\microblaze\nt\bin;E:\Prog\ISE\telepítve\14.7\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;E:\Prog\ISE\telepítve\14.7\ISE_DS\EDK\gnuwin\bin;E:\Prog\ISE\telepítve\14.7\ISE_DS\EDK\gnu\arm\nt\bin;E:\Prog\ISE\telepítve\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;E:\Prog\ISE\telepítve\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;E:\Prog\ISE\telepítve\14.7\ISE_DS\common\bin\nt64;E:\Prog\ISE\telepítve\14.7\ISE_DS\common\lib\nt64;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Skype\Phone\"/>
+          <item stringID="value" value="E:\XILINXISE\14.7\ISE_DS\ISE\\lib\nt64;E:\XILINXISE\14.7\ISE_DS\ISE\\bin\nt64;E:\XILINXISE\14.7\ISE_DS\ISE\bin\nt64;E:\XILINXISE\14.7\ISE_DS\ISE\lib\nt64;E:\XILINXISE\14.7\ISE_DS\ISE\..\..\..\DocNav;E:\XILINXISE\14.7\ISE_DS\PlanAhead\bin;E:\XILINXISE\14.7\ISE_DS\EDK\bin\nt64;E:\XILINXISE\14.7\ISE_DS\EDK\lib\nt64;E:\XILINXISE\14.7\ISE_DS\EDK\gnu\microblaze\nt\bin;E:\XILINXISE\14.7\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;E:\XILINXISE\14.7\ISE_DS\EDK\gnuwin\bin;E:\XILINXISE\14.7\ISE_DS\EDK\gnu\arm\nt\bin;E:\XILINXISE\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;E:\XILINXISE\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;E:\XILINXISE\14.7\ISE_DS\common\bin\nt64;E:\XILINXISE\14.7\ISE_DS\common\lib\nt64;F:\WinAVR-20100110\bin;F:\WinAVR-20100110\utils\bin;F:\WinAVR-20071221\bin;F:\WinAVR-20071221\utils\bin;F:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;F:\Program Files\ImageMagick-6.9.0-Q16;F:\Python27\;F:\Python27\Scripts;F:\Program Files\Common Files\Microsoft Shared\Windows Live;F:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;F:\ProgramData\Oracle\Java\javapath;F:\Windows\system32;F:\Windows;F:\Windows\System32\Wbem;F:\Windows\System32\WindowsPowerShell\v1.0\;F:\Program Files (x86)\MiKTeX 2.9\miktex\bin\;F:\Program Files (x86)\Windows Live\Shared;E:\Program Files\MATLAB\R2014b\runtime\win64;E:\Program Files\MATLAB\R2014b\bin;E:\Program Files\MATLAB\R2014b\polyspace\bin;F:\Program Files (x86)\Skype\Phone\;f:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;f:\Program Files\Microsoft SQL Server\110\Tools\Binn\;f:\Program Files\Microsoft SQL Server\110\DTS\Binn\;F:\Program Files (x86)\Git\cmd;F:\Program Files_(x86)\Google\google_appengine\;F:\Users\Viktor\Documents\django_app_engine\test_project\django_test"/>
         </row>
         <row stringID="row" value="1">
           <item stringID="variable" value="PATHEXT"/>
@@ -20,32 +20,32 @@
         </row>
         <row stringID="row" value="2">
           <item stringID="variable" value="XILINX"/>
-          <item stringID="value" value="E:\Prog\ISE\telepítve\14.7\ISE_DS\ISE\"/>
+          <item stringID="value" value="E:\XILINXISE\14.7\ISE_DS\ISE\"/>
         </row>
         <row stringID="row" value="3">
           <item stringID="variable" value="XILINX_DSP"/>
-          <item stringID="value" value="E:\Prog\ISE\telepítve\14.7\ISE_DS\ISE"/>
+          <item stringID="value" value="E:\XILINXISE\14.7\ISE_DS\ISE"/>
         </row>
         <row stringID="row" value="4">
           <item stringID="variable" value="XILINX_EDK"/>
-          <item stringID="value" value="E:\Prog\ISE\telepítve\14.7\ISE_DS\EDK"/>
+          <item stringID="value" value="E:\XILINXISE\14.7\ISE_DS\EDK"/>
         </row>
         <row stringID="row" value="5">
           <item stringID="variable" value="XILINX_PLANAHEAD"/>
-          <item stringID="value" value="E:\Prog\ISE\telepítve\14.7\ISE_DS\PlanAhead"/>
+          <item stringID="value" value="E:\XILINXISE\14.7\ISE_DS\PlanAhead"/>
         </row>
       </table>
       <item stringID="User_EnvOs" value="OS Information">
         <item stringID="User_EnvOsname" value="Microsoft Windows 7 , 64-bit"/>
         <item stringID="User_EnvOsrelease" value="Service Pack 1  (build 7601)"/>
       </item>
-      <item stringID="User_EnvHost" value="Greg-PC"/>
+      <item stringID="User_EnvHost" value="Viktor-PC"/>
       <table stringID="User_EnvCpu">
         <column stringID="arch"/>
         <column stringID="speed"/>
         <row stringID="row" value="0">
-          <item stringID="arch" value="Intel(R) Core(TM) i5-4210U CPU @ 1.70GHz"/>
-          <item stringID="speed" value="2394 MHz"/>
+          <item stringID="arch" value="Intel(R) Core(TM) i5-2410M CPU @ 2.30GHz"/>
+          <item stringID="speed" value="2294 MHz"/>
         </row>
       </table>
     </section>
@@ -68,18 +68,18 @@
       <section stringID="MAP_DESIGN_SUMMARY">
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
-        <item dataType="int" stringID="MAP_NUM_WARNINGS" value="23"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="286900"/>
+        <item dataType="int" stringID="MAP_NUM_WARNINGS" value="26"/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="301324"/>
         <item stringID="MAP_TOTAL_REAL_TIME" value="4 secs "/>
-        <item stringID="MAP_TOTAL_CPU_TIME" value="4 secs "/>
+        <item stringID="MAP_TOTAL_CPU_TIME" value="3 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING">
-        <item AVAILABLE="4896" dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="572"/>
-        <item AVAILABLE="4896" dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="2387">
-          <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="312"/>
+        <item AVAILABLE="4896" dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="586"/>
+        <item AVAILABLE="4896" dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="2476">
+          <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="335"/>
           <item dataType="int" label="Number used as Shift registers" stringID="MAP_NUM_SHIFT" value="9"/>
         </item>
-        <item AVAILABLE="2448" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="1308">
+        <item AVAILABLE="2448" dataType="int" label="Number of occupied Slices" stringID="MAP_OCCUPIED_SLICES" value="1350">
           <item dataType="int" label="Number of Slices containing unrelated logic" stringID="MAP_NUM_SLICE_UNRELATED" value="0"/>
         </item>
       </section>
@@ -90,7 +90,7 @@
       </section>
       <section stringID="MAP_HARD_IP_REPORTING">
         <item AVAILABLE="12" dataType="int" stringID="MAP_NUM_RAMB16" value="11"/>
-        <item AVAILABLE="24" dataType="int" label="Number of BUFGMUXs" stringID="MAP_NUM_BUFGMUX" value="2"/>
+        <item AVAILABLE="24" dataType="int" label="Number of BUFGMUXs" stringID="MAP_NUM_BUFGMUX" value="3"/>
         <item AVAILABLE="4" dataType="int" stringID="MAP_NUM_DCM" value="1"/>
       </section>
       <section stringID="MAP_MACRO_RPM_REPORTING">
@@ -380,7 +380,7 @@
       </section>
       <section stringID="MAP_RPM_MACROS">
         <section stringID="MAP_SHAPE_SECTION">
-          <item dataType="int" stringID="MAP_NUM_SHAPE" value="95"/>
+          <item dataType="int" stringID="MAP_NUM_SHAPE" value="96"/>
         </section>
       </section>
       <section stringID="MAP_GUIDE_REPORT"/>

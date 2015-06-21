@@ -23,6 +23,10 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 <msg type="info" file="LIT" num="244" delta="old" >All of the single ended outputs in this design are using slew rate limited output drivers. The delay on speed critical single ended outputs can be dramatically reduced by designating them as fast outputs.
 </msg>
 
+<msg type="warning" file="LIT" num="176" delta="new" >Clock buffer is designated to drive clock loads. <arg fmt="%s" index="1">BUFGMUX symbol &quot;physical_group_clk/clk_gen/BUFG_clkfx&quot; (output signal=clk)</arg> has a mix of clock and non-clock loads. The non-clock loads are:
+<arg fmt="%s" index="2">Pin I0 of mymusic/clk1</arg>
+</msg>
+
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0011_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0003_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
 </msg>
 
@@ -35,6 +39,9 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0024_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0022_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
 </msg>
 
+<msg type="warning" file="Pack" num="266" delta="new" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0035_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0040_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
+</msg>
+
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0005_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0032_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
 </msg>
 
@@ -42,6 +49,9 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 </msg>
 
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0033_3</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0039_2_f5</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
+</msg>
+
+<msg type="warning" file="Pack" num="266" delta="new" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Madd_ver_wire_clear_rd_addsub0000_xor&lt;2&gt;11</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/BIG_RD_ADDR_mux0000&lt;8&gt;57_SW0</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.
 </msg>
 
 <msg type="warning" file="Pack" num="266" delta="old" >The function generator <arg fmt="%s" index="1">TETRIS_GAME/Mmux__varindex0011_31</arg> failed to merge with F5 multiplexer <arg fmt="%s" index="2">TETRIS_GAME/Mmux__varindex0003_2_f5_0</arg>.  <arg fmt="%z" index="3">There is a conflict for the FXMUX.</arg>  The design will exhibit suboptimal timing.

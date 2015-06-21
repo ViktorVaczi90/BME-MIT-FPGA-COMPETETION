@@ -9,23 +9,23 @@ Target Device  : xc3s250e
 Target Package : tq144
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Sat Jun 20 21:33:47 2015
+Mapped Date    : Sun Jun 21 15:11:03 2015
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:   23
+Number of warnings:   26
 Logic Utilization:
-  Number of Slice Flip Flops:           572 out of   4,896   11%
-  Number of 4 input LUTs:             2,075 out of   4,896   42%
+  Number of Slice Flip Flops:           586 out of   4,896   11%
+  Number of 4 input LUTs:             2,141 out of   4,896   43%
 Logic Distribution:
-  Number of occupied Slices:          1,308 out of   2,448   53%
-    Number of Slices containing only related logic:   1,308 out of   1,308 100%
-    Number of Slices containing unrelated logic:          0 out of   1,308   0%
+  Number of occupied Slices:          1,350 out of   2,448   55%
+    Number of Slices containing only related logic:   1,350 out of   1,350 100%
+    Number of Slices containing unrelated logic:          0 out of   1,350   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       2,387 out of   4,896   48%
-    Number used as logic:             2,066
-    Number used as a route-thru:        312
+  Total Number of 4 input LUTs:       2,476 out of   4,896   50%
+    Number used as logic:             2,132
+    Number used as a route-thru:        335
     Number used as Shift registers:       9
 
   The Slice Logic Distribution report is not meaningful if the design is
@@ -33,14 +33,14 @@ Logic Distribution:
 
   Number of bonded IOBs:                 33 out of     108   30%
   Number of RAMB16s:                     11 out of      12   91%
-  Number of BUFGMUXs:                     2 out of      24    8%
+  Number of BUFGMUXs:                     3 out of      24   12%
   Number of DCMs:                         1 out of       4   25%
 
 Average Fanout of Non-Clock Nets:                3.47
 
-Peak Memory Usage:  280 MB
+Peak Memory Usage:  294 MB
 Total REAL time to MAP completion:  4 secs 
-Total CPU time to MAP completion:   4 secs 
+Total CPU time to MAP completion:   3 secs 
 
 NOTES:
 
@@ -81,6 +81,10 @@ Section 1 - Errors
 
 Section 2 - Warnings
 --------------------
+WARNING:LIT:176 - Clock buffer is designated to drive clock loads. BUFGMUX
+   symbol "physical_group_clk/clk_gen/BUFG_clkfx" (output signal=clk) has a mix
+   of clock and non-clock loads. The non-clock loads are:
+   Pin I0 of mymusic/clk1
 WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0011_3
    failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0003_2_f5. 
    There is a conflict for the FXMUX.  The design will exhibit suboptimal
@@ -97,6 +101,10 @@ WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0024_3
    failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0022_2_f5. 
    There is a conflict for the FXMUX.  The design will exhibit suboptimal
    timing.
+WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0035_3
+   failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0040_2_f5. 
+   There is a conflict for the FXMUX.  The design will exhibit suboptimal
+   timing.
 WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0005_3
    failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0032_2_f5. 
    There is a conflict for the FXMUX.  The design will exhibit suboptimal
@@ -109,6 +117,10 @@ WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0033_3
    failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0039_2_f5. 
    There is a conflict for the FXMUX.  The design will exhibit suboptimal
    timing.
+WARNING:Pack:266 - The function generator
+   TETRIS_GAME/Madd_ver_wire_clear_rd_addsub0000_xor<2>11 failed to merge with
+   F5 multiplexer TETRIS_GAME/BIG_RD_ADDR_mux0000<8>57_SW0.  There is a conflict
+   for the FXMUX.  The design will exhibit suboptimal timing.
 WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0011_31
    failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0003_2_f5_0. 
    There is a conflict for the FXMUX.  The design will exhibit suboptimal
