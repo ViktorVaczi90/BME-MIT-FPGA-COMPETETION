@@ -49,6 +49,13 @@ module TETRIS_GAME(
 	parameter level_x_pos = 32;
 	parameter level_y_pos = 14;
 	parameter levelscore_y_pos = 8;
+	//Move Delays!!!!!!
+	parameter move_delay_left = 2;
+	parameter move_delay_right = 2;
+	parameter move_delay_rot = 4;
+	reg [3:0] move_cntr_left; initial move_cntr_left = 0;
+	reg [3:0] move_cntr_right; initial move_cntr_right = 0;
+	reg [3:0] move_cntr_rot; initial move_cntr_rot = 0;
 	//***************** end of parameters/positions
    initial level = 1;
 	reg [14:0] levelscore; initial levelscore = 0;
@@ -636,44 +643,74 @@ module TETRIS_GAME(
 	end
 	if ( gamestate == 1 )
 	begin
-		//*************Elõzõ pozíció törlése
-		if ( move_cntr >1 && move_cntr <= 6 )
+	if( move_cntr == 1 ) 
+		begin
+		if (move_cntr_left)
 			begin
-				BIG_WR_ADDR <= {ver_wire[4:0],hor_wire[5:0]};
-				BIG_WR_DATA <= 0;
-				BIG_WR_EN <= 1;
-				moved_in_this_frame <= 0;
+				if(move_cntr_left == move_delay_left)
+				move_cntr_left <= 0;
+				else
+				move_cntr_left <= move_cntr_left+ 1;
 			end
-		if ( move_cntr == 7)
-			BIG_WR_EN <= 0;
-		//*************Elõzõ pozíció törlése
 		
-		//*************************************************Ha tud és meg van nyomva a megfelelõ gomb akkor mozog/fordul
-		if ( move_cntr == 10 && (gravity == 1 || down_keyboard || (btn[3] && ! input_delay)) && canmove_down && (!moved_in_this_frame) ) 
-		begin
-			pos_y <= pos_y + 1;
-			down_keyboard <= 0;
-		moved_in_this_frame <= 1;
+			if (move_cntr_right)
+			begin
+				if(move_cntr_right == move_delay_right)
+				move_cntr_right <= 0;
+				else
+				move_cntr_right <= move_cntr_right+ 1;
+			end
+		
+			if (move_cntr_rot)
+			begin
+				if(move_cntr_rot == move_delay_rot)
+				move_cntr_rot <= 0;
+				else
+				move_cntr_rot <= move_cntr_rot+ 1;
+			end
 		end
-		if ( /*!input_delay[1:0]  &&*/ move_cntr == 11 && canmove_right && (right_keyboard  || (btn[1] && ! input_delay))&& (!( gravity == 1 && !canmove_down)) && (!moved_in_this_frame)  ) //SORRENDET ÁT KELL GONDOLNI, LEHET HOGY NEM TUD LEFELE MENNI, LERAKJA, DE MÉG ELMEGY EGYET BALRA JOBBRA.
-		begin
-			pos_x <= pos_x + 1;
-			right_keyboard <= 0;
-			moved_in_this_frame <= 1;
-		end	
-		if ( /*!input_delay[1:0] && */move_cntr == 12 && canmove_left &&( left_keyboard || (btn[2] && ! input_delay)) && (!( gravity == 1 && !canmove_down )) && (!moved_in_this_frame)  )
-		begin
-			pos_x <= pos_x - 1;
-			left_keyboard <= 0;//****************PS2 höz kell
-			moved_in_this_frame <= 1;
-		end
-		if (  move_cntr == 13 && canmove_rot && (rot_keyboard || (btn[0] && ! input_delay))&& !( gravity == 1 && !canmove_down )  && (! input_delay )&& (!moved_in_this_frame)  ) 
-		begin
-			rotation <= rotation + 1;
-			rot_keyboard<=0;
-			moved_in_this_frame <= 1;
-		end
-		if ( move_cntr == 14 && !( gravity == 1 && !canmove_down ) && ! input_delay ) //WHAT IS THIS????
+			//*************Elõzõ pozíció törlése
+			if ( move_cntr >1 && move_cntr <= 6 )
+				begin
+					BIG_WR_ADDR <= {ver_wire[4:0],hor_wire[5:0]};
+					BIG_WR_DATA <= 0;
+					BIG_WR_EN <= 1;
+					moved_in_this_frame <= 0;
+				end
+			if ( move_cntr == 7)
+				BIG_WR_EN <= 0;
+			//*************Elõzõ pozíció törlése
+			
+			//*************************************************Ha tud és meg van nyomva a megfelelõ gomb akkor mozog/fordul
+			if ( move_cntr == 10 && (gravity == 1 || down_keyboard || (btn[3] && ! input_delay)) && canmove_down && (!moved_in_this_frame) ) 
+			begin
+				pos_y <= pos_y + 1;
+				down_keyboard <= 0;
+				moved_in_this_frame <= 1;
+			end
+			if ( /*!input_delay[1:0]  && */!move_cntr_right &&			move_cntr == 11 && canmove_right && (right_keyboard  || (btn[1] && ! input_delay))&& (!( gravity == 1 && !canmove_down)) && (!moved_in_this_frame)  ) //SORRENDET ÁT KELL GONDOLNI, LEHET HOGY NEM TUD LEFELE MENNI, LERAKJA, DE MÉG ELMEGY EGYET BALRA JOBBRA.
+			begin
+				pos_x <= pos_x + 1;
+				right_keyboard <= 0;
+				moved_in_this_frame <= 1;
+				move_cntr_right <= 1;
+			end	
+			if ( /*!input_delay[1:0] && */!move_cntr_left && move_cntr == 12 && canmove_left &&( left_keyboard || (btn[2] && ! input_delay)) && (!( gravity == 1 && !canmove_down )) && (!moved_in_this_frame)  )
+			begin
+				pos_x <= pos_x - 1;
+				left_keyboard <= 0;//****************PS2 höz kell
+				moved_in_this_frame <= 1;
+				move_cntr_left <= 1;
+			end
+			if (  move_cntr == 13 && canmove_rot && (rot_keyboard || (btn[0] && ! input_delay))&& !( gravity == 1 && !canmove_down )  && (!move_cntr_rot /*input_delay*/ )&& (!moved_in_this_frame)  ) 
+			begin
+				rotation <= rotation + 1;
+				rot_keyboard<=0;
+				moved_in_this_frame <= 1;
+				move_cntr_rot <= 1;
+			end
+		//end
+		if ( move_cntr == 14 && !( gravity == 1 && !canmove_down ) /*&& ! input_delay */) //WHAT IS THIS???? MIÉRT INPUT DELAY???
 			begin
 				moved_in_this_frame <= 0;
 				 vertical[0] <= vertical_rot_data[{color,rotation,2'b00}];
@@ -974,7 +1011,8 @@ module TETRIS_GAME(
 	assign rot_cntr_2 = rot_cntr[1:0] + 2;
 	assign music_pause = (gamestate !=1 );
 	assign nextrot = rotation + 1;
-	assign leds = gamestate;
+	//assign leds = gamestate;
 	assign full_row = rowcombo;
 	assign music_game_over = gamestate == 3;
+	assign leds = move_cntr_right;
 endmodule

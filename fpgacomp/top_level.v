@@ -118,7 +118,7 @@ button_machine leftbutton(
 		.button(8'h34),
 		.ps2_out(ps2_data[7:0]),
 		.ps2_pulse(ps2state2),
-		.leds(ld[7:0]),
+		//.leds(ld[7:0]),
 		.pulse(left_pulse)
 		);
 		
@@ -156,7 +156,7 @@ VGA BAMBIVGA(
 	 
 TETRIS_GAME TETRIS_GAME(
 	 .btn(bt),
-	 //.leds(ld), //ide voltak kötve  ledek
+	 .leds(ld), //ide voltak kötve  ledek
     .clk(clk),
     .rst(rst),
     .en(enwire),

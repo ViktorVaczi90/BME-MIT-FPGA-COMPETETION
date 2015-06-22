@@ -9,7 +9,7 @@ Target Device  : xc3s250e
 Target Package : tq144
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Mon Jun 22 01:01:08 2015
+Mapped Date    : Mon Jun 22 02:50:03 2015
 
 Mapping design into LUTs...
 WARNING:LIT:176 - Clock buffer is designated to drive clock loads. BUFGMUX
@@ -43,7 +43,7 @@ WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0005_3
    timing.
 WARNING:Pack:266 - The function generator
    TETRIS_GAME/Mmux_hor_wire_down_varindex0000_3 failed to merge with F5
-   multiplexer TETRIS_GAME/Mmux__varindex0018_2_f5.  There is a conflict for the
+   multiplexer TETRIS_GAME/Mmux__varindex0019_2_f5.  There is a conflict for the
    FXMUX.  The design will exhibit suboptimal timing.
 WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0033_3
    failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0039_2_f5. 
@@ -71,7 +71,7 @@ WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0005_31
    timing.
 WARNING:Pack:266 - The function generator
    TETRIS_GAME/Mmux_hor_wire_down_varindex0000_31 failed to merge with F5
-   multiplexer TETRIS_GAME/Mmux__varindex0018_2_f5_0.  There is a conflict for
+   multiplexer TETRIS_GAME/Mmux__varindex0019_2_f5_0.  There is a conflict for
    the FXMUX.  The design will exhibit suboptimal timing.
 WARNING:Pack:266 - The function generator TETRIS_GAME/Mmux__varindex0033_31
    failed to merge with F5 multiplexer TETRIS_GAME/Mmux__varindex0039_2_f5_0. 
@@ -108,15 +108,15 @@ Design Summary:
 Number of errors:      0
 Number of warnings:   25
 Logic Utilization:
-  Number of Slice Flip Flops:           727 out of   4,896   14%
-  Number of 4 input LUTs:             2,316 out of   4,896   47%
+  Number of Slice Flip Flops:           738 out of   4,896   15%
+  Number of 4 input LUTs:             2,353 out of   4,896   48%
 Logic Distribution:
-  Number of occupied Slices:          1,498 out of   2,448   61%
-    Number of Slices containing only related logic:   1,498 out of   1,498 100%
-    Number of Slices containing unrelated logic:          0 out of   1,498   0%
+  Number of occupied Slices:          1,516 out of   2,448   61%
+    Number of Slices containing only related logic:   1,516 out of   1,516 100%
+    Number of Slices containing unrelated logic:          0 out of   1,516   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:       2,728 out of   4,896   55%
-    Number used as logic:             2,307
+  Total Number of 4 input LUTs:       2,765 out of   4,896   56%
+    Number used as logic:             2,344
     Number used as a route-thru:        412
     Number used as Shift registers:       9
 
@@ -128,9 +128,9 @@ Logic Distribution:
   Number of BUFGMUXs:                     3 out of      24   12%
   Number of DCMs:                         1 out of       4   25%
 
-Average Fanout of Non-Clock Nets:                3.37
+Average Fanout of Non-Clock Nets:                3.36
 
-Peak Memory Usage:  295 MB
+Peak Memory Usage:  296 MB
 Total REAL time to MAP completion:  5 secs 
 Total CPU time to MAP completion:   4 secs 
 
