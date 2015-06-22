@@ -328,11 +328,6 @@ module TETRIS_GAME(
 		end
 	end
 	//***********************Leesés 
-	
-	/*//*********************Képernyõ vége
-	always @ (posedge clk)
-	if( en_posedge == 0 && en == 1 ) 
-		vsync_cntr <= vsync_cntr + 1;
 	//*********************Képernyõ vége*/
 	
 	//****Ütemezõ cntr növelése, képernyõn kívül
@@ -501,33 +496,25 @@ module TETRIS_GAME(
 	begin
 		
 		//****************PS2 kezelése
-		//if ( ps2_en == 1 && ( ps2 == 8'h41 || ps2 == 8'h34 ) )
 		if (left_pulse && pos_y)
 			left_keyboard <= 1;
 		if ( !canmove_left )
 			left_keyboard <= 0;
-		//if ( ps2_en == 1 && ( ps2 == 8'h44 || ps2 == 8'h36 ) )
+			
 		if (right_pulse && pos_y)
 			right_keyboard <= 1;
 		if ( !canmove_right )
 			right_keyboard <= 0;
-		//if ( ps2_en == 1 && ( ps2 == 8'h53 || ps2 == 8'h32 ) )
+			
 		if(down_pulse && pos_y)
 			down_keyboard <= 1;
 		if ( !canmove_down )
 			down_keyboard <= 0;
+			
 		if ( ps2_en == 1 && (ps2 ==  8'h20 || ps2 == 8'h57)  && pos_y)
 			rot_keyboard <= 1;
 		if ( !canmove_rot )
 			rot_keyboard <= 0;
-		/*if( cycle_cntr == 1)
-		begin
-				BIG_WR_ADDR <= {5'd2,6'd2 };
-				BIG_WR_DATA <= 28+gamestate;//G
-				BIG_WR_EN <= 1;
-			end
-		if(cycle_cntr == 2)
-		BIG_WR_EN <= 0;*/
 		//****************PS2 kezelése
 	if ( gamestate == 3)
 	begin
@@ -999,19 +986,13 @@ module TETRIS_GAME(
 	assign hor_wire_clear_wr =tetris_x_begin + 1 + move_cntr[3:0]-2;
 	assign ver_wire_clear_wr =tetris_y_begin + currentrow+rowcombo;// This the difference between
 	//*****************Sortörléshez szükséges ki- és beolvasási kábelek
-	
-	//DEBUG
-	//assign ver_wire_rot = tetris_y_begin + pos_y + vertical_rot_data[{color[2:0],nextrot[1:0],rot_cntr[1:0]}];
-	//assign hor_wire_rot = tetris_x_begin + pos_x + horizontal_rot_data[{color[2:0],nextrot[1:0],rot_cntr[1:0]}]; // Lehet gond, érdemes lehet 6 bitre csinálni a kivonásnál
-	//assign nextrottest = rotation + 1;
-	//END OF DEBUG
+
 	
 	assign rot_cntr_0 = rot_cntr[1:0] + 3;
 	assign rot_cntr_1 = rot_cntr[1:0] + 1;
 	assign rot_cntr_2 = rot_cntr[1:0] + 2;
 	assign music_pause = (gamestate !=1 );
 	assign nextrot = rotation + 1;
-	//assign leds = gamestate;
 	assign full_row = rowcombo;
 	assign music_game_over = gamestate == 3;
 	assign leds = move_cntr_right;

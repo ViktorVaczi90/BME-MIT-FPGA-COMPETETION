@@ -46,13 +46,16 @@ wire [6:0] freqwire1_mux;
 wire [6:0] freqwire2_mux;
 reg [3:0] state; initial state = 0;
 reg [23:0] full_row_cntr; initial full_row_cntr = 0;
+reg full_row_reg;
+always@(posedge clk)
+	full_row_reg <= full_row;
 always@(posedge clk)
 begin
 case (state)
 	0:
 	begin
 		full_row_cntr <= 1;
-		if(full_row)
+		if(full_row && !full_row_reg)
 		begin
 			state <= 1; 
 			full_row_cntr <= 1;
