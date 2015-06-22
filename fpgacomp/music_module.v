@@ -90,15 +90,6 @@ case (state)
 			else full_row_cntr <= 0;
 		end
 	end
-	/*
-	end
-		else
-			begin
-			if(!full_row_cntr[23])
-				full_row_cntr <= full_row_cntr +1;
-			else full_row_cntr <= 0;
-		end
-	*/
 	3:
 	begin
 		freqwire1_game_over <= {3'd2,4'd9};

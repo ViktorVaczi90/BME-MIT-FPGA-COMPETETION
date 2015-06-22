@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: top_level.prj
 
@@ -1697,10 +1697,6 @@ Optimizing unit <srl_fifo> ...
 Optimizing unit <music_module> ...
 WARNING:Xst:1710 - FF/Latch <freqwire1_game_over_5> (without init value) has a constant value of 1 in block <music_module>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <freqwire2_game_over_5> (without init value) has a constant value of 1 in block <music_module>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <firstsong2/repeat_times_2> has a constant value of 0 in block <music_module>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <firstsong2/repeat_times_3> has a constant value of 0 in block <music_module>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <firstsong2/repeat_times_3> has a constant value of 0 in block <music_module>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <firstsong2/repeat_times_2> has a constant value of 0 in block <music_module>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <ps2_if> ...
 WARNING:Xst:2677 - Node <TETRIS_GAME/BCD_LEVEL/hundreds_3> of sequential type is unconnected in block <top_level>.
@@ -1714,7 +1710,7 @@ WARNING:Xst:2677 - Node <TETRIS_GAME/BCD_LEVEL/thousands_0> of sequential type i
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block top_level, actual ratio is 63.
+Found area constraint ratio of 100 (+ 5) on block top_level, actual ratio is 64.
 FlipFlop TETRIS_GAME/move_cntr_0 has been replicated 1 time(s)
 FlipFlop TETRIS_GAME/move_cntr_1 has been replicated 1 time(s)
 FlipFlop TETRIS_GAME/move_cntr_2 has been replicated 1 time(s)
@@ -1740,8 +1736,8 @@ Unit <top_level> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 738
- Flip-Flops                                            : 738
+# Registers                                            : 740
+ Flip-Flops                                            : 740
 # Shift Registers                                      : 1
  3-bit shift register                                  : 1
 
@@ -1772,30 +1768,31 @@ Design Statistics
 # IOs                              : 33
 
 Cell Usage :
-# BELS                             : 4131
+# BELS                             : 4162
 #      GND                         : 1
 #      INV                         : 112
 #      LUT1                        : 389
-#      LUT2                        : 292
+#      LUT2                        : 291
 #      LUT2_D                      : 12
-#      LUT2_L                      : 10
-#      LUT3                        : 411
-#      LUT3_D                      : 28
-#      LUT3_L                      : 30
-#      LUT4                        : 1235
+#      LUT2_L                      : 11
+#      LUT3                        : 422
+#      LUT3_D                      : 27
+#      LUT3_L                      : 29
+#      LUT4                        : 1250
 #      LUT4_D                      : 92
-#      LUT4_L                      : 113
+#      LUT4_L                      : 111
 #      MUXCY                       : 761
-#      MUXF5                       : 158
+#      MUXF5                       : 167
 #      MUXF6                       : 7
 #      VCC                         : 1
 #      XORCY                       : 479
-# FlipFlops/Latches                : 739
-#      FD                          : 203
-#      FDE                         : 137
-#      FDR                         : 103
+# FlipFlops/Latches                : 741
+#      FD                          : 200
+#      FDE                         : 139
+#      FDR                         : 102
 #      FDRE                        : 169
-#      FDS                         : 121
+#      FDRS                        : 1
+#      FDS                         : 124
 #      FDSE                        : 6
 # RAMS                             : 11
 #      RAMB16_S18_S18              : 1
@@ -1819,10 +1816,10 @@ Device utilization summary:
 
 Selected Device : 3s250etq144-4 
 
- Number of Slices:                     1461  out of   2448    59%  
- Number of Slice Flip Flops:            739  out of   4896    15%  
- Number of 4 input LUTs:               2733  out of   4896    55%  
-    Number used as logic:              2724
+ Number of Slices:                     1474  out of   2448    60%  
+ Number of Slice Flip Flops:            741  out of   4896    15%  
+ Number of 4 input LUTs:               2755  out of   4896    56%  
+    Number used as logic:              2746
     Number used as Shift registers:       9
  Number of IOs:                          33
  Number of bonded IOBs:                  25  out of    108    23%  
@@ -1852,7 +1849,7 @@ Clock Information:
 Clock Signal                       | Clock buffer(FF name)          | Load  |
 -----------------------------------+--------------------------------+-------+
 clk16M                             | clk_gen/DCM_SP_inst:CLKFX      | 578   |
-mymusic/clk1(mymusic/clk1:O)       | BUFG(*)(mymusic/state_FSM_FFd2)| 181   |
+mymusic/clk1(mymusic/clk1:O)       | BUFG(*)(mymusic/state_FSM_FFd2)| 183   |
 -----------------------------------+--------------------------------+-------+
 (*) This 1 clock signal(s) are generated by combinatorial logic,
 and XST is not able to identify which are the primary clock signals.
@@ -1892,7 +1889,7 @@ Delay:               11.353ns (Levels of Logic = 6)
     ----------------------------------------  ------------
      FDRE:C->Q            12   0.591   1.136  TETRIS_GAME/move_cntr_14 (TETRIS_GAME/move_cntr_14)
      LUT4:I0->O            5   0.704   0.633  TETRIS_GAME/Mcompar_moved_in_this_frame_cmp_gt0000_lut<4> (TETRIS_GAME/BIG_RD_ADDR_cmp_eq0000)
-     MUXF5:S->O            1   0.739   0.424  TETRIS_GAME/BIG_WR_ADDR_and000819_SW1 (N331)
+     MUXF5:S->O            1   0.739   0.424  TETRIS_GAME/BIG_WR_ADDR_and000819_SW1 (N334)
      LUT4:I3->O           19   0.704   1.089  TETRIS_GAME/BIG_WR_ADDR_and000850 (TETRIS_GAME/BIG_WR_ADDR_and0008)
      LUT4:I3->O           10   0.704   0.886  TETRIS_GAME/BIG_WR_ADDR_mux0000<1>111 (N45)
      LUT4_D:I3->O         14   0.704   1.004  TETRIS_GAME/BIG_WR_ADDR_mux0000<1>3 (N671)
@@ -1904,32 +1901,33 @@ Delay:               11.353ns (Levels of Logic = 6)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'mymusic/clk1'
-  Clock period: 11.429ns (frequency: 87.497MHz)
-  Total number of paths / destination ports: 9839 / 351
+  Clock period: 11.408ns (frequency: 87.661MHz)
+  Total number of paths / destination ports: 10705 / 359
 -------------------------------------------------------------------------
-Delay:               11.429ns (Levels of Logic = 8)
-  Source:            mymusic/firstsong2/notes_cntr_2 (FF)
-  Destination:       mymusic/firstsong2/notes_cntr_1 (FF)
+Delay:               11.408ns (Levels of Logic = 9)
+  Source:            mymusic/firstsong2/notes_cntr_4 (FF)
+  Destination:       mymusic/firstsong2/notes_cntr_0 (FF)
   Source Clock:      mymusic/clk1 rising
   Destination Clock: mymusic/clk1 rising
 
-  Data Path: mymusic/firstsong2/notes_cntr_2 to mymusic/firstsong2/notes_cntr_1
+  Data Path: mymusic/firstsong2/notes_cntr_4 to mymusic/firstsong2/notes_cntr_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              17   0.591   1.226  mymusic/firstsong2/notes_cntr_2 (mymusic/firstsong2/notes_cntr_2)
-     LUT4_D:I0->LO         1   0.704   0.275  mymusic/firstsong2/Mrom_notes_cntr_varindex0000171 (N1016)
-     LUT2:I0->O            3   0.704   0.706  mymusic/firstsong2/Mrom_notes_cntr_varindex0000181_10 (mymusic/firstsong2/Mrom_notes_cntr_varindex0000181_10)
-     LUT4:I0->O            4   0.704   0.622  mymusic/firstsong2/state_cmp_eq000011 (mymusic/N50)
-     LUT4:I2->O            1   0.704   0.595  mymusic/firstsong2/state_cmp_eq0001_SW0 (N213)
-     LUT4_D:I0->LO         1   0.704   0.275  mymusic/firstsong2/state_cmp_eq0001 (N1026)
-     LUT3:I0->O            2   0.704   0.451  mymusic/firstsong2/notes_cntr_mux0000<1>21 (mymusic/N22)
-     LUT4_D:I3->O          6   0.704   0.748  mymusic/N501 (mymusic/N501)
-     LUT2:I1->O            1   0.704   0.000  mymusic/firstsong2/notes_cntr_mux0000<6>291 (mymusic/firstsong2/notes_cntr_mux0000<6>29)
-     FDS:D                     0.308          mymusic/firstsong2/notes_cntr_6
+     FDS:C->Q             27   0.591   1.436  mymusic/firstsong2/notes_cntr_4 (mymusic/firstsong2/notes_cntr_4)
+     LUT4:I0->O            1   0.704   0.000  mymusic/firstsong2/Mrom_notes_cntr_varindex0000312_9_F (N947)
+     MUXF5:I0->O           6   0.321   0.748  mymusic/firstsong2/Mrom_notes_cntr_varindex0000312_9 (mymusic/firstsong2/Mrom_notes_cntr_varindex0000312_9)
+     LUT4_D:I1->O          3   0.704   0.610  mymusic/firstsong2/state_cmp_eq0000121 (mymusic/N112)
+     LUT2_L:I1->LO         1   0.704   0.104  mymusic/firstsong2/state_cmp_eq0000_SW0 (N125)
+     LUT4:I3->O            3   0.704   0.706  mymusic/firstsong2/state_cmp_eq0000 (mymusic/firstsong2/state_cmp_eq0000)
+     LUT3:I0->O            1   0.704   0.499  mymusic/firstsong2/state_FSM_FFd3-In24 (mymusic/N32)
+     LUT3:I1->O            1   0.704   0.000  mymusic/firstsong2/notes_cntr_mux0000<0>1_F (N943)
+     MUXF5:I0->O           8   0.321   0.836  mymusic/firstsong2/notes_cntr_mux0000<0>1 (mymusic/N4)
+     LUT3:I1->O            1   0.704   0.000  mymusic/firstsong2/notes_cntr_mux0000<0>631 (mymusic/firstsong2/notes_cntr_mux0000<0>63)
+     FDS:D                     0.308          mymusic/firstsong2/notes_cntr_0
     ----------------------------------------
-    Total                     11.429ns (6.531ns logic, 4.898ns route)
-                                       (57.1% logic, 42.9% route)
+    Total                     11.408ns (6.469ns logic, 4.939ns route)
+                                       (56.7% logic, 43.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk16M'
@@ -1945,8 +1943,8 @@ Offset:              10.121ns (Levels of Logic = 8)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             2   1.218   0.622  bt_2_IBUF (bt_2_IBUF)
-     LUT4:I0->O            1   0.704   0.424  TETRIS_GAME/left_keyboard_cmp_eq00031_SW0 (N382)
-     LUT4:I3->O            1   0.704   0.499  TETRIS_GAME/left_keyboard_not00014_SW0_SW0 (N312)
+     LUT4:I0->O            1   0.704   0.424  TETRIS_GAME/left_keyboard_cmp_eq00031_SW0 (N385)
+     LUT4:I3->O            1   0.704   0.499  TETRIS_GAME/left_keyboard_not00014_SW0_SW0 (N315)
      LUT4:I1->O            8   0.704   0.761  TETRIS_GAME/left_keyboard_not00014 (N302)
      LUT4_D:I3->O          1   0.704   0.455  TETRIS_GAME/Mcount_pos_x_lut<2>1 (TETRIS_GAME/Mcount_pos_x_lut<2>)
      LUT3:I2->O            2   0.704   0.482  TETRIS_GAME/Mcount_pos_x_cy<2>11 (TETRIS_GAME/Mcount_pos_x_cy<2>)
@@ -2009,14 +2007,14 @@ Offset:              4.571ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 77.00 secs
-Total CPU time to Xst completion: 77.54 secs
+Total REAL time to Xst completion: 57.00 secs
+Total CPU time to Xst completion: 57.81 secs
  
 --> 
 
-Total memory usage is 409148 kilobytes
+Total memory usage is 409532 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  174 (   0 filtered)
+Number of warnings :  170 (   0 filtered)
 Number of infos    :  119 (   0 filtered)
 
